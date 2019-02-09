@@ -1,0 +1,13 @@
+{
+    "name": "Tweaks Status",
+    "description": "Put Gnome Tweaks on ALT/long-press on the panel's Settings button.  Behaves like the Power button.",
+    "shell-version": [
+	"3.30"
+    ],
+    "gettext-domain": "@gettext_domain@",
+    "settings-schema": "org.gnome.shell.extensions.tweaks-status",
+    "url": "https://github.com/F-i-f/tweaks-status",
+    "uuid": "@uuid@",
+    "version": @version@,
+    "vcs_revision": "@VCS_TAG@"
+}

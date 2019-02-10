@@ -25,8 +25,12 @@ const Convenience = Me.imports.convenience;
 const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
 const _ = Gettext.gettext;
 
+const Logger = Me.imports.logger;
+
+let logger = null;
 
 function init() {
+    logger = new Logger.Logger('Tweaks-Status');
     Convenience.initTranslations();
 }
 
@@ -35,56 +39,107 @@ class TweaksStatusSettings extends Gtk.Grid {
     _init(params) {
 	super._init(params);
 
-	this.margin = 24;
+	this.margin_top = 12;
+	this.margin_bottom = 12;
+	this.margin_left = 48;
+	this.margin_right = 48;
 	this.row_spacing = 6;
 	this.column_spacing = 6;
 	this.orientation = Gtk.Orientation.VERTICAL;
 
 	this._settings = Convenience.getSettings();
+	logger.set_debug(this._settings.get_boolean('debug'));
 
 	let ypos = 1;
 	let descr;
 
-	descr = _(this._settings.settings_schema.get_key('merge-with-settings').get_description());
-	this.merge_ws_label = new Gtk.Label({label: _("Merge both Settings and Tweaks:"), halign: Gtk.Align.START});
+	this.title_label = new Gtk.Label({
+	    use_markup: true,
+	    label: '<span size="large" weight="heavy">'
+		+_('Tweaks in Status Area')+'</span>',
+	    hexpand: true,
+	    halign: Gtk.Align.CENTER
+	});
+	this.attach(this.title_label, 1, ypos, 2, 1);
+
+	ypos += 1;
+
+	this.version_label = new Gtk.Label({
+	    use_markup: true,
+	    label: '<span size="small">'+_('Version')
+		+ ' ' + logger.get_version() + '</span>',
+	    hexpand: true,
+	    halign: Gtk.Align.CENTER,
+	    margin_bottom: 12
+	});
+	this.attach(this.version_label, 1, ypos, 2, 1);
+
+	ypos += 1;
+
+	descr = _(this._settings.settings_schema.get_key('merge-with-settings')
+		  .get_description());
+	this.merge_ws_label = new Gtk.Label({
+	    label: _("Merge both Settings and Tweaks:"),
+	    hexpand: true,
+	    halign: Gtk.Align.START
+	});
 	this.merge_ws_label.set_tooltip_text(descr);
-	this.merge_ws_control = new Gtk.Switch({halign: Gtk.Align.END});
+	this.merge_ws_control = new Gtk.Switch({
+	    hexpand: true,
+	    halign: Gtk.Align.END
+	});
 	this.merge_ws_control.set_tooltip_text(descr);
 	this.merge_ws_label.set_tooltip_text(descr);
 	this.attach(this.merge_ws_label,   1, ypos, 1, 1);
 	this.attach(this.merge_ws_control, 2, ypos, 1, 1);
-	this._settings.bind('merge-with-settings', this.merge_ws_control, 'active', Gio.SettingsBindFlags.DEFAULT);
+	this._settings.bind('merge-with-settings', this.merge_ws_control,
+			    'active', Gio.SettingsBindFlags.DEFAULT);
 
 	ypos += 1;
 
 	let sschema = this._settings.settings_schema.get_key('position');
 	descr = _(sschema.get_description());
-	this.position_label = new Gtk.Label({label: _("Button position:"), halign: Gtk.Align.START});
+	this.position_label = new Gtk.Label({
+	    label: _("Button position:"),
+	    hexpand: true,
+	    halign: Gtk.Align.START
+	});
 	this.position_label.set_tooltip_text(descr);
 	let position_range = sschema.get_range().deep_unpack()[1].deep_unpack()
 	this.position_control = new Gtk.SpinButton({
-	    halign: Gtk.Align.END,
 	    adjustment: new Gtk.Adjustment({
 		lower: position_range[0],
 		upper: position_range[1],
 		step_increment: 1
-	    })
+	    }),
+	    hexpand: true,
+	    halign: Gtk.Align.END
 	});
 	this.position_control.set_tooltip_text(descr);
 	this.attach(this.position_label,   1, ypos, 1, 1);
 	this.attach(this.position_control, 2, ypos, 1, 1);
-	this._settings.bind('position', this.position_control, 'value', Gio.SettingsBindFlags.DEFAULT);
+	this._settings.bind('position', this.position_control,
+			    'value', Gio.SettingsBindFlags.DEFAULT);
 
 	ypos += 1;
 
-	descr = _(this._settings.settings_schema.get_key('debug').get_description());
-	this.debug_label = new Gtk.Label({label: _("Debug:"), halign: Gtk.Align.START});
+	descr = _(this._settings.settings_schema.get_key('debug')
+		  .get_description());
+	this.debug_label = new Gtk.Label({
+	    label: _("Debug:"),
+	    hexpand: true,
+	    halign: Gtk.Align.START
+	});
 	this.debug_label.set_tooltip_text(descr);
-	this.debug_control = new Gtk.Switch({halign: Gtk.Align.END});
+	this.debug_control = new Gtk.Switch({
+	    hexpand: true,
+	    halign: Gtk.Align.END
+	});
 	this.debug_control.set_tooltip_text(descr);
 	this.attach(this.debug_label,   1, ypos, 1, 1);
 	this.attach(this.debug_control, 2, ypos, 1, 1);
-	this._settings.bind('debug', this.debug_control, 'active', Gio.SettingsBindFlags.DEFAULT);
+	this._settings.bind('debug', this.debug_control,
+			    'active', Gio.SettingsBindFlags.DEFAULT);
     }
 
 });

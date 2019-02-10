@@ -1,4 +1,4 @@
-// Tweaks-status - Put Gnome Tweaks on ALT/long-press on the panel's Settings
+// tweaks-system-menu - Put Gnome Tweaks in the system menu.
 // Copyright (C) 2019 Philippe Troin <phil@fifi.org>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,11 +24,11 @@ const Me = ExtensionUtils.getCurrentExtension();
 
 const Logger = Me.imports.logger;
 
-let logger = new Logger.Logger('Tweaks-Status');
+let logger = new Logger.Logger('Tweaks-System-Menu');
 logger.set_debug(true);
 
-const TweaksStatusActionButton = new Lang.Class({
-    Name: 'TweaksStatusActionButton',
+const TweaksSystemMenuActionButton = new Lang.Class({
+    Name: 'TweaksSystemMenuActionButton',
 
     _init: function(extension, appName) {
 	this._extension = extension;
@@ -39,7 +39,7 @@ const TweaksStatusActionButton = new Lang.Class({
     },
 
     _log_debug: function(msg) {
-	logger.log_debug('TweaksStatusActionButton(' + this._appName + '): '+msg);
+	logger.log_debug('TweaksSystemMenuActionButton(' + this._appName + '): '+msg);
     },
 
     enable: function() {
@@ -80,8 +80,8 @@ const TweaksStatusActionButton = new Lang.Class({
 });
 
 
-const TweaksStatusExtension = new Lang.Class({
-    Name: 'TweaksStatusExtension',
+const TweaksSystemMenuExtension = new Lang.Class({
+    Name: 'TweaksSystemMenuExtension',
 
     _init: function() {
 	this._systemMenu = null;
@@ -109,7 +109,7 @@ const TweaksStatusExtension = new Lang.Class({
 
 	this._systemMenu = Main.panel.statusArea.aggregateMenu._system;
 
-	this._tweaksButton = new TweaksStatusActionButton(this, 'org.gnome.tweaks.desktop');
+	this._tweaksButton = new TweaksSystemMenuActionButton(this, 'org.gnome.tweaks.desktop');
 	this._tweaksButton.enable();
 
 	if (false) {
@@ -118,7 +118,7 @@ const TweaksStatusExtension = new Lang.Class({
 	} else {
 	    let settingsActionIndex = this._findSystemAction(this._systemMenu._settingsAction);
 
-	    this._settingsButton = new TweaksStatusActionButton(this, 'gnome-control-center.desktop');
+	    this._settingsButton = new TweaksSystemMenuActionButton(this, 'gnome-control-center.desktop');
 	    this._settingsButton.enable();
 
 	    this._settingsSwitcher = new StatusSystem.AltSwitcher(this._settingsButton.getAction(), this._tweaksButton.getAction());
@@ -172,5 +172,5 @@ const TweaksStatusExtension = new Lang.Class({
 });
 
 function init() {
-    return new TweaksStatusExtension();
+    return new TweaksSystemMenuExtension();
 }

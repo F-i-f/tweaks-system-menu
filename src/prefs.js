@@ -1,4 +1,4 @@
-// Tweaks-status - Put Gnome Tweaks on ALT/long-press on the panel's Settings
+// Tweaks-system-menu - Put Gnome Tweaks in the system menu.
 // Copyright (C) 2019 Philippe Troin <phil@fifi.org>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -30,12 +30,12 @@ const Logger = Me.imports.logger;
 let logger = null;
 
 function init() {
-    logger = new Logger.Logger('Tweaks-Status');
+    logger = new Logger.Logger('Tweaks-System-Menu');
     Convenience.initTranslations();
 }
 
-const TweaksStatusSettings = GObject.registerClass(
-class TweaksStatusSettings extends Gtk.Grid {
+const TweaksSystemMenuSettings = GObject.registerClass(
+class TweaksSystemMenuSettings extends Gtk.Grid {
     _init(params) {
 	super._init(params);
 
@@ -56,7 +56,7 @@ class TweaksStatusSettings extends Gtk.Grid {
 	this.title_label = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="large" weight="heavy">'
-		+_('Tweaks in Status Area')+'</span>',
+		+_('Tweaks in System Menu')+'</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER
 	});
@@ -145,7 +145,7 @@ class TweaksStatusSettings extends Gtk.Grid {
 });
 
 function buildPrefsWidget() {
-    let widget = new TweaksStatusSettings();
+    let widget = new TweaksSystemMenuSettings();
     widget.show_all();
 
     return widget;

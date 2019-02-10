@@ -1,5 +1,5 @@
-<schemalist gettext-domain="tweaks-status">
-  <schema id="org.gnome.shell.extensions.tweaks-status" path="/org/gnome/shell/extensions/tweaks-status/">
+<schemalist gettext-domain="tweaks-system-menu">
+  <schema id="org.gnome.shell.extensions.tweaks-system-menu" path="/org/gnome/shell/extensions/tweaks-system-menu/">
     <key name="merge-with-settings" type="b">
       <default>false</default>
       <summary>Merge both Settings and Tweaks into a single button.</summary>

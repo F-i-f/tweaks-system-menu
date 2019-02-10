@@ -1,12 +1,12 @@
 {
-    "name": "Tweaks Status",
-    "description": "Put Gnome Tweaks on ALT/long-press on the panel's Settings button.  Behaves like the Power button.",
+    "name": "Tweaks in System Menu",
+    "description": "Put Gnome Tweaks in the System menu.  Optionally, collapse Settings and Tweaks into a single button.",
     "shell-version": [
 	"3.30"
     ],
     "gettext-domain": "@gettext_domain@",
-    "settings-schema": "org.gnome.shell.extensions.tweaks-status",
-    "url": "https://github.com/F-i-f/tweaks-status",
+    "settings-schema": "org.gnome.shell.extensions.tweaks-system-menu",
+    "url": "https://github.com/F-i-f/tweaks-system-menu",
     "uuid": "@uuid@",
     "version": @version@,
     "vcs_revision": "@VCS_TAG@"

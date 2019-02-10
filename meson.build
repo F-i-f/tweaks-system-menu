@@ -1,6 +1,6 @@
 # -*- meson -*-
 
-# Tweaks-status - Put Gnome Tweaks on ALT/long-press on the panel's Settings
+# Tweaks-system-menu - Put Gnome Tweaks in the system menu.
 # Copyright (C) 2019 Philippe Troin <phil@fifi.org>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Boilerplate
-project('tweaks-status',
+project('tweaks-system-menu',
 	version: '0',
 	meson_version: '>= 0.44.0',
 	license: 'GPL3' )
@@ -86,7 +86,7 @@ if gse_run_command_obj.returncode() != 0
 endif
 home     = gse_run_command_obj.stdout().strip()
 
-gse_uuid		 = meson.project_name() + '@fifi.org'
+gse_uuid		 = meson.project_name() + '@extensions.gnome-shell.fifi.org'
 gse_target_dir		 = home + '/.local/share/gnome-shell/extensions/' + gse_uuid
 gse_target_dir_schemas   = join_paths(gse_target_dir, 'schemas')
 gse_target_locale_dir    = join_paths(gse_target_dir, 'locale')

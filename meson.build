@@ -73,7 +73,7 @@ endif
 # Include extension-specific settings
 
 gse_sources	    += []
-gse_libs	    += gse_lib_logger
+gse_libs	    += [gse_lib_convenience, gse_lib_logger]
 gse_data	    += []
 gse_schemas	    += []
 gse_dbus_interfaces += []

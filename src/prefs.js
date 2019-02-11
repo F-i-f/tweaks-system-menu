@@ -83,6 +83,7 @@ const TweaksSystemMenuSettings = new Lang.Class({
 	this.attach(this.version_label, 1, ypos, 2, 1);
 
 	ypos += 1;
+
 	descr = _(this._settings.settings_schema.get_key('merge-with-settings')
 		  .get_description());
 	this.merge_ws_label = new Gtk.Label({

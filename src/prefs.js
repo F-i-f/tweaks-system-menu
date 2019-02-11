@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+const Lang = imports.lang;
 const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -34,10 +35,12 @@ function init() {
     Convenience.initTranslations();
 }
 
-const TweaksSystemMenuSettings = GObject.registerClass(
-class TweaksSystemMenuSettings extends Gtk.Grid {
+const TweaksSystemMenuSettings = new Lang.Class({
+    Name: 'TweaksSystemMenuSettings',
+    Extends:  Gtk.Grid,
+
     _init(params) {
-	super._init(params);
+	this.parent(params);
 
 	this.margin_top = 12;
 	this.margin_bottom = 12;

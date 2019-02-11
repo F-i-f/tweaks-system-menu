@@ -43,11 +43,11 @@ const TweaksSystemMenuSettings = new Lang.Class({
 	this.parent(params);
 
 	this.margin_top = 12;
-	this.margin_bottom = 12;
+	this.margin_bottom = this.margin_top;
 	this.margin_left = 48;
-	this.margin_right = 48;
+	this.margin_right = this.margin_left;
 	this.row_spacing = 6;
-	this.column_spacing = 6;
+	this.column_spacing = this.row_spacing;
 	this.orientation = Gtk.Orientation.VERTICAL;
 
 	this._settings = Convenience.getSettings();
@@ -73,12 +73,22 @@ const TweaksSystemMenuSettings = new Lang.Class({
 		+ ' ' + logger.get_version() + '</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER,
-	    margin_bottom: 12
 	});
 	this.attach(this.version_label, 1, ypos, 2, 1);
 
 	ypos += 1;
 
+	this.version_label = new Gtk.Label({
+	    use_markup: true,
+	    label: '<span size="small"><a href="'+Me.metadata.url+'">'
+		+ Me.metadata.url + '</a></span>',
+	    hexpand: true,
+	    halign: Gtk.Align.CENTER,
+	    margin_bottom: this.margin_bottom
+	});
+	this.attach(this.version_label, 1, ypos, 2, 1);
+
+	ypos += 1;
 	descr = _(this._settings.settings_schema.get_key('merge-with-settings')
 		  .get_description());
 	this.merge_ws_label = new Gtk.Label({
@@ -143,6 +153,21 @@ const TweaksSystemMenuSettings = new Lang.Class({
 	this.attach(this.debug_control, 2, ypos, 1, 1);
 	this._settings.bind('debug', this.debug_control,
 			    'active', Gio.SettingsBindFlags.DEFAULT);
+
+	ypos += 1;
+
+	this.version_label = new Gtk.Label({
+	    use_markup: true,
+	    label: '<span size="small">'
+		+ _('Copyright © 2019 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')
+		+ '</span>',
+	    hexpand: true,
+	    halign: Gtk.Align.CENTER,
+	    margin_top: this.margin_bottom
+	});
+	this.attach(this.version_label, 1, ypos, 2, 1);
+
+	ypos += 1;
     }
 
 });

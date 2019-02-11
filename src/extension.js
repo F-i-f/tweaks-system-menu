@@ -89,11 +89,11 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	this._settings = null;
 	this._debugSettingChangedConnection = null;
+	this._buttonsMergeSettingChangeConnection = null;
 	this._positionSettingChangedConnection = null;
 
 	this._systemMenu = null;
 
-	this._areButtonsMerged = null;
 	this._tweaksButton = null;
 	this._settingsButton = null;
 	this._settingsSwitcher = null;
@@ -121,8 +121,12 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	this._logger.log_debug('enable()');
 
-	this._debugSettingChangedConnection = this._settings.connect('changed::debug', this._on_debug_change.bind(this));
-	this._positionSettingChangedConnection = this._settings.connect('changed::position', this._on_position_change.bind(this));
+	this._debugSettingChangedConnection = this._settings.connect('changed::debug',
+								     this._on_debug_change.bind(this));
+	this._buttonsMergeSettingChangeConnection = this._settings.connect('changed::merge-with-settings',
+									     this._on_buttons_merge_change.bind(this));
+	this._positionSettingChangedConnection = this._settings.connect('changed::position',
+									this._on_position_change.bind(this));
 
 	this._systemMenu = Main.panel.statusArea.aggregateMenu._system;
 
@@ -179,6 +183,8 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	this._settings.disconnect(this._debugSettingChangedConnection);
 	this._debugSettingChangedConnection = null;
+	this._settings.disconnect(this._buttonsMergeSettingChangeConnection);
+	this._buttonsMergeSettingChangeConnection = null;
 	this._settings.disconnect(this._positionSettingChangedConnection);
 	this._positionSettingChangedConnection = null;
 
@@ -188,13 +194,22 @@ const TweaksSystemMenuExtension = new Lang.Class({
     },
 
     _areButtonsMerged: function() {
-	return this._settingsSwitcher == null;
+	return this._settingsSwitcher != null;
     },
 
     _on_debug_change: function() {
 	this._logger.set_debug(this._settings.get_boolean('debug'));
 	this._logger.log_debug('debug = '+this._logger.get_debug());
+    },
 
+    _on_buttons_merge_change: function() {
+	let buttonsShouldMerge = this._settings.get_boolean('merge-with-settings');
+	this._logger.log_debug('_on_buttons_merge_change(): merge='+buttonsShouldMerge);
+	if (    (   buttonsShouldMerge && ! this._areButtonsMerged())
+	     || ( ! buttonsShouldMerge &&   this._areButtonsMerged())) {
+	    this.disable();
+	    this.enable();
+	}
     },
 
     _on_position_change: function() {

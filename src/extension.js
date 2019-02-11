@@ -53,7 +53,7 @@ const TweaksSystemMenuActionButton = new Lang.Class({
     },
 
     disable: function(destroy) {
-	this._log_debug('disable()');
+	this._log_debug('disable(' + destroy +')');
 	this._action.disconnect(this._signalConnection);
 
 	if (destroy)
@@ -130,30 +130,11 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	this._systemMenu = Main.panel.statusArea.aggregateMenu._system;
 
-	this._tweaksButton = new TweaksSystemMenuActionButton(this, 'org.gnome.tweaks.desktop');
-	this._tweaksButton.enable();
+	this._showButton();
 
-	if (this._settings.get_boolean('merge-with-settings')) {
-	    this._settingsButton = new TweaksSystemMenuActionButton(this, 'gnome-control-center.desktop');
-	    this._settingsButton.enable();
-
-	    this._settingsSwitcher = new StatusSystem.AltSwitcher(this._settingsButton.getAction(),
-								  this._tweaksButton.getAction());
-
-	    this._systemMenu._actionsItem.actor.add(this._settingsSwitcher.actor,
-						    {expand:true, x_fill:false});
-	    this._actorToPosition = this._settingsSwitcher.actor;
-	    this._on_position_change();
-
-	    this._systemMenu._settingsAction.visible = false;
-	} else {
-	    this._systemMenu._actionsItem.actor.add(this._tweaksButton.getAction(),
-						    {expand: true, x_fill: false});
-	    this._actorToPosition = this._tweaksButton.getAction();
-	    this._on_position_change();
-	}
 	this._openStateChangedConnectionId = this._systemMenu.menu.connect('open-state-changed',
 									   this._on_open_state_changed.bind(this));
+	this._logger.log_debug('extension enabled');
     },
 
     disable: function() {
@@ -162,22 +143,7 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	this._systemMenu.menu.disconnect(this._openStateChangedConnectionId);
 	this._openStateChangedConnectionId = null;
 
-	this._systemMenu._actionsItem.actor.remove_child(this._actorToPosition);
-
-	this._actorToPosition = null;
-
-	this._tweaksButton.disable(this._areButtonsMerged());
-	this._tweaksButton = null;
-
-	if (this._areButtonsMerged()) {
-	    this._settingsButton.disable(false);
-	    this._settingsButton = null;
-
-	    this._settingsSwitcher.actor.destroy();
-	    this._settingsSwitcher = null;
-
-	    this._systemMenu._settingsAction.visible = true;
-	}
+	this._hideButton();
 
 	this._systemMenu = null;
 
@@ -191,6 +157,55 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	this._settings = null;
 
 	this._logger = null;
+
+	this._logger.log_debug('extension disabled');
+    },
+
+    _showButton: function() {
+	this._logger.log_debug('_showButton()');
+
+	this._tweaksButton = new TweaksSystemMenuActionButton(this, 'org.gnome.tweaks.desktop');
+	this._tweaksButton.enable();
+
+	if (this._settings.get_boolean('merge-with-settings')) {
+	    this._settingsButton = new TweaksSystemMenuActionButton(this, 'gnome-control-center.desktop');
+	    this._settingsButton.enable();
+
+	    this._settingsSwitcher = new StatusSystem.AltSwitcher(this._settingsButton.getAction(),
+								  this._tweaksButton.getAction());
+
+	    this._systemMenu._actionsItem.actor.add(this._settingsSwitcher.actor,
+						    {expand:true, x_fill:false});
+	    this._actorToPosition = this._settingsSwitcher.actor;
+
+	    this._systemMenu._settingsAction.visible = false;
+	} else {
+	    this._systemMenu._actionsItem.actor.add(this._tweaksButton.getAction(),
+						    {expand: true, x_fill: false});
+	    this._actorToPosition = this._tweaksButton.getAction();
+	}
+
+	this._on_position_change();
+    },
+
+    _hideButton: function() {
+	this._logger.log_debug('_hideButton()');
+
+	this._systemMenu._actionsItem.actor.remove_child(this._actorToPosition);
+	this._actorToPosition = null;
+
+	this._tweaksButton.disable(!this._areButtonsMerged());
+	this._tweaksButton = null;
+
+	if (this._areButtonsMerged()) {
+	    this._settingsButton.disable(false);
+	    this._settingsButton = null;
+
+	    this._settingsSwitcher.actor.destroy();
+	    this._settingsSwitcher = null;
+
+	    this._systemMenu._settingsAction.visible = true;
+	}
     },
 
     _areButtonsMerged: function() {
@@ -207,8 +222,8 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	this._logger.log_debug('_on_buttons_merge_change(): merge='+buttonsShouldMerge);
 	if (    (   buttonsShouldMerge && ! this._areButtonsMerged())
 	     || ( ! buttonsShouldMerge &&   this._areButtonsMerged())) {
-	    this.disable();
-	    this.enable();
+	    this._hideButton();
+	    this._showButton();
 	}
     },
 

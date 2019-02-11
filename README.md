@@ -1,0 +1,61 @@
+# Tweaks in System Menu Gnome Shell Extension
+## Overview
+
+Tweaks in System Menu adds a shortcut button to the _Gnome
+Tweaks_(a.k.a. _Tweak UI_) in the panel's system menu.
+
+![The Tweaks button shown as separate and not merged with the Settings
+button](docs/tweaks-in-system-menu.png)
+
+The button can be positioned anywhere in the system menu, and can
+even be merged with the Settings button.  If merged, the Settings
+button will be shown when opening the system menu, and Tweaks will be
+shown if "Alt" is pressed on the keyboard, or if the Settings button
+is pressed for a half second or so.
+
+## Configuration
+
+Tweaks in System Menu comes with a preference panel which can be found
+from the "Tweaks" application or the [Gnome Shell Extensions
+page](https://extensions.gnome.org/local/).
+
+![Tweaks in System Menu preference panel](docs/preferences.png)
+
+## Download
+
+Check-out the GitHub [releases page](https://github.com/F-i-f/tweaks-system-menu/releases).
+
+## Building from source
+
+### Requirements
+
+- [meson](http://mesonbuild.com/) v0.44.0 or later.
+
+### Running the build
+
+- Check out: `git clone https://github.com/F-i-f/tweaks-system-menu`
+
+- `cd tweaks-system-menu`
+
+- Run meson: `meson build`
+
+- To install in your your gnome shell extensions' directory (~/.local/share/gnome-shell/extensions), run ninja: `ninja -C build install`
+
+- To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
+
+## Changelog
+
+### Version 1
+#### February 11, 2019
+
+- Initial release.
+
+## Credits
+
+- The [`meson-gse` credits](https://github.com/F-i-f/meson-gse/) are
+  included here by reference.
+- Inspiration for `AltSwitcher()` usage com from the [Hibernate Status
+  Button](https://extensions.gnome.org/extension/755/hibernate-status-button/) extension.
+
+<!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher
+-->

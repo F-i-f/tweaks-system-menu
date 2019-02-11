@@ -28,13 +28,6 @@ const _ = Gettext.gettext;
 
 const Logger = Me.imports.logger;
 
-let logger = null;
-
-function init() {
-    logger = new Logger.Logger('Tweaks-System-Menu');
-    Convenience.initTranslations();
-}
-
 const TweaksSystemMenuSettings = new Lang.Class({
     Name: 'TweaksSystemMenuSettings',
     Extends:  Gtk.Grid,
@@ -51,7 +44,8 @@ const TweaksSystemMenuSettings = new Lang.Class({
 	this.orientation = Gtk.Orientation.VERTICAL;
 
 	this._settings = Convenience.getSettings();
-	logger.set_debug(this._settings.get_boolean('debug'));
+	this._logger = new Logger.Logger('Tweaks-System-Menu');
+	this._logger.set_debug(this._settings.get_boolean('debug'));
 
 	let ypos = 1;
 	let descr;
@@ -70,7 +64,7 @@ const TweaksSystemMenuSettings = new Lang.Class({
 	this.version_label = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="small">'+_('Version')
-		+ ' ' + logger.get_version() + '</span>',
+		+ ' ' + this._logger.get_version() + '</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER,
 	});
@@ -171,6 +165,10 @@ const TweaksSystemMenuSettings = new Lang.Class({
     }
 
 });
+
+function init() {
+    Convenience.initTranslations();
+}
 
 function buildPrefsWidget() {
     let widget = new TweaksSystemMenuSettings();

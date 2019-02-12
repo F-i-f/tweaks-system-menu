@@ -156,9 +156,8 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	this._settings = null;
 
-	this._logger = null;
-
 	this._logger.log_debug('extension disabled');
+	this._logger = null;
     },
 
     _showButton: function() {

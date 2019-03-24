@@ -21,9 +21,16 @@ page](https://extensions.gnome.org/local/).
 
 ![Tweaks in System Menu preference panel](docs/preferences.png)
 
-## Download
+## Download / Install
 
-Check-out the GitHub [releases page](https://github.com/F-i-f/tweaks-system-menu/releases).
+Install directly from the [Gnome Shell Extensions
+site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
+
+Or download the zip file from the GitHub [releases
+page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
+[the
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v1/tweaks-system-menu@extensions.gnome-shell.fifi.org.v1.shell-extension.zip)
+in your `~/.local/share/gnome-shell/extensions/` directory.
 
 ## Building from source
 

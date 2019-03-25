@@ -30,7 +30,9 @@ Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
 file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v1/tweaks-system-menu@extensions.gnome-shell.fifi.org.v1.shell-extension.zip)
-in your `~/.local/share/gnome-shell/extensions/` directory.
+in the
+`~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
+directory (you may have to create the directory).
 
 ## Building from source
 

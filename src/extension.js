@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-const Lang = imports.lang;
 const Main = imports.ui.main;
 const StatusSystem = imports.ui.status.system;
 const Shell = imports.gi.Shell;
@@ -25,23 +24,21 @@ const Convenience = Me.imports.convenience;
 
 const Logger = Me.imports.logger;
 
-const TweaksSystemMenuActionButton = new Lang.Class({
-    Name: 'TweaksSystemMenuActionButton',
-
-    _init: function(extension, appName) {
+const TweaksSystemMenuActionButton = class TweaksSystemMenuActionButton {
+    constructor(extension, appName) {
 	this._extension = extension;
 	this._appName = appName;
 	this._app = null;
 	this._action = null;
 	this._signalConnection = null;
-    },
+    }
 
-    _log_debug: function(msg) {
+    _log_debug(msg) {
 	this._extension._logger.log_debug('TweaksSystemMenuActionButton('
 					  + this._appName + '): '+msg);
-    },
+    }
 
-    enable: function() {
+    enable() {
 	this._log_debug('enable()');
 
 	this._app    = Shell.AppSystem.get_default().lookup_app(this._appName);
@@ -50,9 +47,9 @@ const TweaksSystemMenuActionButton = new Lang.Class({
 				 this._app.get_name());
 	this._signalConnection = this._action.connect('clicked',
 						      this._on_clicked.bind(this));
-    },
+    }
 
-    disable: function(destroy) {
+    disable(destroy) {
 	this._log_debug('disable(' + destroy +')');
 	this._action.disconnect(this._signalConnection);
 
@@ -62,29 +59,27 @@ const TweaksSystemMenuActionButton = new Lang.Class({
 	this._app = null;
 	this._action = null;
 	this._signalConnection = null;
-    },
+    }
 
-    setVisible: function(visible) {
+    setVisible(visible) {
 	this._action.visible = visible;
-    },
+    }
 
-    getAction: function() {
+    getAction() {
 	return this._action;
-    },
+    }
 
-    _on_clicked: function() {
+    _on_clicked() {
 	this._log_debug('_on_clicked()');
 	this._extension._systemMenu.menu.itemActivated();
 	Main.overview.hide();
 	this._app.activate();
     }
-});
+};
 
 
-const TweaksSystemMenuExtension = new Lang.Class({
-    Name: 'TweaksSystemMenuExtension',
-
-    _init: function() {
+const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
+    constructor() {
 	this._logger = null;
 
 	this._settings = null;
@@ -99,9 +94,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	this._settingsSwitcher = null;
 	this._actorToPosition = null;
 	this._openStateChangedConnectionId = null;
-    },
+    }
 
-    _findSystemAction: function(action) {
+    _findSystemAction(action) {
 	let systemActions = this._systemMenu._actionsItem.actor.get_children();
 	for (let i=0; i < systemActions.length; ++i) {
 	    if (systemActions[i] == action) {
@@ -111,9 +106,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	}
 	this._logger.log_debug('_findSystemAction('+action+') = <null>');
 	return null;
-    },
+    }
 
-    enable: function() {
+    enable() {
 	this._logger = new Logger.Logger('Tweaks-System-Menu');
 	this._settings = Convenience.getSettings();
 
@@ -135,9 +130,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	this._openStateChangedConnectionId = this._systemMenu.menu.connect('open-state-changed',
 									   this._on_open_state_changed.bind(this));
 	this._logger.log_debug('extension enabled');
-    },
+    }
 
-    disable: function() {
+    disable() {
 	this._logger.log_debug('disable()');
 
 	this._systemMenu.menu.disconnect(this._openStateChangedConnectionId);
@@ -158,9 +153,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	this._logger.log_debug('extension disabled');
 	this._logger = null;
-    },
+    }
 
-    _showButton: function() {
+    _showButton() {
 	this._logger.log_debug('_showButton()');
 
 	this._tweaksButton = new TweaksSystemMenuActionButton(this, 'org.gnome.tweaks.desktop');
@@ -185,9 +180,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	}
 
 	this._on_position_change();
-    },
+    }
 
-    _hideButton: function() {
+    _hideButton() {
 	this._logger.log_debug('_hideButton()');
 
 	this._systemMenu._actionsItem.actor.remove_child(this._actorToPosition);
@@ -205,18 +200,18 @@ const TweaksSystemMenuExtension = new Lang.Class({
 
 	    this._systemMenu._settingsAction.visible = true;
 	}
-    },
+    }
 
-    _areButtonsMerged: function() {
+    _areButtonsMerged() {
 	return this._settingsSwitcher != null;
-    },
+    }
 
-    _on_debug_change: function() {
+    _on_debug_change() {
 	this._logger.set_debug(this._settings.get_boolean('debug'));
 	this._logger.log_debug('debug = '+this._logger.get_debug());
-    },
+    }
 
-    _on_buttons_merge_change: function() {
+    _on_buttons_merge_change() {
 	let buttonsShouldMerge = this._settings.get_boolean('merge-with-settings');
 	this._logger.log_debug('_on_buttons_merge_change(): merge='+buttonsShouldMerge);
 	if (    (   buttonsShouldMerge && ! this._areButtonsMerged())
@@ -224,9 +219,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	    this._hideButton();
 	    this._showButton();
 	}
-    },
+    }
 
-    _on_position_change: function() {
+    _on_position_change() {
 	let position = this._settings.get_int('position');
 	this._logger.log_debug('_on_position_change(): settings position=' + position);
 	if (position == -1) {
@@ -240,9 +235,9 @@ const TweaksSystemMenuExtension = new Lang.Class({
 				   + position + ' with '+n_children+' elements');
 	}
 	this._systemMenu._actionsItem.actor.set_child_at_index(this._actorToPosition, position);
-    },
+    }
 
-    _on_open_state_changed: function(menu, open) {
+    _on_open_state_changed(menu, open) {
 	this._logger.log_debug('_on_open_state_changed()');
 	if (!open)
 	    return;
@@ -250,8 +245,7 @@ const TweaksSystemMenuExtension = new Lang.Class({
 	if (this._settingsButton != null)
 	    this._settingsButton.setVisible(true);
     }
-
-});
+};
 
 function init() {
     return new TweaksSystemMenuExtension();

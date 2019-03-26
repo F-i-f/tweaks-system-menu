@@ -2,7 +2,8 @@
     "name": "Tweaks in System Menu",
     "description": "Put Gnome Tweaks in the System menu.  Optionally, collapse Settings and Tweaks into a single button.",
     "shell-version": [
-	"3.30"
+	"3.30",
+	"3.32"
     ],
     "gettext-domain": "@gettext_domain@",
     "settings-schema": "org.gnome.shell.extensions.tweaks-system-menu",

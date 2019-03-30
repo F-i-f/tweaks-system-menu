@@ -29,7 +29,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v2/tweaks-system-menu@extensions.gnome-shell.fifi.org.v2.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v3/tweaks-system-menu@extensions.gnome-shell.fifi.org.v3.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -54,10 +54,15 @@ directory (you may have to create the directory).
 
 ## Changelog
 
+### Version 3
+#### March 30, 2019
+
+- Fix warning in logger.js that was introduced in version 2.
+
 ### Version 2
 #### March 26, 2019
 
-- ES60 / Gnome-Shell 3.32 compatibility (still compatible with 3.30 and lower).
+- ES6 / Gnome-Shell 3.32 compatibility (still compatible with 3.30 and lower).
 - Updated meson-gse to latest.
 - Minor doc updates.
 
@@ -73,5 +78,5 @@ directory (you may have to create the directory).
 - Inspiration for `AltSwitcher()` usage com from the [Hibernate Status
   Button](https://extensions.gnome.org/extension/755/hibernate-status-button/) extension.
 
-<!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher
+<!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher js ES6
 -->

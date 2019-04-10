@@ -39,7 +39,7 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 	this.orientation = Gtk.Orientation.VERTICAL;
 
 	this._settings = Convenience.getSettings();
-	this._logger = new Logger.Logger('Tweaks-System-Menu');
+	this._logger = new Logger.Logger('Tweaks-System-Menu/prefs');
 	this._logger.set_debug(this._settings.get_boolean('debug'));
 
 	let ypos = 1;
@@ -67,7 +67,7 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 
 	ypos += 1;
 
-	this.version_label = new Gtk.Label({
+	this.link_label = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="small"><a href="'+Me.metadata.url+'">'
 		+ Me.metadata.url + '</a></span>',
@@ -75,7 +75,7 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 	    halign: Gtk.Align.CENTER,
 	    margin_bottom: this.margin_bottom
 	});
-	this.attach(this.version_label, 1, ypos, 2, 1);
+	this.attach(this.link_label, 1, ypos, 2, 1);
 
 	ypos += 1;
 
@@ -146,7 +146,7 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 
 	ypos += 1;
 
-	this.version_label = new Gtk.Label({
+	this.copyright_label = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="small">'
 		+ _('Copyright © 2019 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')
@@ -155,7 +155,7 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 	    halign: Gtk.Align.CENTER,
 	    margin_top: this.margin_bottom
 	});
-	this.attach(this.version_label, 1, ypos, 2, 1);
+	this.attach(this.copyright_label, 1, ypos, 2, 1);
 
 	ypos += 1;
     }

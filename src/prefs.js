@@ -83,12 +83,10 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 		  .get_description());
 	this.merge_ws_label = new Gtk.Label({
 	    label: _("Merge both Settings and Tweaks:"),
-	    hexpand: true,
 	    halign: Gtk.Align.START
 	});
 	this.merge_ws_label.set_tooltip_text(descr);
 	this.merge_ws_control = new Gtk.Switch({
-	    hexpand: true,
 	    halign: Gtk.Align.END
 	});
 	this.merge_ws_control.set_tooltip_text(descr);
@@ -104,7 +102,6 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 	descr = _(sschema.get_description());
 	this.position_label = new Gtk.Label({
 	    label: _("Button position:"),
-	    hexpand: true,
 	    halign: Gtk.Align.START
 	});
 	this.position_label.set_tooltip_text(descr);
@@ -115,7 +112,6 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 		upper: position_range[1],
 		step_increment: 1
 	    }),
-	    hexpand: true,
 	    halign: Gtk.Align.END
 	});
 	this.position_control.set_tooltip_text(descr);
@@ -126,23 +122,14 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 
 	ypos += 1;
 
-	descr = _(this._settings.settings_schema.get_key('debug')
-		  .get_description());
-	this.debug_label = new Gtk.Label({
-	    label: _("Debug:"),
-	    hexpand: true,
-	    halign: Gtk.Align.START
-	});
+	descr = _(this._settings.settings_schema.get_key('debug').get_description());
+	this.debug_label = new Gtk.Label({label: _("Debug:"), halign: Gtk.Align.START});
 	this.debug_label.set_tooltip_text(descr);
-	this.debug_control = new Gtk.Switch({
-	    hexpand: true,
-	    halign: Gtk.Align.END
-	});
+	this.debug_control = new Gtk.Switch({halign: Gtk.Align.END});
 	this.debug_control.set_tooltip_text(descr);
 	this.attach(this.debug_label,   1, ypos, 1, 1);
 	this.attach(this.debug_control, 2, ypos, 1, 1);
-	this._settings.bind('debug', this.debug_control,
-			    'active', Gio.SettingsBindFlags.DEFAULT);
+	this._settings.bind('debug', this.debug_control, 'active', Gio.SettingsBindFlags.DEFAULT);
 
 	ypos += 1;
 

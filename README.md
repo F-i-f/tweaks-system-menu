@@ -1,6 +1,8 @@
 Tweaks in System Menu Gnome Shell Extension
 ===========================================
 
+[![Build Status](https://travis-ci.org/F-i-f/tweaks-system-menu.svg?branch=master)](https://travis-ci.org/F-i-f/tweaks-system-menu)
+
 ## Overview
 
 Tweaks in System Menu adds a shortcut button to the _Gnome

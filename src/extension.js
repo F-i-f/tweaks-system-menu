@@ -88,6 +88,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	this._positionSettingChangedConnection = null;
 
 	this._systemMenu = null;
+	this._systemActionsActor = null;
 
 	this._tweaksButton = null;
 	this._settingsButton = null;
@@ -97,7 +98,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
     }
 
     _findSystemAction(action) {
-	let systemActions = this._systemMenu._actionsItem.actor.get_children();
+	let systemActions = this._systemActionsActor.get_children();
 	for (let i=0; i < systemActions.length; ++i) {
 	    if (systemActions[i] == action) {
 		this._logger.log_debug('_findSystemAction('+action+') = '+i);
@@ -124,6 +125,13 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 									this._on_position_change.bind(this));
 
 	this._systemMenu = Main.panel.statusArea.aggregateMenu._system;
+	if (this._systemMenu.buttonGroup !== undefined && this._systemMenu.buttonGroup.actor !== undefined) {
+	    // Gnome-Shell 3.33.90+
+	    this._systemActionsActor = this._systemMenu.buttonGroup.actor;
+	} else {
+	    // Gnome-Shell 3.32-
+	    this._systemActionsActor = this._systemMenu._actionsItem.actor;
+	}
 
 	this._showButton();
 
@@ -141,6 +149,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	this._hideButton();
 
 	this._systemMenu = null;
+	this._systemActionsActor = null;
 
 	this._settings.disconnect(this._debugSettingChangedConnection);
 	this._debugSettingChangedConnection = null;
@@ -168,13 +177,13 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	    this._settingsSwitcher = new StatusSystem.AltSwitcher(this._settingsButton.getAction(),
 								  this._tweaksButton.getAction());
 
-	    this._systemMenu._actionsItem.actor.add(this._settingsSwitcher.actor,
-						    {expand:true, x_fill:false});
+	    this._systemActionsActor.add(this._settingsSwitcher.actor,
+					 {expand:true, x_fill:false});
 	    this._actorToPosition = this._settingsSwitcher.actor;
 
 	    this._systemMenu._settingsAction.visible = false;
 	} else {
-	    this._systemMenu._actionsItem.actor.add(this._tweaksButton.getAction(),
+	    this._systemActionsActor.add(this._tweaksButton.getAction(),
 						    {expand: true, x_fill: false});
 	    this._actorToPosition = this._tweaksButton.getAction();
 	}
@@ -185,7 +194,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
     _hideButton() {
 	this._logger.log_debug('_hideButton()');
 
-	this._systemMenu._actionsItem.actor.remove_child(this._actorToPosition);
+	this._systemActionsActor.remove_child(this._actorToPosition);
 	this._actorToPosition = null;
 
 	this._tweaksButton.disable(!this._areButtonsMerged());
@@ -228,13 +237,13 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	    position = this._findSystemAction(this._systemMenu._settingsAction)+1;
 	    this._logger.log_debug('_on_position_change(): automatic position=' + position);
 	}
-	let n_children = this._systemMenu._actionsItem.actor.get_n_children();
+	let n_children = this._systemActionsActor.get_n_children();
 	if (position >= n_children) {
 	    position = n_children-1;
 	    this._logger.log_debug('_on_position_change(): adjusting position='
 				   + position + ' with '+n_children+' elements');
 	}
-	this._systemMenu._actionsItem.actor.set_child_at_index(this._actorToPosition, position);
+	this._systemActionsActor.set_child_at_index(this._actorToPosition, position);
     }
 
     _on_open_state_changed(menu, open) {

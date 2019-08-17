@@ -4,8 +4,10 @@
   "name": "Tweaks in System Menu",
   "settings-schema": "org.gnome.shell.extensions.tweaks-system-menu",
   "shell-version": [
+    "3.28",
     "3.30",
-    "3.32"
+    "3.32",
+    "3.33"
   ],
   "url": "https://github.com/F-i-f/tweaks-system-menu",
   "uuid": "@uuid@",

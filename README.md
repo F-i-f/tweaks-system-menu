@@ -48,7 +48,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v3/tweaks-system-menu@extensions.gnome-shell.fifi.org.v3.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v4/tweaks-system-menu@extensions.gnome-shell.fifi.org.v4.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -72,6 +72,14 @@ directory (you may have to create the directory).
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 4
+#### August 19, 2019
+
+- Supports shell version 3.33 (new compatibility code).
+- Also declare as compatible with shell version 3.28 (no new code needed).
+- Code clean-ups without any user-visible changes in the preference pane.
+- Added Travis CI support in build tree.
 
 ### Version 3
 #### March 30, 2019
@@ -99,3 +107,5 @@ directory (you may have to create the directory).
 
 <!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher js ES6
 -->
+<!--  LocalWords:  MERCHANTABILITY
+ -->

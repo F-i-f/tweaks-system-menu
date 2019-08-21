@@ -48,7 +48,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v4/tweaks-system-menu@extensions.gnome-shell.fifi.org.v4.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v5/tweaks-system-menu@extensions.gnome-shell.fifi.org.v5.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -72,6 +72,12 @@ directory (you may have to create the directory).
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 5
+#### August 21, 2019
+
+- Declare compatibility with shell version 3.33.90.
+- No functional changes.
 
 ### Version 4
 #### August 19, 2019

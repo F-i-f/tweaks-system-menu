@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 09:45-0800\n"
+"POT-Creation-Date: 2019-10-11 18:15-0700\n"
 "PO-Revision-Date: 2019-02-11 10:08-0800\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
@@ -16,31 +16,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:62
+#: src/prefs.js:51
 msgid "Tweaks in System Menu"
 msgstr "Ajustements dans le menu système"
 
-#: src/prefs.js:72
+#: src/prefs.js:61
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:95
+#: src/prefs.js:85
 msgid "Merge both Settings and Tweaks:"
 msgstr "Fusionner Réglages et Ajustements :"
 
-#: src/prefs.js:116
+#: src/prefs.js:104
 msgid "Button position:"
 msgstr "Position du bouton :"
 
-#: src/prefs.js:142
+#: src/prefs.js:126
 msgid "Debug:"
 msgstr "Débogage :"
 
-#: src/prefs.js:162
+#: src/prefs.js:139
 msgid ""
 "Copyright © 2019 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</"
 "a> on GitHub)"
-msgstr "Copyright © 2019 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</a> sur GitHub)"
+msgstr ""
+"Copyright © 2019 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</"
+"a> sur GitHub)"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
 msgid "Merge both Settings and Tweaks into a single button."

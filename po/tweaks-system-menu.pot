@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 09:45-0800\n"
+"POT-Creation-Date: 2019-10-11 18:15-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:62
+#: src/prefs.js:51
 msgid "Tweaks in System Menu"
 msgstr ""
 
-#: src/prefs.js:72
+#: src/prefs.js:61
 msgid "Version"
 msgstr ""
 
-#: src/prefs.js:95
+#: src/prefs.js:85
 msgid "Merge both Settings and Tweaks:"
 msgstr ""
 
-#: src/prefs.js:116
+#: src/prefs.js:104
 msgid "Button position:"
 msgstr ""
 
-#: src/prefs.js:142
+#: src/prefs.js:126
 msgid "Debug:"
 msgstr ""
 
-#: src/prefs.js:162
+#: src/prefs.js:139
 msgid ""
 "Copyright © 2019 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</"
 "a> on GitHub)"

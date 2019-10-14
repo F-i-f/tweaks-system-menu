@@ -28,7 +28,7 @@ msgstr "Version"
 
 #: src/prefs.js:85
 msgid "Merge both Settings and Tweaks:"
-msgstr "Einstellungen und Optimierungen in eine Schaltfläche:"
+msgstr "Einstellungen und Optimierungen in einer Schaltfläche:"
 
 #: src/prefs.js:104
 msgid "Button position:"
@@ -59,7 +59,7 @@ msgid ""
 msgstr ""
 "Wenn diese Option aktiviert ist, werden Einstellungen und Optimierungen in "
 "einer Schaltfläche angezeigt: Die Schaltfläche Einstellungen ist sichtbar, "
-"wenn das Systemmenü geöffnet wird. Die Schaltfläche Optimierungen erscheint "
+"wenn das Systemmenü geöffnet ist. Die Schaltfläche Optimierungen erscheint "
 "beim Betätigen der \"Alt\"-Taste oder durch längeres Drücken auf die "
 "Schaltfläche. Falls diese Option deaktiviert ist, hat Optimierungen seine "
 "eigene Schaltfläche."

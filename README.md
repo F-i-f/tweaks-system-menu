@@ -119,9 +119,11 @@ directory (you may have to create the directory).
 - The [`meson-gse` credits](https://github.com/F-i-f/meson-gse/) are
   included here by reference.
 - Inspiration for `AltSwitcher()` usage com from the [Hibernate Status
-  Button](https://extensions.gnome.org/extension/755/hibernate-status-button/) extension.
+  Button](https://extensions.gnome.org/extension/755/hibernate-status-button/)
+  extension.
+- German translation by [Etamuk](https://github.com/Etamuk).
 
 <!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher js ES6
 -->
-<!--  LocalWords:  MERCHANTABILITY
+<!--  LocalWords:  MERCHANTABILITY Etamuk
  -->

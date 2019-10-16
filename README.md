@@ -73,10 +73,15 @@ directory (you may have to create the directory).
 
 ## Changelog
 
+### Version 8
+#### October 15, 2019
+
+- Update German translation.
+
 ### Version 7
 #### October 11, 2019
 
-- Added German translation.
+- Add German translation.
 
 ### Version 6
 #### September 30, 2019

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-11 18:15-0700\n"
-"PO-Revision-Date: 2019-02-11 10:08-0800\n"
+"POT-Creation-Date: 2020-03-11 18:38-0700\n"
+"PO-Revision-Date: 2020-03-11 18:19-0700\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -25,61 +25,56 @@ msgid "Version"
 msgstr "Version"
 
 #: src/prefs.js:85
-msgid "Merge both Settings and Tweaks:"
-msgstr "Fusionner Réglages et Ajustements :"
-
-#: src/prefs.js:104
-msgid "Button position:"
+#, fuzzy
+msgid "Menu position:"
 msgstr "Position du bouton :"
 
-#: src/prefs.js:126
+#: src/prefs.js:107
 msgid "Debug:"
 msgstr "Débogage :"
 
-#: src/prefs.js:139
+#: src/prefs.js:120
 msgid ""
-"Copyright © 2019 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</"
-"a> on GitHub)"
+"Copyright © 2019, 2020 Philippe Troin (<a href=\"https://github.com/F-i-f"
+"\">F-i-f</a> on GitHub)"
 msgstr ""
-"Copyright © 2019 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</"
-"a> sur GitHub)"
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
-msgid "Merge both Settings and Tweaks into a single button."
-msgstr "Fusionner les boutons Réglages et Ajustements en un seul bouton."
+"Copyright © 2019, 2020 Philippe Troin (<a href=\"https://github.com/F-i-f"
+"\">F-i-f</a> sur GitHub)"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
-msgid ""
-"When enabled, both Settings and Tweaks share a single button: the Settings "
-"button is visible when the system menu opens, and Tweaks can be shown by "
-"pressing the \"Alt\" key or by long clicking on the button. When disabled, "
-"Tweaks uses its own, different button."
-msgstr ""
-"Si actif, Réglages et Ajustements partagent le même bouton:  Réglages\n"
-"est visible quand le menu système s'ouvre et Ajustments s'affiche si\n"
-"la touch \"Alt\" est pressée ou si le bouton est cliqué longuement.  Si\n"
-"inactif, Ajustements utilise un bouton différent de Réglages."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:15
 msgid "Position of the button."
 msgstr "Position du bouton."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
+#, fuzzy
 msgid ""
-"If set to -1, the button position is automatic: the merged button replaces "
-"the Settings button, and if the buttons are not merged, Tweaks will show up "
-"to the right of the Settings button. If set to zero or more, the actual "
-"button position on the system menu."
+"If set to -1, the position is automatic: Tweaks will show up after Settings. "
+"If set to zero or more, the actual launcher position on the system menu."
 msgstr ""
-"Si égal à -1, la position du bouton est automatique: le bouton\n"
-"fusionné remplace celui des Réglages, et si les boutons ne sont pas\n"
-"fusionnés, Ajustements s'affichera à la droite de Réglages.  Si égal à\n"
-"zéro ou plus, indique la position dans le menu système."
+"Si égal à -1, la position est automatique: Ajustements s'affichera après "
+"Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:24
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
 msgid "Debugging."
 msgstr "Débogage."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:25
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:14
 msgid "Enable debugging for the extension."
 msgstr "Activer le mode débogage de l'extension."
+
+#~ msgid "Merge both Settings and Tweaks:"
+#~ msgstr "Fusionner Réglages et Ajustements :"
+
+#~ msgid "Merge both Settings and Tweaks into a single button."
+#~ msgstr "Fusionner les boutons Réglages et Ajustements en un seul bouton."
+
+#~ msgid ""
+#~ "When enabled, both Settings and Tweaks share a single button: the "
+#~ "Settings button is visible when the system menu opens, and Tweaks can be "
+#~ "shown by pressing the \"Alt\" key or by long clicking on the button. When "
+#~ "disabled, Tweaks uses its own, different button."
+#~ msgstr ""
+#~ "Si actif, Réglages et Ajustements partagent le même bouton:  Réglages\n"
+#~ "est visible quand le menu système s'ouvre et Ajustments s'affiche si\n"
+#~ "la touch \"Alt\" est pressée ou si le bouton est cliqué longuement.  Si\n"
+#~ "inactif, Ajustements utilise un bouton différent de Réglages."

@@ -1,5 +1,5 @@
 // Tweaks-system-menu - Put Gnome Tweaks in the system menu.
-// Copyright (C) 2019 Philippe Troin (F-i-f on Github)
+// Copyright (C) 2019, 2020 Philippe Troin (F-i-f on Github)
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -79,29 +79,10 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 
 	ypos += 1;
 
-	descr = _(this._settings.settings_schema.get_key('merge-with-settings')
-		  .get_description());
-	this.merge_ws_label = new Gtk.Label({
-	    label: _("Merge both Settings and Tweaks:"),
-	    halign: Gtk.Align.START
-	});
-	this.merge_ws_label.set_tooltip_text(descr);
-	this.merge_ws_control = new Gtk.Switch({
-	    halign: Gtk.Align.END
-	});
-	this.merge_ws_control.set_tooltip_text(descr);
-	this.merge_ws_label.set_tooltip_text(descr);
-	this.attach(this.merge_ws_label,   1, ypos, 1, 1);
-	this.attach(this.merge_ws_control, 2, ypos, 1, 1);
-	this._settings.bind('merge-with-settings', this.merge_ws_control,
-			    'active', Gio.SettingsBindFlags.DEFAULT);
-
-	ypos += 1;
-
 	let sschema = this._settings.settings_schema.get_key('position');
 	descr = _(sschema.get_description());
 	this.position_label = new Gtk.Label({
-	    label: _("Button position:"),
+	    label: _("Menu position:"),
 	    halign: Gtk.Align.START
 	});
 	this.position_label.set_tooltip_text(descr);

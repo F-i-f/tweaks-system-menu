@@ -73,6 +73,17 @@ directory (you may have to create the directory).
 
 ## Changelog
 
+### Version 9
+#### March 11, 2020
+
+- Gnome-shell 3.36 compatibility:
+  - The Tweaks entry cannot be merged with Settings anymore.
+  - This version is not compatible with earlier shell versions (use
+	version 8 for Gnome Shell 3.34 and below).
+- Fix deprecation warning in preferences.
+- Update meson-gse to latest.
+- Now prints the gnome-shell version and the session type on start-up.
+
 ### Version 8
 #### October 15, 2019
 

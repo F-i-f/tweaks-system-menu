@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-11 18:38-0700\n"
-"PO-Revision-Date: 2020-03-11 18:28-0700\n"
+"PO-Revision-Date: 2020-05-12 23:16+0200\n"
 "Last-Translator: Onno Giesmann <nutzer3105@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/prefs.js:51
@@ -27,9 +27,8 @@ msgid "Version"
 msgstr "Version"
 
 #: src/prefs.js:85
-#, fuzzy
 msgid "Menu position:"
-msgstr "Position der Schaltfläche:"
+msgstr "Menüposition:"
 
 #: src/prefs.js:107
 msgid "Debug:"
@@ -48,14 +47,13 @@ msgid "Position of the button."
 msgstr "Position der Schaltfläche."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
-#, fuzzy
 msgid ""
 "If set to -1, the position is automatic: Tweaks will show up after Settings. "
 "If set to zero or more, the actual launcher position on the system menu."
 msgstr ""
-"Beim Wert -1 wird die position automatisch gewählt: Die Optimierungen werden "
-"unter den Einstellungen. Der Wert 0 und höher entspricht der jeweiligen "
-"Position im Systemmenü."
+"Beim Wert -1 wird die Position automatisch gewählt: Optimierungen wird "
+"hinter Einstellungen angezeigt. Der Wert 0 oder höher entspricht der "
+"jeweiligen Position im Systemmenü."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
 msgid "Debugging."

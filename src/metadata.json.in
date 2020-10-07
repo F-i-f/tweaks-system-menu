@@ -5,7 +5,8 @@
   "settings-schema": "org.gnome.shell.extensions.tweaks-system-menu",
   "shell-version": [
     "3.35.92",
-    "3.36"
+    "3.36",
+    "3.38"
   ],
   "url": "https://github.com/F-i-f/tweaks-system-menu",
   "uuid": "@uuid@",

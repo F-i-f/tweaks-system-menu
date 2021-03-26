@@ -1,5 +1,5 @@
 // tweaks-system-menu - Put Gnome Tweaks in the system menu.
-// Copyright (C) 2019, 2020 Philippe Troin (F-i-f on Github)
+// Copyright (C) 2019-2021 Philippe Troin (F-i-f on Github)
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+const Lang = imports.lang;
 const BoxPointer = imports.ui.boxpointer;
 const Main = imports.ui.main;
 const PopupMenu = imports.ui.popupMenu;
@@ -34,6 +35,45 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	this._positionSettingChangedConnection = null;
 	this._systemMenu = null;
 
+	this._applications = {
+	    'tweaks': {
+		appName: 'org.gnome.tweaks.desktop',
+		check: Lang.bind(this, function() {
+		    return true;
+		}),
+		getDefaultPosition: Lang.bind(this, function() {
+		    return this._findMenuItemPosition(this._systemMenu._settingsItem)+1;
+		}),
+		preUpdatePosition: Lang.bind(this, function () {
+		    if (this._applications['extensions'].menuItem !== undefined) {
+			this._moveMenuItemToEnd(this._applications['extensions'].menuItem);
+		    }
+		}),
+		postUpdatePosition: Lang.bind(this, function () {
+		    if (this._applications['extensions'].menuItem !== undefined) {
+			this._on_position_change('extensions');
+		    }
+		})
+	    },
+	    'extensions': {
+		appName: 'org.gnome.Extensions.desktop',
+		check: Lang.bind(this, function() {
+		    let gnome_shell_version = imports.misc.config.PACKAGE_VERSION;
+		    let gnome_shell_major = /^([0-9]+)\.([0-9]+)(\.([0-9]+)(\..*)?)?$/.exec(gnome_shell_version)[1];
+		    return gnome_shell_major >= 40;
+		}),
+		getDefaultPosition: Lang.bind(this, function() {
+		    if (this._applications['tweaks'].menuItem !== undefined) {
+			return this._findMenuItemPosition(this._applications['tweaks'].menuItem)+1;
+		    } else {
+			return this._applications['tweaks'].getDefaultPosition();
+		    }
+		}),
+		preUpdatePosition: Lang.bind(this, function () { return; }),
+		postUpdatePosition: Lang.bind(this, function () { return; })
+	    }
+	};
+
 	this._tweaksApp = null;
 	this._tweaksItem = null;
 	this._tweaksActivateConnection = null;
@@ -52,6 +92,18 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	return null;
     }
 
+    _moveMenuItemToEnd(item) {
+	this._systemMenu.menu.moveMenuItem(item, this._systemMenu.menu._getMenuItems().length-1);
+    }
+
+    _getEnableSettingsName(appKey) {
+	return appKey+'-enable';
+    }
+
+    _getPositionSettingsName(appKey) {
+	return appKey+'-position';
+    }
+
     // Enable/disable
     enable() {
 	this._logger = new Logger.Logger('Tweaks-System-Menu');
@@ -63,26 +115,43 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 
 	this._debugSettingChangedConnection = this._settings.connect('changed::debug',
 								     this._on_debug_change.bind(this));
-	this._positionSettingChangedConnection = this._settings.connect('changed::position',
-									this._on_position_change.bind(this));
-
 	this._systemMenu = Main.panel.statusArea.aggregateMenu._system;
-	this._showItem();
+
+	for (let appKey in this._applications) {
+	    this._enableApp(appKey);
+	}
 
 	this._logger.log_debug('extension enabled');
+    }
+
+    _enableApp(appKey) {
+	let appData = this._applications[appKey];
+	if (! appData.check()) return;
+	this._logger.log_debug('_enableApp('+appKey+')');
+	appData.enableSettingChangedConnection = this._settings.connect('changed::'+this._getEnableSettingsName(appKey),
+									 Lang.bind(this, function() {
+									     this._on_enable_change(appKey);
+									 }));
+	appData.positionSettingChangedConnection = this._settings.connect('changed::'+this._getPositionSettingsName(appKey),
+									   Lang.bind(this, function() {
+									       this._on_position_change(appKey);
+									   }));
+	if (this._settings.get_boolean(this._getEnableSettingsName(appKey))) {
+	    this._showItem(appKey);
+	}
     }
 
     disable() {
 	this._logger.log_debug('disable()');
 
-	this._hideItem();
+	for (let appKey in this._applications) {
+	    this._disableApp(appKey);
+	}
 
 	this._systemMenu = null;
 
 	this._settings.disconnect(this._debugSettingChangedConnection);
 	this._debugSettingChangedConnection = null;
-	this._settings.disconnect(this._positionSettingChangedConnection);
-	this._positionSettingChangedConnection = null;
 
 	this._settings = null;
 
@@ -90,34 +159,50 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	this._logger = null;
     }
 
-    // Show/hide item
-    _showItem() {
-	this._logger.log_debug('_showItem()');
-
-	this._tweaksApp = Shell.AppSystem.get_default().lookup_app('org.gnome.tweaks.desktop');
-	if (this._tweaksApp) {
-	    let [icon, name] = [this._tweaksApp.app_info.get_icon().names[0],
-				this._tweaksApp.get_name()];
-	    this._tweaksItem = new PopupMenu.PopupImageMenuItem(name, icon);
-	    this._tweaksActivateConnection = this._tweaksItem.connect('activate', this._on_activate.bind(this));
-	    this._systemMenu.menu.addMenuItem(this._tweaksItem);
-	    this._on_position_change();
-	} else {
-	    this._logger.log('Missing Gnome Tweaks, expect trouble…');
+    _disableApp(appKey) {
+	let appData = this._applications[appKey];
+	if (! appData.check()) return;
+	this._logger.log_debug('_disableApp('+appKey+')');
+	this._hideItem(appKey);
+	if (appData.enableSettingChangedConnection !== undefined) {
+	    this._settings.disconnect(appData.enableSettingChangedConnection);
+	    delete appData.enableSettingChangedConnection;
+	}
+	if (appData.positionSettingChangedConnection !== undefined) {
+	    this._settings.disconnect(appData.positionSettingChangedConnection);
+	    delete appData.positionSettingChangedConnection;
 	}
     }
 
-    _hideItem() {
-	this._logger.log_debug('_hideItem()');
-	if (this._tweaksItem !== null) {
-	    this._tweaksItem.disconnect(this._tweaksActivateConnection);
-	    this._tweaksActivateConnection = null;
-
-	    this._systemMenu.menu._getMenuItems().splice(this._findMenuItemPosition(this._tweaksItem), 1);
-	    this._tweaksItem.destroy();
-	    this._tweaksItem = null;
+    // Show/hide item
+    _showItem(appKey) {
+	this._logger.log_debug('_showItem('+appKey+')');
+	let appData = this._applications[appKey];
+	appData.appInfo = Shell.AppSystem.get_default().lookup_app(appData.appName);
+	if (appData.appInfo) {
+	    let name = appData.appInfo.get_name();
+	    let icon = appData.appInfo.app_info.get_icon().names[0];
+	    appData.menuItem = new PopupMenu.PopupImageMenuItem(name, icon);
+	    appData.activateConnection = appData.menuItem.connect('activate', Lang.bind(this, function() {
+		this._on_activate(appKey);
+	    }));
+	    this._systemMenu.menu.addMenuItem(appData.menuItem);
+	    this._on_position_change(appKey);
+	} else {
+	    this._logger.log(appData.appName+' is missing');
 	}
-	this._tweaksApp = null;
+    }
+
+    _hideItem(appKey) {
+	this._logger.log_debug('_hideItem('+appKey+')');
+	let appData = this._applications[appKey];
+	if (appData.menuItem !== undefined) {
+	    appData.menuItem.disconnect(appData.activateConnection);
+	    delete appData.activateConnection;
+	    this._systemMenu.menu._getMenuItems().splice(this._findMenuItemPosition(appData.menuItem), 1);
+	    appData.menuItem.destroy();
+	    delete appData.menuItem;
+	}
     }
 
     // Event handlers
@@ -126,25 +211,42 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	this._logger.log_debug('debug = '+this._logger.get_debug());
     }
 
-    _on_position_change() {
-	let position = this._settings.get_int('position');
-	this._logger.log_debug('_on_position_change(): settings position=' + position);
-	if (position == -1) {
-	    position = this._findMenuItemPosition(this._systemMenu._settingsItem);
-	    let tweaksPosition = this._findMenuItemPosition(this._tweaksItem);
-	    if (tweaksPosition > position) {
-		position += 1;
-	    }
-	    this._logger.log_debug('_on_position_change(): automatic position=' + position);
+    _on_enable_change(appKey) {
+	let appData = this._applications[appKey];
+	let enable = this._settings.get_boolean(this._getEnableSettingsName(appKey));
+	this._logger.log_debug('_on_enable_change('+appKey+'): enable=' + enable);
+	if (enable) {
+	    this._showItem(appKey);
+	} else {
+	    this._hideItem(appKey);
 	}
-	this._systemMenu.menu.moveMenuItem(this._tweaksItem, position);
     }
 
-    _on_activate() {
-	this._logger.log_debug('_on_activate()');
+    _on_position_change(appKey) {
+	let appData = this._applications[appKey];
+	let position = this._settings.get_int(this._getPositionSettingsName(appKey));
+	this._logger.log_debug('_on_position_change('+appKey+'): settings position=' + position);
+	this._moveMenuItemToEnd(appData.menuItem);
+	appData.preUpdatePosition();
+	if (position == -1) {
+	    position = appData.getDefaultPosition();
+	    this._logger.log_debug('_on_position_change('+appKey+'): automatic position=' + position);
+	}
+	// let curPosition = this._findMenuItemPosition(appData.menuItem);
+	// if (curPosition < position) {
+	//     position -= 1;
+	// }
+	// this._logger.log_debug('_on_position_change('+appKey+'): ajusted position=' + position);
+	this._systemMenu.menu.moveMenuItem(appData.menuItem, position);
+	appData.postUpdatePosition();
+    }
+
+    _on_activate(appKey) {
+	let appData = this._applications[appKey];
+	this._logger.log_debug('_on_activate('+appKey+')');
 	this._systemMenu.menu.itemActivated(BoxPointer.PopupAnimation.NONE);
 	Main.overview.hide();
-	this._tweaksApp.activate();
+	appData.appInfo.activate();
     }
 };
 

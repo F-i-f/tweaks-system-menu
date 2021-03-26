@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+const Lang = imports.lang;
 const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -29,7 +30,61 @@ const Logger = Me.imports.logger;
 
 const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSettings extends Gtk.Grid {
 
+    _addEntry(ypos, setting_prefix, enable_label_val, position_label_val) {
+	let enable_setting = setting_prefix + '-enable';
+	let enable_sschema = this._settings.settings_schema.get_key(enable_setting);
+	let descr = _(enable_sschema.get_description());
+	let enable_label = new Gtk.Label({
+	    label: enable_label_val,
+	    halign: Gtk.Align.START
+	});
+	enable_label.set_tooltip_text(descr);
+	let enable_control = new Gtk.Switch({halign: Gtk.Align.END});
+	enable_control.set_tooltip_text(descr);
+	this.attach(enable_label,   1, ypos, 1, 1);
+	this.attach(enable_control, 2, ypos, 1, 1);
+	this._settings.bind(enable_setting, enable_control,
+			    'active', Gio.SettingsBindFlags.DEFAULT);
+	ypos += 1
+
+	let position_setting = setting_prefix + '-position';
+	let position_sschema = this._settings.settings_schema.get_key(position_setting);
+	descr = _(position_sschema.get_description());
+	let position_label = new Gtk.Label({
+	    label: position_label_val,
+	    halign: Gtk.Align.START,
+	    margin_start: 25
+	});
+	position_label.set_tooltip_text(descr);
+	let position_range = position_sschema.get_range().deep_unpack()[1].deep_unpack()
+	let position_control = new Gtk.SpinButton({
+	    adjustment: new Gtk.Adjustment({
+		lower: position_range[0],
+		upper: position_range[1],
+		step_increment: 1
+	    }),
+	    halign: Gtk.Align.END
+	});
+	position_control.set_tooltip_text(descr);
+	this.attach(position_label,   1, ypos, 1, 1);
+	this.attach(position_control, 2, ypos, 1, 1);
+	this._settings.bind(position_setting, position_control,
+			    'value', Gio.SettingsBindFlags.DEFAULT);
+	ypos += 1
+
+	this._settings.connect('changed::'+enable_setting, Lang.bind(this, function(settings, name) {
+	    let val = settings.get_boolean(name);
+	    position_label.set_sensitive(val);
+	    position_control.set_sensitive(val);
+	}));
+
+	return ypos;
+    }
+
     setup() {
+	let gnome_shell_version = imports.misc.config.PACKAGE_VERSION;
+	let gnome_shell_major = /^([0-9]+)\.([0-9]+)(\.([0-9]+)(\..*)?)?$/.exec(gnome_shell_version)[1];
+
 	this.margin_top = 12;
 	this.margin_bottom = this.margin_top;
 	this.margin_start = 48;
@@ -79,29 +134,10 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 
 	ypos += 1;
 
-	let sschema = this._settings.settings_schema.get_key('position');
-	descr = _(sschema.get_description());
-	this.position_label = new Gtk.Label({
-	    label: _("Menu position:"),
-	    halign: Gtk.Align.START
-	});
-	this.position_label.set_tooltip_text(descr);
-	let position_range = sschema.get_range().deep_unpack()[1].deep_unpack()
-	this.position_control = new Gtk.SpinButton({
-	    adjustment: new Gtk.Adjustment({
-		lower: position_range[0],
-		upper: position_range[1],
-		step_increment: 1
-	    }),
-	    halign: Gtk.Align.END
-	});
-	this.position_control.set_tooltip_text(descr);
-	this.attach(this.position_label,   1, ypos, 1, 1);
-	this.attach(this.position_control, 2, ypos, 1, 1);
-	this._settings.bind('position', this.position_control,
-			    'value', Gio.SettingsBindFlags.DEFAULT);
-
-	ypos += 1;
+	ypos = this._addEntry(ypos, 'tweaks', _("Show Tweaks:"), _("Tweaks position:"));
+	if (gnome_shell_major >= 40) {
+	    ypos = this._addEntry(ypos, 'extensions', _("Show Extensions:"), _("Extensions position:"));
+	}
 
 	descr = _(this._settings.settings_schema.get_key('debug').get_description());
 	this.debug_label = new Gtk.Label({label: _("Debug:"), halign: Gtk.Align.START});

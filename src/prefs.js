@@ -103,7 +103,7 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 	this.title_label = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="large" weight="heavy">'
-		+_('Tweaks in System Menu')+'</span>',
+		+_('Tweaks &amp; Extensions in System Menu')+'</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER
 	});

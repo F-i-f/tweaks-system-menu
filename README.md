@@ -1,27 +1,30 @@
-Tweaks in System Menu Gnome Shell Extension
-===========================================
+Tweaks and Extensions in System Menu Gnome Shell Extension
+===========================================================
 
 [![Build Status](https://travis-ci.org/F-i-f/tweaks-system-menu.svg?branch=master)](https://travis-ci.org/F-i-f/tweaks-system-menu)
 
 ## Overview
 
 Tweaks in System Menu adds a shortcut button to the _Gnome
-Tweaks_(a.k.a. _Tweak UI_) in the panel's system menu.
+Tweaks_(a.k.a. _Tweak UI_) and to the shell's _Extensions_ (on Gnome
+40 later) in the panel's system menu.
 
 ![The Tweaks button shown as separate and not merged with the Settings
 button](docs/tweaks-in-system-menu.png)
 
-The button can be positioned anywhere in the system menu, and can
-even be merged with the Settings button.  If merged, the Settings
-button will be shown when opening the system menu, and Tweaks will be
-shown if "Alt" is pressed on the keyboard, or if the Settings button
-is pressed for a half second or so.
+The buttons can be positioned anywhere in the system menu.
+
+On old Shell versions (up to 3.34), the button can even be merged with
+the Settings button.  If merged, the Settings button will be shown
+when opening the system menu, and Tweaks will be shown if "Alt" is
+pressed on the keyboard, or if the Settings button is pressed for a
+half second or so.
 
 ## Configuration
 
 Tweaks in System Menu comes with a preference panel which can be found
-from the "Tweaks" application or the [Gnome Shell Extensions
-page](https://extensions.gnome.org/local/).
+from the "Tweaks" or "Extensions" applications or the [Gnome Shell
+Extensions page](https://extensions.gnome.org/local/).
 
 ![Tweaks in System Menu preference panel](docs/preferences.png)
 

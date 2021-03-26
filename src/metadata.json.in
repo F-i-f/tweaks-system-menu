@@ -1,7 +1,7 @@
 {
-  "description": "Put Gnome Tweaks in the System menu.  Optionally, collapse Settings and Tweaks into a single button.",
+  "description": "Put Gnome Tweaks and Extensions (on Shell 40 and later) in the System menu.",
   "gettext-domain": "@gettext_domain@",
-  "name": "Tweaks in System Menu",
+  "name": "Tweaks & Extensions in System Menu",
   "settings-schema": "org.gnome.shell.extensions.tweaks-system-menu",
   "shell-version": [
     "3.35.92",

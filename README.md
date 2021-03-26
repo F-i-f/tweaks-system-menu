@@ -48,7 +48,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v12/tweaks-system-menu@extensions.gnome-shell.fifi.org.v12.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v13/tweaks-system-menu@extensions.gnome-shell.fifi.org.v13.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -73,7 +73,7 @@ directory (you may have to create the directory).
 
 ## Changelog
 
-### Version 12
+### Version 12 & 13
 #### March 25, 2021
 
 - Gnome-shell 40 compatibility.

@@ -48,7 +48,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v11/tweaks-system-menu@extensions.gnome-shell.fifi.org.v11.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v12/tweaks-system-menu@extensions.gnome-shell.fifi.org.v12.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -72,6 +72,17 @@ directory (you may have to create the directory).
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 12
+#### March 25, 2021
+
+- Gnome-shell 40 compatibility.
+- Update preferences for Gnome-shell 40.
+- Update meson-gse to latest:
+  - Now prints the GJS version in the system log at start-up (if debug
+	is enabled).
+  - Support more mozjs version (78, 68, 52) for build-time syntax
+	checks (`ninja test`).
 
 ### Version 11
 #### October 6, 2020
@@ -151,5 +162,5 @@ directory (you may have to create the directory).
 
 <!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher js ES6
 -->
-<!--  LocalWords:  MERCHANTABILITY Etamuk
+<!--  LocalWords:  MERCHANTABILITY Etamuk GJS mozjs
  -->

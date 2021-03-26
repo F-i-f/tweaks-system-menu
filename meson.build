@@ -3,7 +3,7 @@
 # This file has been generated from meson-gse/meson.build.m4 and meson-gse.build
 
 # Tweaks-system-menu - Put Gnome Tweaks in the system menu.
-# Copyright (C) 2019, 2020 Philippe Troin (F-i-f on Github)
+# Copyright (C) 2019-2021 Philippe Troin (F-i-f on Github)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
 
 # Boilerplate
 project('tweaks-system-menu',
-	version: '11',
+	version: '12',
 	meson_version: '>= 0.44.0',
 	license: 'GPL3' )
 

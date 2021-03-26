@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-25 13:29-0700\n"
-"PO-Revision-Date: 2021-03-25 13:30-0700\n"
+"POT-Creation-Date: 2021-03-26 16:36-0700\n"
+"PO-Revision-Date: 2021-03-26 16:30-0700\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -15,33 +15,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:51
-msgid "Tweaks in System Menu"
+#: src/prefs.js:106
+#, fuzzy
+msgid "Tweaks & Extensions in System Menu"
 msgstr "Ajustements dans le menu système"
 
-#: src/prefs.js:61
+#: src/prefs.js:116
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:85
-msgid "Menu position:"
+#: src/prefs.js:137
+msgid "Show Tweaks:"
+msgstr ""
+
+#: src/prefs.js:137
+#, fuzzy
+msgid "Tweaks position:"
 msgstr "Position du bouton :"
 
-#: src/prefs.js:107
+#: src/prefs.js:139
+msgid "Show Extensions:"
+msgstr ""
+
+#: src/prefs.js:139
+#, fuzzy
+msgid "Extensions position:"
+msgstr "Position du bouton :"
+
+#: src/prefs.js:143
 msgid "Debug:"
 msgstr "Débogage :"
 
-#: src/prefs.js:120
+#: src/prefs.js:156
 msgid ""
 "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
-msgstr "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</a> sur GitHub)"
+msgstr ""
+"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> sur GitHub)"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
+msgid "Tweaks should be shown."
+msgstr ""
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
-msgid "Position of the button."
+msgid "If set, the Gnome Tweaks button is shown."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:12
+#, fuzzy
+msgid "Position of the Tweaks button."
 msgstr "Position du bouton."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
 msgid ""
 "If set to -1, the position is automatic: Tweaks will show up after Settings. "
 "If set to zero or more, the actual launcher position on the system menu."
@@ -49,11 +75,34 @@ msgstr ""
 "Si égal à -1, la position est automatique: Ajustements s'affichera après "
 "Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
+msgid "Extensions should be shown."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:20
+msgid "If set, the Shell Extensions button is shown."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:26
+#, fuzzy
+msgid "Position of the Extensions button."
+msgstr "Position du bouton."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:27
+#, fuzzy
+msgid ""
+"If set to -1, the position is automatic: Extensions will show up after "
+"Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
+"position on the system menu."
+msgstr ""
+"Si égal à -1, la position est automatique: Ajustements s'affichera après "
+"Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
 msgid "Debugging."
 msgstr "Débogage."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:14
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:35
 msgid "Enable debugging for the extension."
 msgstr "Activer le mode débogage de l'extension."
 

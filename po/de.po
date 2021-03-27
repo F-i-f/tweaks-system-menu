@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the tweaks-system-menu package.
-# Onno Giesmann <nutzer3105@gmail.com>, 2019.
+# Onno Giesmann <nutzer3105@gmail.com>, 2019-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-26 16:36-0700\n"
-"PO-Revision-Date: 2021-03-25 13:30-0700\n"
+"PO-Revision-Date: 2021-03-27 20:38+0100\n"
 "Last-Translator: Onno Giesmann <nutzer3105@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/prefs.js:106
-#, fuzzy
 msgid "Tweaks &amp; Extensions in System Menu"
-msgstr "Optimierungen im Systemmenü"
+msgstr "Optimierungen &amp; Erweiterungen im Systemmenü"
 
 #: src/prefs.js:116
 msgid "Version"
@@ -29,21 +28,19 @@ msgstr "Version"
 
 #: src/prefs.js:137
 msgid "Show Tweaks:"
-msgstr ""
+msgstr "Optimierungen anzeigen:"
 
 #: src/prefs.js:137
-#, fuzzy
 msgid "Tweaks position:"
-msgstr "Menüposition:"
+msgstr "Position für Optimierungen:"
 
 #: src/prefs.js:139
 msgid "Show Extensions:"
-msgstr ""
+msgstr "Erweiterungen anzeigen:"
 
 #: src/prefs.js:139
-#, fuzzy
 msgid "Extensions position:"
-msgstr "Menüposition:"
+msgstr "Position für Erweiterungen"
 
 #: src/prefs.js:143
 msgid "Debug:"
@@ -59,16 +56,16 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
 msgid "Tweaks should be shown."
-msgstr ""
+msgstr "Optimierungen sollte angezeigt werden."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
 msgid "If set, the Gnome Tweaks button is shown."
 msgstr ""
+"Wenn aktiviert, wird die Schaltfläche für GNOME-Optimierungen angezeigt."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:12
-#, fuzzy
 msgid "Position of the Tweaks button."
-msgstr "Position der Schaltfläche."
+msgstr "Position der Schaltfläche Optimierungen."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
 msgid ""
@@ -81,27 +78,26 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
 msgid "Extensions should be shown."
-msgstr ""
+msgstr "Erweiterungen sollte angezeigt werden."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:20
 msgid "If set, the Shell Extensions button is shown."
 msgstr ""
+"Wenn aktiviert, wird die Schaltfläche für Shell-Erweiterungen angezeigt."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:26
-#, fuzzy
 msgid "Position of the Extensions button."
-msgstr "Position der Schaltfläche."
+msgstr "Position der Schaltfläche Erweiterungen."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:27
-#, fuzzy
 msgid ""
 "If set to -1, the position is automatic: Extensions will show up after "
 "Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
 "position on the system menu."
 msgstr ""
-"Beim Wert -1 wird die Position automatisch gewählt: Optimierungen wird "
-"hinter Einstellungen angezeigt. Der Wert 0 oder höher entspricht der "
-"jeweiligen Position im Systemmenü."
+"Beim Wert -1 wird die Position automatisch gewählt: Erweiterungen wird "
+"hinter Optimierungen (falls sichtbar) oder hinter Einstellungen angezeigt. "
+"Der Wert 0 oder höher entspricht der jeweiligen Position im Systemmenü."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
 msgid "Debugging."

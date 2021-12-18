@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the tweaks-system-menu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tweaks-system-menu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-26 16:36-0700\n"
+"PO-Revision-Date: 2021-11-17 22:34+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Francisco Jesús Sevilla García <fjsevilla.dev@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: src/prefs.js:106
+msgid "Tweaks &amp; Extensions in System Menu"
+msgstr "Retoques y Extensiones en el menú del sistema"
+
+#: src/prefs.js:116
+msgid "Version"
+msgstr "Versión"
+
+#: src/prefs.js:137
+msgid "Show Tweaks:"
+msgstr "Mostrar Retoques:"
+
+#: src/prefs.js:137
+msgid "Tweaks position:"
+msgstr "Posición del botón Retoques:"
+
+#: src/prefs.js:139
+msgid "Show Extensions:"
+msgstr "Mostrar Extensiones:"
+
+#: src/prefs.js:139
+msgid "Extensions position:"
+msgstr "Posición del botón Extensiones:"
+
+#: src/prefs.js:143
+msgid "Debug:"
+msgstr "Depuración:"
+
+#: src/prefs.js:156
+msgid ""
+"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> on GitHub)"
+msgstr ""
+"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> en GitHub)"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
+msgid "Tweaks should be shown."
+msgstr "Retoques debe mostrarse."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
+msgid "If set, the Gnome Tweaks button is shown."
+msgstr "Si se establece, se mostrará el botón Retoques de Gnome."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:12
+msgid "Position of the Tweaks button."
+msgstr "Posición del botón Retoques."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
+msgid ""
+"If set to -1, the position is automatic: Tweaks will show up after Settings. "
+"If set to zero or more, the actual launcher position on the system menu."
+msgstr ""
+"Si se establece en -1, la posición es automática: Retoques se mostrará "
+"debajo de Configuración. Si se establece en cero o más, indica la posición "
+"del lanzador en el menú del sistema."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
+msgid "Extensions should be shown."
+msgstr "Extensiones debe mostrarse."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:20
+msgid "If set, the Shell Extensions button is shown."
+msgstr "Si se establece, se mostrará el botón Extensiones de Gnome Shell."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:26
+msgid "Position of the Extensions button."
+msgstr "La posición del botón de Extensiones."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:27
+msgid ""
+"If set to -1, the position is automatic: Extensions will show up after "
+"Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
+"position on the system menu."
+msgstr ""
+"Si se establece en -1, la posición es automática: Extensiones aparecerá "
+"debajo de Retoques (si se muestra) o de Configuración. Si se establece en "
+"cero o más, indica la posición del lanzador en el menú del sistema."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
+msgid "Debugging."
+msgstr "Depuración."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:35
+msgid "Enable debugging for the extension."
+msgstr "Habilita el modo depuración de la extensión."

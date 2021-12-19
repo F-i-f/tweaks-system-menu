@@ -21,7 +21,6 @@ const Shell = imports.gi.Shell;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 
 const Logger = Me.imports.logger;
 
@@ -105,7 +104,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
     // Enable/disable
     enable() {
 	this._logger = new Logger.Logger('Tweaks-System-Menu');
-	this._settings = Convenience.getSettings();
+	this._settings = ExtensionUtils.getSettings();
 
 	this._on_debug_change();
 

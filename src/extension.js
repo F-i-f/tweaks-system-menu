@@ -58,9 +58,8 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	    'extensions': {
 		appName: 'org.gnome.Extensions.desktop',
 		check: Lang.bind(this, function() {
-		    let gnome_shell_version = imports.misc.config.PACKAGE_VERSION;
-		    let gnome_shell_major = /^([0-9]+)\.([0-9]+)(\.([0-9]+)(\..*)?)?$/.exec(gnome_shell_version)[1];
-		    return gnome_shell_major >= 40;
+		    let info = Shell.AppSystem.get_default().lookup_app('org.gnome.Extensions.desktop');
+		    return info != null;
 		}),
 		getDefaultPosition: Lang.bind(this, function() {
 		    if (this._applications['tweaks'].menuItem !== undefined) {

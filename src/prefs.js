@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-const Lang = imports.lang;
 const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -72,11 +71,11 @@ const TweaksSystemMenuSettings = GObject.registerClass(class TweaksSystemMenuSet
 			    'value', Gio.SettingsBindFlags.DEFAULT);
 	ypos += 1
 
-	this._settings.connect('changed::'+enable_setting, Lang.bind(this, function(settings, name) {
+	this._settings.connect('changed::'+enable_setting, (function(settings, name) {
 	    let val = settings.get_boolean(name);
 	    position_label.set_sensitive(val);
 	    position_control.set_sensitive(val);
-	}));
+	}).bind(this));
 
 	return ypos;
     }

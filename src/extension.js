@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-const Lang = imports.lang;
 const BoxPointer = imports.ui.boxpointer;
 const Main = imports.ui.main;
 const PopupMenu = imports.ui.popupMenu;
@@ -38,38 +37,38 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	this._applications = {
 	    'tweaks': {
 		appName: 'org.gnome.tweaks.desktop',
-		check: Lang.bind(this, function() {
+		check: (function() {
 		    return true;
-		}),
-		getDefaultPosition: Lang.bind(this, function() {
+		}).bind(this),
+		getDefaultPosition: (function() {
 		    return this._findMenuItemPosition(this._systemMenu._settingsItem)+1;
-		}),
-		preUpdatePosition: Lang.bind(this, function () {
+		}).bind(this),
+		preUpdatePosition: (function () {
 		    if (this._applications['extensions'].menuItem !== undefined) {
 			this._moveMenuItemToEnd(this._applications['extensions'].menuItem);
 		    }
-		}),
-		postUpdatePosition: Lang.bind(this, function () {
+		}).bind(this),
+		postUpdatePosition: (function () {
 		    if (this._applications['extensions'].menuItem !== undefined) {
 			this._on_position_change('extensions');
 		    }
-		})
+		}).bind(this)
 	    },
 	    'extensions': {
 		appName: 'org.gnome.Extensions.desktop',
-		check: Lang.bind(this, function() {
+		check: (function() {
 		    let info = Shell.AppSystem.get_default().lookup_app('org.gnome.Extensions.desktop');
 		    return info != null;
-		}),
-		getDefaultPosition: Lang.bind(this, function() {
+		}).bind(this),
+		getDefaultPosition: (function() {
 		    if (this._applications['tweaks'].menuItem !== undefined) {
 			return this._findMenuItemPosition(this._applications['tweaks'].menuItem)+1;
 		    } else {
 			return this._applications['tweaks'].getDefaultPosition();
 		    }
-		}),
-		preUpdatePosition: Lang.bind(this, function () { return; }),
-		postUpdatePosition: Lang.bind(this, function () { return; })
+		}).bind(this),
+		preUpdatePosition:  (function () { return; }).bind(this),
+		postUpdatePosition: (function () { return; }).bind(this)
 	    }
 	};
 
@@ -128,13 +127,13 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	if (! appData.check()) return;
 	this._logger.log_debug('_enableApp('+appKey+')');
 	appData.enableSettingChangedConnection = this._settings.connect('changed::'+this._getEnableSettingsName(appKey),
-									 Lang.bind(this, function() {
+									 (function() {
 									     this._on_enable_change(appKey);
-									 }));
+									 }).bind(this));
 	appData.positionSettingChangedConnection = this._settings.connect('changed::'+this._getPositionSettingsName(appKey),
-									   Lang.bind(this, function() {
+									   (function() {
 									       this._on_position_change(appKey);
-									   }));
+									   }).bind(this));
 	if (this._settings.get_boolean(this._getEnableSettingsName(appKey))) {
 	    this._showItem(appKey);
 	}
@@ -182,9 +181,9 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	    let name = appData.appInfo.get_name();
 	    let icon = appData.appInfo.app_info.get_icon().names[0];
 	    appData.menuItem = new PopupMenu.PopupImageMenuItem(name, icon);
-	    appData.activateConnection = appData.menuItem.connect('activate', Lang.bind(this, function() {
+	    appData.activateConnection = appData.menuItem.connect('activate', (function() {
 		this._on_activate(appKey);
-	    }));
+	    }).bind(this));
 	    this._systemMenu.menu.addMenuItem(appData.menuItem);
 	    this._on_position_change(appKey);
 	} else {

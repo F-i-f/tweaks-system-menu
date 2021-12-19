@@ -79,7 +79,7 @@ directory (you may have to create the directory).
 ### Version 16
 #### December 18, 2021
 
-- Gnome-shell 40 compatibility.
+- Gnome-shell 41 compatibility.
 - Add translations for:
   - Dutch (courtesy of @Vistaus).
   - Japanese (courtesy of @yukkeorg).

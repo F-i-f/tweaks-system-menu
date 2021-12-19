@@ -51,7 +51,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v15/tweaks-system-menu@extensions.gnome-shell.fifi.org.v15.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v16/tweaks-system-menu@extensions.gnome-shell.fifi.org.v16.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -75,6 +75,17 @@ directory (you may have to create the directory).
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 16
+#### December 18, 2021
+
+- Gnome-shell 40 compatibility.
+- Add translations for:
+  - Dutch (courtesy of @Vistaus).
+  - Japanese (courtesy of @yukkeorg).
+  - Korean (courtesy of @kuroehanako).
+  - Spanish (courtesy of @fjsevilla-dev).
+- Improve Gnome Extensions detection (courtesy of @stefangweichinger).
 
 ### Version 15
 #### March 27, 2021

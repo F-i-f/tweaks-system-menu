@@ -60,7 +60,7 @@ directory (you may have to create the directory).
 
 ### Requirements
 
-- [meson](http://mesonbuild.com/) v0.44.0 or later.
+- [meson](http://mesonbuild.com/) v0.50.0 or later.
 
 ### Running the build
 
@@ -189,5 +189,7 @@ directory (you may have to create the directory).
 
 <!--  LocalWords:  UI cd extensions' Changelog gse AltSwitcher js ES6
 -->
-<!--  LocalWords:  MERCHANTABILITY Etamuk GJS mozjs
+<!--  LocalWords:  MERCHANTABILITY Etamuk GJS mozjs Vistaus yukkeorg
+ -->
+<!--  LocalWords:  kuroehanako fjsevilla dev stefangweichinger
  -->

@@ -51,7 +51,7 @@ site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 Or download the zip file from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
 [the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v16/tweaks-system-menu@extensions.gnome-shell.fifi.org.v16.shell-extension.zip)
+file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v17/tweaks-system-menu@extensions.gnome-shell.fifi.org.v17.shell-extension.zip)
 in the
 `~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
 directory (you may have to create the directory).
@@ -75,6 +75,21 @@ directory (you may have to create the directory).
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 17
+#### December 22, 2021
+
+- Declare compatibility with version 40 and 41 of Gnome Shell instead
+  of using minor versions (40.0 and 41.1).  This should clear reports
+  of the extension being incompatible with well-supported versions.
+- Update Japanese translation (thanks to @yukkeorg).
+- Update meson-gse:
+  - Fix build issues with meson 0.60.0.
+  - Bump minimum meson version to 0.50.0.
+- Clean up code:
+  - Remove Lang imports.
+  - Use ExtensionUtils for getSettings/initTranslations instead of
+	using meson-gse's convenience.js.
 
 ### Version 16
 #### December 18, 2021
@@ -191,5 +206,7 @@ directory (you may have to create the directory).
 -->
 <!--  LocalWords:  MERCHANTABILITY Etamuk GJS mozjs Vistaus yukkeorg
  -->
-<!--  LocalWords:  kuroehanako fjsevilla dev stefangweichinger
+<!--  LocalWords:  kuroehanako fjsevilla dev stefangweichinger gse's
+ -->
+<!--  LocalWords:  ExtensionUtils getSettings initTranslations
  -->

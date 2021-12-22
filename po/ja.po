@@ -67,7 +67,7 @@ msgstr "Gnome Tweaksボタンの位置"
 msgid ""
 "If set to -1, the position is automatic: Tweaks will show up after Settings. "
 "If set to zero or more, the actual launcher position on the system menu."
-msgstr "もし-1をした場合、位置は自動的に設定ボタンの後にTweakボタンを表示します。もし、0以上を設定した場合はシステムメニューの実際の位置になります。"
+msgstr "もし-1を設定した場合は自動的に設定ボタンの後にTweakボタンを表示します。もし、0以上を設定した場合はシステムメニューの実際の位置になります。"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
 msgid "Extensions should be shown."
@@ -86,7 +86,7 @@ msgid ""
 "If set to -1, the position is automatic: Extensions will show up after "
 "Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
 "position on the system menu."
-msgstr "もし-1をした場合、位置は自動的にTweaksボタン(表示されている場合)か設定ボタンの後に拡張機能ボタンを表示します。もし、0以上を設定した場合はシステムメニューの実際の位置になります。"
+msgstr "もし-1を設定した場合は自動的にTweaksボタン(表示されている場合)か設定ボタンの後に拡張機能ボタンを表示します。もし、0以上を設定した場合はシステムメニューの実際の位置になります。"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
 msgid "Debugging."

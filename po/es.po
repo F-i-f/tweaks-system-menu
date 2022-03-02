@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-02 09:02-0800\n"
-"PO-Revision-Date: 2021-11-17 22:34+0100\n"
+"PO-Revision-Date: 2022-03-02 09:04-0800\n"
 "Last-Translator: Francisco Jesús Sevilla García <fjsevilla.dev@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -47,13 +47,10 @@ msgid "Debug:"
 msgstr "Depuración:"
 
 #: src/prefs.js:154
-#, fuzzy
 msgid ""
 "Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
-msgstr ""
-"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
-"i-f</a> en GitHub)"
+msgstr "Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</a> en GitHub)"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
 msgid "Tweaks should be shown."

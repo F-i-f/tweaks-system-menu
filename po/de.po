@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 16:36-0700\n"
+"POT-Creation-Date: 2022-03-02 09:02-0800\n"
 "PO-Revision-Date: 2021-03-27 20:38+0100\n"
 "Last-Translator: Onno Giesmann <nutzer3105@gmail.com>\n"
 "Language-Team: \n"
@@ -18,37 +18,38 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/prefs.js:106
+#: src/prefs.js:104
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Optimierungen &amp; Erweiterungen im Systemmenü"
 
-#: src/prefs.js:116
+#: src/prefs.js:114
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Show Tweaks:"
 msgstr "Optimierungen anzeigen:"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Tweaks position:"
 msgstr "Position für Optimierungen:"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Show Extensions:"
 msgstr "Erweiterungen anzeigen:"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Extensions position:"
 msgstr "Position für Erweiterungen"
 
-#: src/prefs.js:143
+#: src/prefs.js:141
 msgid "Debug:"
 msgstr "Fehlersuche:"
 
-#: src/prefs.js:156
+#: src/prefs.js:154
+#, fuzzy
 msgid ""
-"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
 "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"

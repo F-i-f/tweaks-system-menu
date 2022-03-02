@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 16:36-0700\n"
+"POT-Creation-Date: 2022-03-02 09:02-0800\n"
 "PO-Revision-Date:  2021-10-23 23:39:32+0900\n"
 "Last-Translator: Yusuke Ohshima <ohshima.yusuke@yukke.org>\n"
 "Language-Team: \n"
@@ -17,39 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:106
+#: src/prefs.js:104
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Tweaks &amp; Extensions in System Menu"
 
-#: src/prefs.js:116
+#: src/prefs.js:114
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Show Tweaks:"
 msgstr "Tweaksの表示"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Tweaks position:"
 msgstr "Tweaksの位置"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Show Extensions:"
 msgstr "拡張機能の表示"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Extensions position:"
 msgstr "拡張機能の位置"
 
-#: src/prefs.js:143
+#: src/prefs.js:141
 msgid "Debug:"
 msgstr "デバッグ"
 
-#: src/prefs.js:156
+#: src/prefs.js:154
+#, fuzzy
 msgid ""
+"Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> on GitHub)"
+msgstr ""
 "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
-msgstr "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</a> on GitHub)"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
 msgid "Tweaks should be shown."
@@ -67,7 +70,9 @@ msgstr "Gnome Tweaksボタンの位置"
 msgid ""
 "If set to -1, the position is automatic: Tweaks will show up after Settings. "
 "If set to zero or more, the actual launcher position on the system menu."
-msgstr "もし-1を設定した場合は自動的に設定ボタンの後にTweakボタンを表示します。もし、0以上を設定した場合はシステムメニューの実際の位置になります。"
+msgstr ""
+"もし-1を設定した場合は自動的に設定ボタンの後にTweakボタンを表示します。もし、"
+"0以上を設定した場合はシステムメニューの実際の位置になります。"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
 msgid "Extensions should be shown."
@@ -86,7 +91,10 @@ msgid ""
 "If set to -1, the position is automatic: Extensions will show up after "
 "Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
 "position on the system menu."
-msgstr "もし-1を設定した場合は自動的にTweaksボタン(表示されている場合)か設定ボタンの後に拡張機能ボタンを表示します。もし、0以上を設定した場合はシステムメニューの実際の位置になります。"
+msgstr ""
+"もし-1を設定した場合は自動的にTweaksボタン(表示されている場合)か設定ボタンの"
+"後に拡張機能ボタンを表示します。もし、0以上を設定した場合はシステムメニューの"
+"実際の位置になります。"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
 msgid "Debugging."

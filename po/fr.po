@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 16:36-0700\n"
+"POT-Creation-Date: 2022-03-02 09:02-0800\n"
 "PO-Revision-Date: 2021-03-26 16:37-0700\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
@@ -15,37 +15,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:106
+#: src/prefs.js:104
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Ajustements &amp; Extensions dans le menu système"
 
-#: src/prefs.js:116
+#: src/prefs.js:114
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Show Tweaks:"
 msgstr "Montrer Ajustements :"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Tweaks position:"
 msgstr "Position du bouton Ajustements :"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Show Extensions:"
 msgstr "Montrer Extensions :"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Extensions position:"
 msgstr "Position du bouton Extensions :"
 
-#: src/prefs.js:143
+#: src/prefs.js:141
 msgid "Debug:"
 msgstr "Débogage :"
 
-#: src/prefs.js:156
+#: src/prefs.js:154
+#, fuzzy
 msgid ""
-"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
 "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
@@ -88,7 +89,10 @@ msgid ""
 "If set to -1, the position is automatic: Extensions will show up after "
 "Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
 "position on the system menu."
-msgstr "Si égal à -1, la position est automatique: Extensions s'affichera après Ajustements (s'il est visible), ou Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
+msgstr ""
+"Si égal à -1, la position est automatique: Extensions s'affichera après "
+"Ajustements (s'il est visible), ou Réglages.  Si égal à zéro ou plus, "
+"indique la position dans le menu système."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
 msgid "Debugging."

@@ -7,48 +7,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 16:36-0700\n"
+"POT-Creation-Date: 2022-03-02 09:02-0800\n"
 "PO-Revision-Date: 2021-10-26 16:49+0900\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: ko\n"
 
-#: src/prefs.js:106
+#: src/prefs.js:104
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "시스템 메뉴에 기능 개선과 확장을 표시"
 
-#: src/prefs.js:116
+#: src/prefs.js:114
 msgid "Version"
 msgstr "버전"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Show Tweaks:"
 msgstr "기능 개선 표시:"
 
-#: src/prefs.js:137
+#: src/prefs.js:135
 msgid "Tweaks position:"
 msgstr "기능 개선을 표시할 위치:"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Show Extensions:"
 msgstr "확장 표시:"
 
-#: src/prefs.js:139
+#: src/prefs.js:137
 msgid "Extensions position:"
 msgstr "확장을 표시할 위치"
 
-#: src/prefs.js:143
+#: src/prefs.js:141
 msgid "Debug:"
 msgstr "디버그:"
 
-#: src/prefs.js:156
+#: src/prefs.js:154
+#, fuzzy
 msgid ""
-"Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
 "Copyright © 2019-2021 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"

@@ -48,11 +48,11 @@ along with this program.  If not, see [http://www.gnu.org/licenses/].
 Install directly from the [Gnome Shell Extensions
 site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 
-Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v17/tweaks-system-menu@extensions.gnome-shell.fifi.org.v17.shell-extension.zip) from the GitHub [releases
+Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v18/tweaks-system-menu@extensions.gnome-shell.fifi.org.v18.shell-extension.zip) from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and run:
 
 ``` shell
-gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v17.shell-extension.zip
+gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v18.shell-extension.zip
 ```
 
 ## Building from source

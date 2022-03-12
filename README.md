@@ -48,13 +48,12 @@ along with this program.  If not, see [http://www.gnu.org/licenses/].
 Install directly from the [Gnome Shell Extensions
 site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 
-Or download the zip file from the GitHub [releases
-page](https://github.com/F-i-f/tweaks-system-menu/releases) and unzip
-[the
-file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v17/tweaks-system-menu@extensions.gnome-shell.fifi.org.v17.shell-extension.zip)
-in the
-`~/.local/share/gnome-shell/extensions/tweaks-system-menu@extensions.gnome-shell.fifi.org`
-directory (you may have to create the directory).
+Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v17/tweaks-system-menu@extensions.gnome-shell.fifi.org.v17.shell-extension.zip) from the GitHub [releases
+page](https://github.com/F-i-f/tweaks-system-menu/releases) and run:
+
+``` shell
+gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v17.shell-extension.zip
+```
 
 ## Building from source
 
@@ -75,6 +74,13 @@ directory (you may have to create the directory).
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 18
+#### March 12, 2022
+
+- Gnome Shell 42 compatibility.
+- Update instructions to use `gnome-extensions` instead of manually
+  unzipping.
 
 ### Version 17
 #### December 22, 2021

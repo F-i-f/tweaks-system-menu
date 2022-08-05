@@ -56,7 +56,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	    'extensions': {
 		appName: 'com.mattjakeman.ExtensionManager.desktop',
 		check: (function() {
-		    let info = Shell.AppSystem.get_default().lookup_app('org.gnome.Extensions.desktop');
+		    let info = Shell.AppSystem.get_default().lookup_app('com.mattjakeman.ExtensionManager.desktop');
 		    return info != null;
 		}).bind(this),
 		getDefaultPosition: (function() {

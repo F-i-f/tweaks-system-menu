@@ -69,6 +69,7 @@ if gse_run_command_obj.returncode() == 0
   gse_schemas += files(gse_schema_main)
 endif
 
+gse_js102 = find_program('js102', required: false)
 gse_js91 = find_program('js91', required: false)
 gse_js78 = find_program('js78', required: false)
 gse_js68 = find_program('js68', required: false)
@@ -135,6 +136,15 @@ if gse_schemas != []
 endif
 
 gse_js_found = 0
+
+if gse_js102.found() and gse_js_found == 0
+  foreach gse_source : gse_sources
+    test('Checking syntax of ' + '@0@'.format(gse_source),
+	 gse_js102,
+	 args: ['-w', '-c', gse_source])
+  endforeach
+  gse_js_found = 1
+endif
 
 if gse_js91.found() and gse_js_found == 0
   foreach gse_source : gse_sources

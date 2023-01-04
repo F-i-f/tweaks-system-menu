@@ -327,6 +327,10 @@ Refer to the [projects using meson-gse](#gnome-shell-extensions-using-meson-gse)
 
 ## Recent changes
 
+## 2022-12-22
+
+- Support js102 for javascript validation.
+
 ### 2022-05-20
 
 - Support js91 for javascript validation.

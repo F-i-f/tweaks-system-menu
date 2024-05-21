@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-02 09:02-0800\n"
+"POT-Creation-Date: 2024-05-20 17:23-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,37 +17,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:104
+#: src/prefs.js:95
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr ""
 
-#: src/prefs.js:114
+#: src/prefs.js:105
 msgid "Version"
 msgstr ""
 
-#: src/prefs.js:135
+#: src/prefs.js:126
 msgid "Show Tweaks:"
 msgstr ""
 
-#: src/prefs.js:135
+#: src/prefs.js:126
 msgid "Tweaks position:"
 msgstr ""
 
-#: src/prefs.js:137
+#: src/prefs.js:127
 msgid "Show Extensions:"
 msgstr ""
 
-#: src/prefs.js:137
+#: src/prefs.js:127
 msgid "Extensions position:"
 msgstr ""
 
-#: src/prefs.js:141
+#: src/prefs.js:130
 msgid "Debug:"
 msgstr ""
 
-#: src/prefs.js:154
+#: src/prefs.js:143
 msgid ""
-"Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
 

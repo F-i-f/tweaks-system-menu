@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-02 09:02-0800\n"
-"PO-Revision-Date: 2022-03-02 09:04-0800\n"
+"POT-Creation-Date: 2024-05-20 17:23-0700\n"
+"PO-Revision-Date: 2024-05-20 17:24-0700\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -15,39 +15,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:104
+#: src/prefs.js:95
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Ajustements &amp; Extensions dans le menu système"
 
-#: src/prefs.js:114
+#: src/prefs.js:105
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:135
+#: src/prefs.js:126
 msgid "Show Tweaks:"
 msgstr "Montrer Ajustements :"
 
-#: src/prefs.js:135
+#: src/prefs.js:126
 msgid "Tweaks position:"
 msgstr "Position du bouton Ajustements :"
 
-#: src/prefs.js:137
+#: src/prefs.js:127
 msgid "Show Extensions:"
 msgstr "Montrer Extensions :"
 
-#: src/prefs.js:137
+#: src/prefs.js:127
 msgid "Extensions position:"
 msgstr "Position du bouton Extensions :"
 
-#: src/prefs.js:141
+#: src/prefs.js:130
 msgid "Debug:"
 msgstr "Débogage :"
 
-#: src/prefs.js:154
+#: src/prefs.js:143
 msgid ""
-"Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
-msgstr "Copyright © 2019-2022 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-i-f</a> sur GitHub)"
+msgstr ""
+"Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> sur GitHub)"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
 msgid "Tweaks should be shown."

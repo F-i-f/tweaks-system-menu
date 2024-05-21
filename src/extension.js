@@ -1,5 +1,5 @@
 // tweaks-system-menu - Put Gnome Tweaks in the system menu.
-// Copyright (C) 2019-2021 Philippe Troin (F-i-f on Github)
+// Copyright (C) 2019-2024 Philippe Troin (F-i-f on Github)
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,24 +14,45 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-const BoxPointer = imports.ui.boxpointer;
-const Main = imports.ui.main;
-const PopupMenu = imports.ui.popupMenu;
-const Shell = imports.gi.Shell;
+import GObject                   from 'gi://GObject';
+import Shell                     from 'gi://Shell';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+import * as Main                 from 'resource:///org/gnome/shell/ui/main.js';
+import * as PopupMenu            from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import {QuickSettingsItem}       from 'resource:///org/gnome/shell/ui/quickSettings.js';
 
-const Logger = Me.imports.logger;
+import * as Logger               from './logger.js';
 
-const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
-    constructor() {
+const TweaksSystemMenuApplication = GObject.registerClass(
+class TweaksSystemMenuApplication extends QuickSettingsItem {
+    _init(appData) {
+	super._init({
+	    style_class: 'icon-button',
+	    can_focus: true,
+	    icon_name: appData.appInfo.app_info.get_icon().names[0],
+	    visible: !Main.sessionMode.isGreeter,
+	    accessible_name: appData.appInfo.get_name(),
+	});
+
+	this.connect('clicked', () => {
+	    Main.overview.hide();
+	    Main.panel.closeQuickSettings();
+	    appData.appInfo.activate();
+	});
+    }
+});
+
+export default class TweaksSystemMenuExtension extends Extension {
+    constructor(metadata) {
+	super(metadata);
+
 	this._logger = null;
 
 	this._settings = null;
 	this._debugSettingChangedConnection = null;
 	this._positionSettingChangedConnection = null;
-	this._systemMenu = null;
+	this._systemItem = null;
 
 	this._applications = {
 	    'tweaks': {
@@ -40,15 +61,21 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 		    return true;
 		}).bind(this),
 		getDefaultPosition: (function() {
-		    return this._findMenuItemPosition(this._systemMenu._settingsItem)+1;
+		    let children = this._systemItem.get_children();
+		    for (let i=0; i < children.length; ++i) {
+			if (children[i]._settingsApp !== undefined) {
+			    return i+1;
+			}
+		    }
+		    return 1;
 		}).bind(this),
 		preUpdatePosition: (function () {
-		    if (this._applications['extensions'].menuItem !== undefined) {
-			this._moveMenuItemToEnd(this._applications['extensions'].menuItem);
+		    if (this._applications['extensions'].tsmApp !== undefined) {
+			this._moveMenuItemToEnd(this._applications['extensions'].tsmApp);
 		    }
 		}).bind(this),
 		postUpdatePosition: (function () {
-		    if (this._applications['extensions'].menuItem !== undefined) {
+		    if (this._applications['extensions'].tsmApp !== undefined) {
 			this._on_position_change('extensions');
 		    }
 		}).bind(this)
@@ -60,8 +87,8 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 		    return info != null;
 		}).bind(this),
 		getDefaultPosition: (function() {
-		    if (this._applications['tweaks'].menuItem !== undefined) {
-			return this._findMenuItemPosition(this._applications['tweaks'].menuItem)+1;
+		    if (this._applications['tweaks'].tsmApp !== undefined) {
+			return this._findMenuItemPosition(this._applications['tweaks'].tsmApp)+1;
 		    } else {
 			return this._applications['tweaks'].getDefaultPosition();
 		    }
@@ -78,7 +105,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 
     // Utilities
     _findMenuItemPosition(item) {
-	let items = this._systemMenu.menu._getMenuItems();
+	let items = this._systemItem.get_children();
 	for (let i=0; i < items.length; ++i) {
 	    if (items[i] == item) {
 		this._logger.log_debug('_findMenuItemPosition('+item+') = '+i);
@@ -90,7 +117,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
     }
 
     _moveMenuItemToEnd(item) {
-	this._systemMenu.menu.moveMenuItem(item, this._systemMenu.menu._getMenuItems().length-1);
+	this._systemItem.set_child_at_index(item, this._systemItem.get_n_children()-1);
     }
 
     _getEnableSettingsName(appKey) {
@@ -103,8 +130,8 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 
     // Enable/disable
     enable() {
-	this._logger = new Logger.Logger('Tweaks-System-Menu');
-	this._settings = ExtensionUtils.getSettings();
+	this._logger = new Logger.Logger('Tweaks-System-Menu', this.metadata);
+	this._settings = this.getSettings();
 
 	this._on_debug_change();
 
@@ -112,7 +139,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 
 	this._debugSettingChangedConnection = this._settings.connect('changed::debug',
 								     this._on_debug_change.bind(this));
-	this._systemMenu = Main.panel.statusArea.aggregateMenu._system;
+	this._systemItem = Main.panel.statusArea.quickSettings._system._systemItem.child;
 
 	for (let appKey in this._applications) {
 	    this._enableApp(appKey);
@@ -145,7 +172,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	    this._disableApp(appKey);
 	}
 
-	this._systemMenu = null;
+	this._systemItem = null;
 
 	this._settings.disconnect(this._debugSettingChangedConnection);
 	this._debugSettingChangedConnection = null;
@@ -177,13 +204,8 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	let appData = this._applications[appKey];
 	appData.appInfo = Shell.AppSystem.get_default().lookup_app(appData.appName);
 	if (appData.appInfo) {
-	    let name = appData.appInfo.get_name();
-	    let icon = appData.appInfo.app_info.get_icon().names[0];
-	    appData.menuItem = new PopupMenu.PopupImageMenuItem(name, icon);
-	    appData.activateConnection = appData.menuItem.connect('activate', (function() {
-		this._on_activate(appKey);
-	    }).bind(this));
-	    this._systemMenu.menu.addMenuItem(appData.menuItem);
+	    appData.tsmApp = new TweaksSystemMenuApplication(appData);
+	    this._systemItem.add_child(appData.tsmApp);
 	    this._on_position_change(appKey);
 	} else {
 	    this._logger.log(appData.appName+' is missing');
@@ -193,12 +215,10 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
     _hideItem(appKey) {
 	this._logger.log_debug('_hideItem('+appKey+')');
 	let appData = this._applications[appKey];
-	if (appData.menuItem !== undefined) {
-	    appData.menuItem.disconnect(appData.activateConnection);
-	    delete appData.activateConnection;
-	    this._systemMenu.menu._getMenuItems().splice(this._findMenuItemPosition(appData.menuItem), 1);
-	    appData.menuItem.destroy();
-	    delete appData.menuItem;
+	if (appData.tsmApp !== undefined) {
+	    this._systemItem.remove_child(appData.tsmApp);
+	    appData.tsmApp.destroy();
+	    delete appData.tsmApp;
 	}
     }
 
@@ -223,7 +243,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	let appData = this._applications[appKey];
 	let position = this._settings.get_int(this._getPositionSettingsName(appKey));
 	this._logger.log_debug('_on_position_change('+appKey+'): settings position=' + position);
-	this._moveMenuItemToEnd(appData.menuItem);
+	this._moveMenuItemToEnd(appData.tsmApp);
 	appData.preUpdatePosition();
 	if (position == -1) {
 	    position = appData.getDefaultPosition();
@@ -234,19 +254,7 @@ const TweaksSystemMenuExtension = class TweaksSystemMenuExtension {
 	//     position -= 1;
 	// }
 	// this._logger.log_debug('_on_position_change('+appKey+'): ajusted position=' + position);
-	this._systemMenu.menu.moveMenuItem(appData.menuItem, position);
+	this._systemItem.set_child_at_index(appData.tsmApp, position);
 	appData.postUpdatePosition();
     }
-
-    _on_activate(appKey) {
-	let appData = this._applications[appKey];
-	this._logger.log_debug('_on_activate('+appKey+')');
-	this._systemMenu.menu.itemActivated(BoxPointer.PopupAnimation.NONE);
-	Main.overview.hide();
-	appData.appInfo.activate();
-    }
 };
-
-function init() {
-    return new TweaksSystemMenuExtension();
-}

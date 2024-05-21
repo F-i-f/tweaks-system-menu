@@ -140,7 +140,7 @@ class TweaksSystemMenuGrid {
 	const copyright_label = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="small">'
-		+ _('Copyright © 2019-2022 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')
+		+ _('Copyright © 2019-2024 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')
 		+ '</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER,

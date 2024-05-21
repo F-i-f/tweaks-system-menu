@@ -63,7 +63,7 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v18.
 
 ### Running the build
 
-- Check out: `git clone https://github.com/F-i-f/tweaks-system-menu`
+- Check out: `git clone --recurse-submodules https://github.com/F-i-f/tweaks-system-menu`
 
 - `cd tweaks-system-menu`
 

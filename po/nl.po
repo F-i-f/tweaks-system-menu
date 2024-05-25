@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-20 17:23-0700\n"
+"POT-Creation-Date: 2024-05-25 15:20-0700\n"
 "PO-Revision-Date: 2024-05-20 17:20-0700\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -18,35 +18,15 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/prefs.js:95
+#: src/prefs.js:34 src/prefs.js:275
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Afstelhulp en uitbreidingen in het systeemmenu"
 
-#: src/prefs.js:105
+#: src/prefs.js:43
 msgid "Version"
 msgstr "Versie"
 
-#: src/prefs.js:126
-msgid "Show Tweaks:"
-msgstr "Afstelhulp tonen:"
-
-#: src/prefs.js:126
-msgid "Tweaks position:"
-msgstr "Positie:"
-
-#: src/prefs.js:127
-msgid "Show Extensions:"
-msgstr "Uitbreidingen tonen:"
-
-#: src/prefs.js:127
-msgid "Extensions position:"
-msgstr "Positie:"
-
-#: src/prefs.js:130
-msgid "Debug:"
-msgstr "Foutopsporing:"
-
-#: src/prefs.js:143
+#: src/prefs.js:70
 msgid ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
@@ -54,52 +34,114 @@ msgstr ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> op GitHub)"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
-msgid "Tweaks should be shown."
-msgstr "De knop ‘Afstelhulp’ zou moeten worden getoond."
+#: src/prefs.js:83
+msgid "Developer Settings"
+msgstr ""
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
-msgid "If set, the Gnome Tweaks button is shown."
-msgstr "Stel in om de knop ‘Gnome Afstelhulp’ te tonen."
+#: src/prefs.js:84
+msgid "Turn on Debug and collect log data before submitting a bug report."
+msgstr ""
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:12
-msgid "Position of the Tweaks button."
-msgstr "Positie van de afstelhulpknop."
+#: src/prefs.js:88
+#, fuzzy
+msgid "Debug"
+msgstr "Foutopsporing:"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
+#: src/prefs.js:100
+msgid "Position"
+msgstr ""
+
+#: src/prefs.js:124
+msgid "Applications"
+msgstr ""
+
+#: src/prefs.js:133
+msgid "Add..."
+msgstr ""
+
+#: src/prefs.js:135
+msgid "Add an application"
+msgstr ""
+
+#: src/prefs.js:180
+msgid "Application not found..."
+msgstr ""
+
+#: src/prefs.js:207
+msgid "Move up"
+msgstr ""
+
+#: src/prefs.js:226
+msgid "Move down"
+msgstr ""
+
+#: src/prefs.js:245
+msgid "Remove"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
+#, fuzzy
+msgid "Buttons Position"
+msgstr "Positie:"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
+#, fuzzy
 msgid ""
-"If set to -1, the position is automatic: Tweaks will show up after Settings. "
-"If set to zero or more, the actual launcher position on the system menu."
+"If set to -1, the position is automatic: buttons will show up after "
+"Settings. If set to zero or more, the actual buttons' position on the system "
+"menu."
 msgstr ""
 "Stel in op -1 om de positie automatisch te bepalen op een plek ná "
 "‘Voorkeuren’. Stel in op 0 of hoger om een eigen positie op te geven."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
-msgid "Extensions should be shown."
-msgstr "De knop ‘Uitbreidingen’ zou moeten worden getoond."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:20
-msgid "If set, the Shell Extensions button is shown."
-msgstr "Stel in om de knop ‘Uitbreidingen’ te tonen."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:26
-msgid "Position of the Extensions button."
-msgstr "Positie van de uitbreidingenknop."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:27
-msgid ""
-"If set to -1, the position is automatic: Extensions will show up after "
-"Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
-"position on the system menu."
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
+msgid "List of applications to show"
 msgstr ""
-"Stel in op -1 om de positie automatisch te bepalen op een plek ná "
-"‘Afstelhulp’ (indien getoond) of ‘Instellingen’. Stel in op 0 of hoger om "
-"een eigen positie op te geven."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:17
+msgid "List of applications to display in the system menu."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:22
 msgid "Debugging."
 msgstr "Foutopsporing."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:35
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:23
 msgid "Enable debugging for the extension."
 msgstr "Schakel foutopsporing van deze uitbreiding in."
+
+#~ msgid "Show Tweaks:"
+#~ msgstr "Afstelhulp tonen:"
+
+#~ msgid "Tweaks position:"
+#~ msgstr "Positie:"
+
+#~ msgid "Show Extensions:"
+#~ msgstr "Uitbreidingen tonen:"
+
+#~ msgid "Tweaks should be shown."
+#~ msgstr "De knop ‘Afstelhulp’ zou moeten worden getoond."
+
+#~ msgid "If set, the Gnome Tweaks button is shown."
+#~ msgstr "Stel in om de knop ‘Gnome Afstelhulp’ te tonen."
+
+#~ msgid "Position of the Tweaks button."
+#~ msgstr "Positie van de afstelhulpknop."
+
+#~ msgid "Extensions should be shown."
+#~ msgstr "De knop ‘Uitbreidingen’ zou moeten worden getoond."
+
+#~ msgid "If set, the Shell Extensions button is shown."
+#~ msgstr "Stel in om de knop ‘Uitbreidingen’ te tonen."
+
+#~ msgid "Position of the Extensions button."
+#~ msgstr "Positie van de uitbreidingenknop."
+
+#~ msgid ""
+#~ "If set to -1, the position is automatic: Extensions will show up after "
+#~ "Tweaks (if shown), or Settings. If set to zero or more, the actual "
+#~ "launcher position on the system menu."
+#~ msgstr ""
+#~ "Stel in op -1 om de positie automatisch te bepalen op een plek ná "
+#~ "‘Afstelhulp’ (indien getoond) of ‘Instellingen’. Stel in op 0 of hoger om "
+#~ "een eigen positie op te geven."

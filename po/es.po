@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-20 17:23-0700\n"
+"POT-Creation-Date: 2024-05-25 15:20-0700\n"
 "PO-Revision-Date: 2024-05-20 17:22-0700\n"
 "Last-Translator: Francisco Jesús Sevilla García <fjsevilla.dev@gmail.com>\n"
 "Language-Team: \n"
@@ -18,35 +18,15 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/prefs.js:95
+#: src/prefs.js:34 src/prefs.js:275
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Retoques y Extensiones en el menú del sistema"
 
-#: src/prefs.js:105
+#: src/prefs.js:43
 msgid "Version"
 msgstr "Versión"
 
-#: src/prefs.js:126
-msgid "Show Tweaks:"
-msgstr "Mostrar Retoques:"
-
-#: src/prefs.js:126
-msgid "Tweaks position:"
-msgstr "Posición del botón Retoques:"
-
-#: src/prefs.js:127
-msgid "Show Extensions:"
-msgstr "Mostrar Extensiones:"
-
-#: src/prefs.js:127
-msgid "Extensions position:"
-msgstr "Posición del botón Extensiones:"
-
-#: src/prefs.js:130
-msgid "Debug:"
-msgstr "Depuración:"
-
-#: src/prefs.js:143
+#: src/prefs.js:70
 msgid ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
@@ -54,53 +34,115 @@ msgstr ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> en GitHub)"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
-msgid "Tweaks should be shown."
-msgstr "Retoques debe mostrarse."
+#: src/prefs.js:83
+msgid "Developer Settings"
+msgstr ""
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
-msgid "If set, the Gnome Tweaks button is shown."
-msgstr "Si se establece, se mostrará el botón Retoques de Gnome."
+#: src/prefs.js:84
+msgid "Turn on Debug and collect log data before submitting a bug report."
+msgstr ""
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:12
-msgid "Position of the Tweaks button."
-msgstr "Posición del botón Retoques."
+#: src/prefs.js:88
+#, fuzzy
+msgid "Debug"
+msgstr "Depuración:"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
+#: src/prefs.js:100
+msgid "Position"
+msgstr ""
+
+#: src/prefs.js:124
+msgid "Applications"
+msgstr ""
+
+#: src/prefs.js:133
+msgid "Add..."
+msgstr ""
+
+#: src/prefs.js:135
+msgid "Add an application"
+msgstr ""
+
+#: src/prefs.js:180
+msgid "Application not found..."
+msgstr ""
+
+#: src/prefs.js:207
+msgid "Move up"
+msgstr ""
+
+#: src/prefs.js:226
+msgid "Move down"
+msgstr ""
+
+#: src/prefs.js:245
+msgid "Remove"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
+#, fuzzy
+msgid "Buttons Position"
+msgstr "Posición del botón Extensiones:"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
+#, fuzzy
 msgid ""
-"If set to -1, the position is automatic: Tweaks will show up after Settings. "
-"If set to zero or more, the actual launcher position on the system menu."
+"If set to -1, the position is automatic: buttons will show up after "
+"Settings. If set to zero or more, the actual buttons' position on the system "
+"menu."
 msgstr ""
 "Si se establece en -1, la posición es automática: Retoques se mostrará "
 "debajo de Configuración. Si se establece en cero o más, indica la posición "
 "del lanzador en el menú del sistema."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
-msgid "Extensions should be shown."
-msgstr "Extensiones debe mostrarse."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:20
-msgid "If set, the Shell Extensions button is shown."
-msgstr "Si se establece, se mostrará el botón Extensiones de Gnome Shell."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:26
-msgid "Position of the Extensions button."
-msgstr "La posición del botón de Extensiones."
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:27
-msgid ""
-"If set to -1, the position is automatic: Extensions will show up after "
-"Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
-"position on the system menu."
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
+msgid "List of applications to show"
 msgstr ""
-"Si se establece en -1, la posición es automática: Extensiones aparecerá "
-"debajo de Retoques (si se muestra) o de Configuración. Si se establece en "
-"cero o más, indica la posición del lanzador en el menú del sistema."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:17
+msgid "List of applications to display in the system menu."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:22
 msgid "Debugging."
 msgstr "Depuración."
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:35
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:23
 msgid "Enable debugging for the extension."
 msgstr "Habilita el modo depuración de la extensión."
+
+#~ msgid "Show Tweaks:"
+#~ msgstr "Mostrar Retoques:"
+
+#~ msgid "Tweaks position:"
+#~ msgstr "Posición del botón Retoques:"
+
+#~ msgid "Show Extensions:"
+#~ msgstr "Mostrar Extensiones:"
+
+#~ msgid "Tweaks should be shown."
+#~ msgstr "Retoques debe mostrarse."
+
+#~ msgid "If set, the Gnome Tweaks button is shown."
+#~ msgstr "Si se establece, se mostrará el botón Retoques de Gnome."
+
+#~ msgid "Position of the Tweaks button."
+#~ msgstr "Posición del botón Retoques."
+
+#~ msgid "Extensions should be shown."
+#~ msgstr "Extensiones debe mostrarse."
+
+#~ msgid "If set, the Shell Extensions button is shown."
+#~ msgstr "Si se establece, se mostrará el botón Extensiones de Gnome Shell."
+
+#~ msgid "Position of the Extensions button."
+#~ msgstr "La posición del botón de Extensiones."
+
+#~ msgid ""
+#~ "If set to -1, the position is automatic: Extensions will show up after "
+#~ "Tweaks (if shown), or Settings. If set to zero or more, the actual "
+#~ "launcher position on the system menu."
+#~ msgstr ""
+#~ "Si se establece en -1, la posición es automática: Extensiones aparecerá "
+#~ "debajo de Retoques (si se muestra) o de Configuración. Si se establece en "
+#~ "cero o más, indica la posición del lanzador en el menú del sistema."

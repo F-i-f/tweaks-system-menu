@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-20 17:23-0700\n"
+"POT-Creation-Date: 2024-05-25 15:20-0700\n"
 "PO-Revision-Date: 2024-05-20 17:21-0700\n"
 "Last-Translator: Yusuke Ohshima <ohshima.yusuke@yukke.org>\n"
 "Language-Team: \n"
@@ -16,35 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:95
+#: src/prefs.js:34 src/prefs.js:275
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Tweaks &amp; Extensions in System Menu"
 
-#: src/prefs.js:105
+#: src/prefs.js:43
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:126
-msgid "Show Tweaks:"
-msgstr "Tweaksの表示"
-
-#: src/prefs.js:126
-msgid "Tweaks position:"
-msgstr "Tweaksの位置"
-
-#: src/prefs.js:127
-msgid "Show Extensions:"
-msgstr "拡張機能の表示"
-
-#: src/prefs.js:127
-msgid "Extensions position:"
-msgstr "拡張機能の位置"
-
-#: src/prefs.js:130
-msgid "Debug:"
-msgstr "デバッグ"
-
-#: src/prefs.js:143
+#: src/prefs.js:70
 msgid ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
@@ -52,52 +32,114 @@ msgstr ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:5
-msgid "Tweaks should be shown."
-msgstr "Tweaksを表示します。"
+#: src/prefs.js:83
+msgid "Developer Settings"
+msgstr ""
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:6
-msgid "If set, the Gnome Tweaks button is shown."
-msgstr "有効にするとGnome Tweaksボタンを表示します。"
+#: src/prefs.js:84
+msgid "Turn on Debug and collect log data before submitting a bug report."
+msgstr ""
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:12
-msgid "Position of the Tweaks button."
-msgstr "Gnome Tweaksボタンの位置"
+#: src/prefs.js:88
+#, fuzzy
+msgid "Debug"
+msgstr "デバッグ"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:13
+#: src/prefs.js:100
+msgid "Position"
+msgstr ""
+
+#: src/prefs.js:124
+msgid "Applications"
+msgstr ""
+
+#: src/prefs.js:133
+msgid "Add..."
+msgstr ""
+
+#: src/prefs.js:135
+msgid "Add an application"
+msgstr ""
+
+#: src/prefs.js:180
+msgid "Application not found..."
+msgstr ""
+
+#: src/prefs.js:207
+msgid "Move up"
+msgstr ""
+
+#: src/prefs.js:226
+msgid "Move down"
+msgstr ""
+
+#: src/prefs.js:245
+msgid "Remove"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
+#, fuzzy
+msgid "Buttons Position"
+msgstr "拡張機能の位置"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
+#, fuzzy
 msgid ""
-"If set to -1, the position is automatic: Tweaks will show up after Settings. "
-"If set to zero or more, the actual launcher position on the system menu."
+"If set to -1, the position is automatic: buttons will show up after "
+"Settings. If set to zero or more, the actual buttons' position on the system "
+"menu."
 msgstr ""
 "もし-1を設定した場合は自動的に設定ボタンの後にTweakボタンを表示します。もし、"
 "0以上を設定した場合はシステムメニューの実際の位置になります。"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:19
-msgid "Extensions should be shown."
-msgstr "拡張機能を表示します。"
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:20
-msgid "If set, the Shell Extensions button is shown."
-msgstr "有効にすると拡張機能ボタンを表示します。"
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:26
-msgid "Position of the Extensions button."
-msgstr "拡張機能ボタンの表示位置"
-
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:27
-msgid ""
-"If set to -1, the position is automatic: Extensions will show up after "
-"Tweaks (if shown), or Settings. If set to zero or more, the actual launcher "
-"position on the system menu."
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
+msgid "List of applications to show"
 msgstr ""
-"もし-1を設定した場合は自動的にTweaksボタン(表示されている場合)か設定ボタンの"
-"後に拡張機能ボタンを表示します。もし、0以上を設定した場合はシステムメニューの"
-"実際の位置になります。"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:34
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:17
+msgid "List of applications to display in the system menu."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:22
 msgid "Debugging."
 msgstr "デバッグ"
 
-#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:35
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:23
 msgid "Enable debugging for the extension."
 msgstr "この拡張機能のデバッグを有効にします。"
+
+#~ msgid "Show Tweaks:"
+#~ msgstr "Tweaksの表示"
+
+#~ msgid "Tweaks position:"
+#~ msgstr "Tweaksの位置"
+
+#~ msgid "Show Extensions:"
+#~ msgstr "拡張機能の表示"
+
+#~ msgid "Tweaks should be shown."
+#~ msgstr "Tweaksを表示します。"
+
+#~ msgid "If set, the Gnome Tweaks button is shown."
+#~ msgstr "有効にするとGnome Tweaksボタンを表示します。"
+
+#~ msgid "Position of the Tweaks button."
+#~ msgstr "Gnome Tweaksボタンの位置"
+
+#~ msgid "Extensions should be shown."
+#~ msgstr "拡張機能を表示します。"
+
+#~ msgid "If set, the Shell Extensions button is shown."
+#~ msgstr "有効にすると拡張機能ボタンを表示します。"
+
+#~ msgid "Position of the Extensions button."
+#~ msgstr "拡張機能ボタンの表示位置"
+
+#~ msgid ""
+#~ "If set to -1, the position is automatic: Extensions will show up after "
+#~ "Tweaks (if shown), or Settings. If set to zero or more, the actual "
+#~ "launcher position on the system menu."
+#~ msgstr ""
+#~ "もし-1を設定した場合は自動的にTweaksボタン(表示されている場合)か設定ボタン"
+#~ "の後に拡張機能ボタンを表示します。もし、0以上を設定した場合はシステムメ"
+#~ "ニューの実際の位置になります。"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-25 15:20-0700\n"
-"PO-Revision-Date: 2024-05-20 17:24-0700\n"
+"PO-Revision-Date: 2024-05-25 15:30-0700\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -40,64 +40,59 @@ msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
 #: src/prefs.js:88
-#, fuzzy
 msgid "Debug"
-msgstr "Débogage :"
+msgstr "Débogage"
 
 #: src/prefs.js:100
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: src/prefs.js:124
 msgid "Applications"
-msgstr ""
+msgstr "Applications"
 
 #: src/prefs.js:133
 msgid "Add..."
-msgstr ""
+msgstr "Ajouter..."
 
 #: src/prefs.js:135
 msgid "Add an application"
-msgstr ""
+msgstr "Ajouter une application"
 
 #: src/prefs.js:180
 msgid "Application not found..."
-msgstr ""
+msgstr "Application non trouvée..."
 
 #: src/prefs.js:207
 msgid "Move up"
-msgstr ""
+msgstr "Monter"
 
 #: src/prefs.js:226
 msgid "Move down"
-msgstr ""
+msgstr "Descendre"
 
 #: src/prefs.js:245
 msgid "Remove"
-msgstr ""
+msgstr "Supprimer"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
-#, fuzzy
 msgid "Buttons Position"
-msgstr "Position du bouton Extensions :"
+msgstr "Position des boutons"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
-#, fuzzy
 msgid ""
 "If set to -1, the position is automatic: buttons will show up after "
 "Settings. If set to zero or more, the actual buttons' position on the system "
 "menu."
-msgstr ""
-"Si égal à -1, la position est automatique: Ajustements s'affichera après "
-"Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
+msgstr "Si égal à -1, la position est automatique: les boutons s'afficheront après Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
 msgid "List of applications to show"
-msgstr ""
+msgstr "Liste d'applications à afficher"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:17
 msgid "List of applications to display in the system menu."
-msgstr ""
+msgstr "Liste d'applications à afficher dans le menu système"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:22
 msgid "Debugging."

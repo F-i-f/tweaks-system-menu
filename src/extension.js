@@ -26,19 +26,19 @@ import * as Logger               from './logger.js';
 
 const TweaksSystemMenuApplication = GObject.registerClass(
 class TweaksSystemMenuApplication extends QuickSettingsItem {
-    _init(appData) {
+    _init(appInfo) {
 	super._init({
 	    style_class: 'icon-button',
 	    can_focus: true,
-	    icon_name: appData.appInfo.app_info.get_icon().names[0],
+	    icon_name: appInfo.app_info.get_icon().names[0],
 	    visible: !Main.sessionMode.isGreeter,
-	    accessible_name: appData.appInfo.get_name(),
+	    accessible_name: appInfo.get_name(),
 	});
 
 	this.connect('clicked', () => {
 	    Main.overview.hide();
 	    Main.panel.closeQuickSettings();
-	    appData.appInfo.activate();
+	    appInfo.activate();
 	});
     }
 });
@@ -52,124 +52,48 @@ export default class TweaksSystemMenuExtension extends Extension {
 	this._settings = null;
 	this._debugSettingChangedConnection = null;
 	this._positionSettingChangedConnection = null;
+	this._applicationsSettingChangedConnection = null;
 	this._systemItem = null;
-
-	this._applications = {
-	    'tweaks': {
-		appName: 'org.gnome.tweaks.desktop',
-		check: (function() {
-		    return true;
-		}).bind(this),
-		getDefaultPosition: (function() {
-		    let children = this._systemItem.get_children();
-		    for (let i=0; i < children.length; ++i) {
-			if (children[i]._settingsApp !== undefined) {
-			    return i+1;
-			}
-		    }
-		    return 1;
-		}).bind(this),
-		preUpdatePosition: (function () {
-		    if (this._applications['extensions'].tsmApp !== undefined) {
-			this._moveMenuItemToEnd(this._applications['extensions'].tsmApp);
-		    }
-		}).bind(this),
-		postUpdatePosition: (function () {
-		    if (this._applications['extensions'].tsmApp !== undefined) {
-			this._on_position_change('extensions');
-		    }
-		}).bind(this)
-	    },
-	    'extensions': {
-		appName: 'org.gnome.Extensions.desktop',
-		check: (function() {
-		    let info = Shell.AppSystem.get_default().lookup_app('org.gnome.Extensions.desktop');
-		    return info != null;
-		}).bind(this),
-		getDefaultPosition: (function() {
-		    if (this._applications['tweaks'].tsmApp !== undefined) {
-			return this._findMenuItemPosition(this._applications['tweaks'].tsmApp)+1;
-		    } else {
-			return this._applications['tweaks'].getDefaultPosition();
-		    }
-		}).bind(this),
-		preUpdatePosition:  (function () { return; }).bind(this),
-		postUpdatePosition: (function () { return; }).bind(this)
-	    }
-	};
-
-	this._tweaksApp = null;
-	this._tweaksItem = null;
-	this._tweaksActivateConnection = null;
     }
 
-    // Utilities
-    _findMenuItemPosition(item) {
-	let items = this._systemItem.get_children();
-	for (let i=0; i < items.length; ++i) {
-	    if (items[i] == item) {
-		this._logger.log_debug('_findMenuItemPosition('+item+') = '+i);
-		return i;
-	    }
-	}
-	this._logger.log_debug('_findMenuItemPosition('+item+') = <null>');
-	return null;
-    }
-
-    _moveMenuItemToEnd(item) {
-	this._systemItem.set_child_at_index(item, this._systemItem.get_n_children()-1);
-    }
-
-    _getEnableSettingsName(appKey) {
-	return appKey+'-enable';
-    }
-
-    _getPositionSettingsName(appKey) {
-	return appKey+'-position';
+    // Helpers
+    _removeAppLauncher(app) {
+	this._logger.log_debug('removing button for '+app);
+	const button = this._launcherButtons[app];
+	this._systemItem.remove_child(button);
+	button.destroy();
+	delete this._launcherButtons[app];
     }
 
     // Enable/disable
     enable() {
 	this._logger = new Logger.Logger('Tweaks-System-Menu', this.metadata);
 	this._settings = this.getSettings();
+	this._launcherButtons = {};
 
 	this._on_debug_change();
 
 	this._logger.log_debug('enable()');
 
-	this._debugSettingChangedConnection = this._settings.connect('changed::debug',
-								     this._on_debug_change.bind(this));
 	this._systemItem = Main.panel.statusArea.quickSettings._system._systemItem.child;
 
-	for (let appKey in this._applications) {
-	    this._enableApp(appKey);
-	}
+	this._debugSettingChangedConnection = this._settings.connect('changed::debug',
+								     this._on_debug_change.bind(this));
+	this._positionSettingChangedConnection = this._settings.connect('changed::position',
+									this._on_position_change.bind(this));
+	this._applicationsSettingChangedConnection = this._settings.connect('changed::applications',
+									    this._on_applications_change.bind(this));
+
+	this._on_applications_change();
 
 	this._logger.log_debug('extension enabled');
-    }
-
-    _enableApp(appKey) {
-	let appData = this._applications[appKey];
-	if (! appData.check()) return;
-	this._logger.log_debug('_enableApp('+appKey+')');
-	appData.enableSettingChangedConnection = this._settings.connect('changed::'+this._getEnableSettingsName(appKey),
-									 (function() {
-									     this._on_enable_change(appKey);
-									 }).bind(this));
-	appData.positionSettingChangedConnection = this._settings.connect('changed::'+this._getPositionSettingsName(appKey),
-									   (function() {
-									       this._on_position_change(appKey);
-									   }).bind(this));
-	if (this._settings.get_boolean(this._getEnableSettingsName(appKey))) {
-	    this._showItem(appKey);
-	}
     }
 
     disable() {
 	this._logger.log_debug('disable()');
 
-	for (let appKey in this._applications) {
-	    this._disableApp(appKey);
+	for (let app in this._launcherButtons) {
+	    this._removeAppLauncher(app);
 	}
 
 	this._systemItem = null;
@@ -177,49 +101,16 @@ export default class TweaksSystemMenuExtension extends Extension {
 	this._settings.disconnect(this._debugSettingChangedConnection);
 	this._debugSettingChangedConnection = null;
 
+	this._settings.disconnect(this._positionSettingChangedConnection);
+	this._positionSettingChangedConnection = null;
+
+	this._settings.disconnect(this._applicationsSettingChangedConnection);
+	this._applicationsSettingChangedConnection = null;
+
 	this._settings = null;
 
 	this._logger.log_debug('extension disabled');
 	this._logger = null;
-    }
-
-    _disableApp(appKey) {
-	let appData = this._applications[appKey];
-	if (! appData.check()) return;
-	this._logger.log_debug('_disableApp('+appKey+')');
-	this._hideItem(appKey);
-	if (appData.enableSettingChangedConnection !== undefined) {
-	    this._settings.disconnect(appData.enableSettingChangedConnection);
-	    delete appData.enableSettingChangedConnection;
-	}
-	if (appData.positionSettingChangedConnection !== undefined) {
-	    this._settings.disconnect(appData.positionSettingChangedConnection);
-	    delete appData.positionSettingChangedConnection;
-	}
-    }
-
-    // Show/hide item
-    _showItem(appKey) {
-	this._logger.log_debug('_showItem('+appKey+')');
-	let appData = this._applications[appKey];
-	appData.appInfo = Shell.AppSystem.get_default().lookup_app(appData.appName);
-	if (appData.appInfo) {
-	    appData.tsmApp = new TweaksSystemMenuApplication(appData);
-	    this._systemItem.add_child(appData.tsmApp);
-	    this._on_position_change(appKey);
-	} else {
-	    this._logger.log(appData.appName+' is missing');
-	}
-    }
-
-    _hideItem(appKey) {
-	this._logger.log_debug('_hideItem('+appKey+')');
-	let appData = this._applications[appKey];
-	if (appData.tsmApp !== undefined) {
-	    this._systemItem.remove_child(appData.tsmApp);
-	    appData.tsmApp.destroy();
-	    delete appData.tsmApp;
-	}
     }
 
     // Event handlers
@@ -228,33 +119,60 @@ export default class TweaksSystemMenuExtension extends Extension {
 	this._logger.log_debug('debug = '+this._logger.get_debug());
     }
 
-    _on_enable_change(appKey) {
-	let appData = this._applications[appKey];
-	let enable = this._settings.get_boolean(this._getEnableSettingsName(appKey));
-	this._logger.log_debug('_on_enable_change('+appKey+'): enable=' + enable);
-	if (enable) {
-	    this._showItem(appKey);
-	} else {
-	    this._hideItem(appKey);
+    _on_applications_change() {
+	this._logger.log_debug('_on_applications_change()');
+	const wantedApps = this._settings.get_strv('applications');
+	const wantedAppsDict = {};
+	for (const app of wantedApps) {
+	    if (app in this._launcherButtons) {
+		wantedAppsDict[app] = true;
+	    } else {
+		const appInfo = Shell.AppSystem.get_default().lookup_app(app);
+		if (appInfo !== null) {
+		    wantedAppsDict[app] = true;
+		    this._logger.log_debug('adding button for '+app);
+		    const button = new TweaksSystemMenuApplication(appInfo);
+		    this._launcherButtons[app] = button;
+		    this._systemItem.add_child(button);
+		} else {
+		    this._logger.log('app "'+app+'" not found');
+		}
+	    }
 	}
+	for (let app in this._launcherButtons) {
+	    if (! (app in wantedAppsDict)) {
+		this._removeAppLauncher(app);
+	    }
+	}
+	this._on_position_change();
     }
 
-    _on_position_change(appKey) {
-	let appData = this._applications[appKey];
-	let position = this._settings.get_int(this._getPositionSettingsName(appKey));
-	this._logger.log_debug('_on_position_change('+appKey+'): settings position=' + position);
-	this._moveMenuItemToEnd(appData.tsmApp);
-	appData.preUpdatePosition();
-	if (position == -1) {
-	    position = appData.getDefaultPosition();
-	    this._logger.log_debug('_on_position_change('+appKey+'): automatic position=' + position);
+    _on_position_change() {
+	this._logger.log_debug('_on_position_change()');
+	const endPos = this._systemItem.get_n_children()-1;
+	for (const app in this._launcherButtons) {
+	    this._systemItem.set_child_at_index(this._launcherButtons[app], endPos);
 	}
-	// let curPosition = this._findMenuItemPosition(appData.menuItem);
-	// if (curPosition < position) {
-	//     position -= 1;
-	// }
-	// this._logger.log_debug('_on_position_change('+appKey+'): ajusted position=' + position);
-	this._systemItem.set_child_at_index(appData.tsmApp, position);
-	appData.postUpdatePosition();
+	let position = this._settings.get_int('position');
+	if (position < 0) {
+	    const children = this._systemItem.get_children();
+	    for (let i=0; i < children.length; ++i) {
+		if (children[i]._settingsApp !== undefined) {
+		    position = i+1;
+		    break;
+		}
+	    }
+	}
+	if (position < 0) {
+	    this._logger.log('Could not find Settings in system menu');
+	    position = 1;
+	}
+
+	for (const app of this._settings.get_strv('applications')) {
+	    if (this._launcherButtons[app] !== undefined) {
+		this._systemItem.set_child_at_index(this._launcherButtons[app], position);
+		position += 1;
+	    }
+	}
     }
 };

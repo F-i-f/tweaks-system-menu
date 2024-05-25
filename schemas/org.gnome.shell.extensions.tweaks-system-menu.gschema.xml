@@ -1,32 +1,20 @@
 <schemalist gettext-domain="tweaks-system-menu">
-  <schema id="org.gnome.shell.extensions.tweaks-system-menu" path="/org/gnome/shell/extensions/tweaks-system-menu/">
-    <key name="tweaks-enable" type="b">
-      <default>true</default>
-      <summary>Tweaks should be shown.</summary>
-      <description>If set, the Gnome Tweaks button is
-      shown.</description>
-    </key>
-    <key name="tweaks-position" type="i">
+  <schema id="org.gnome.shell.extensions.tweaks-system-menu"
+	  path="/org/gnome/shell/extensions/tweaks-system-menu/">
+    <key name="position" type="i">
       <default>-1</default>
       <range min="-1" max="99"/>
-      <summary>Position of the Tweaks button.</summary>
-      <description>If set to -1, the position is automatic: Tweaks
+      <summary>Buttons Position</summary>
+      <description>If set to -1, the position is automatic: buttons
       will show up after Settings.  If set to zero or more, the actual
-      launcher position on the system menu.</description>
+      buttons' position on the system menu.</description>
     </key>
-    <key name="extensions-enable" type="b">
-      <default>true</default>
-      <summary>Extensions should be shown.</summary>
-      <description>If set, the Shell Extensions button is
-      shown.</description>
-    </key>
-    <key name="extensions-position" type="i">
-      <default>-1</default>
-      <range min="-1" max="99"/>
-      <summary>Position of the Extensions button.</summary>
-      <description>If set to -1, the position is automatic: Extensions
-      will show up after Tweaks (if shown), or Settings.  If set to
-      zero or more, the actual launcher position on the system
+    <key name="applications" type="as">
+      <default>["org.gnome.tweaks.desktop",
+      "org.gnome.Extensions.desktop",
+      "com.mattjakeman.ExtensionManager.desktop"]</default>
+      <summary>List of applications to show</summary>
+      <description>List of applications to display in the system
       menu.</description>
     </key>
     <key name="debug" type="b">

@@ -17,151 +17,267 @@
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 import Adw                                  from 'gi://Adw';
 import Gio                                  from 'gi://Gio';
+import GObject                              from 'gi://GObject';
 import Gtk                                  from 'gi://Gtk';
 
 import * as Logger                          from './logger.js';
 
-class TweaksSystemMenuGrid {
-
-    _addEntry(ypos, setting_prefix, enable_label_val, position_label_val) {
-	const enable_setting = setting_prefix + '-enable';
-	const enable_sschema = this._settings.settings_schema.get_key(enable_setting);
-	const enable_descr = _(enable_sschema.get_description());
-	const enable_label = new Gtk.Label({
-	    label: enable_label_val,
-	    halign: Gtk.Align.START
-	});
-	enable_label.set_tooltip_text(enable_descr);
-	const enable_control = new Gtk.Switch({halign: Gtk.Align.END});
-	enable_control.set_tooltip_text(enable_descr);
-	this._grid.attach(enable_label,   1, ypos, 1, 1);
-	this._grid.attach(enable_control, 2, ypos, 1, 1);
-	this._settings.bind(enable_setting, enable_control, 'active', Gio.SettingsBindFlags.DEFAULT);
-	ypos += 1
-
-	const position_setting = setting_prefix + '-position';
-	const position_sschema = this._settings.settings_schema.get_key(position_setting);
-	const position_descr = _(position_sschema.get_description());
-	const position_label = new Gtk.Label({
-	    label: position_label_val,
-	    halign: Gtk.Align.START,
-	    margin_start: 25
-	});
-	position_label.set_tooltip_text(position_descr);
-	const position_range = position_sschema.get_range().deep_unpack()[1].deep_unpack()
-	const position_control = new Gtk.SpinButton({
-	    adjustment: new Gtk.Adjustment({
-		lower: position_range[0],
-		upper: position_range[1],
-		step_increment: 1
-	    }),
-	    halign: Gtk.Align.END
-	});
-	position_control.set_tooltip_text(position_descr);
-	this._grid.attach(position_label,   1, ypos, 1, 1);
-	this._grid.attach(position_control, 2, ypos, 1, 1);
-	this._settings.bind(position_setting, position_control, 'value', Gio.SettingsBindFlags.DEFAULT);
-	ypos += 1
-
-	this._settings.connect('changed::'+enable_setting, (function(settings, name) {
-	    let val = settings.get_boolean(name);
-	    position_label.set_sensitive(val);
-	    position_control.set_sensitive(val);
-	}).bind(this));
-
-	return ypos;
-    }
-
-    build(metadata, settings) {
+const HeaderGroup = GObject.registerClass(
+class HeaderGroup extends Adw.PreferencesGroup {
+    _init(metadata, logger) {
+	super._init({});
 	this._metadata = metadata;
-	this._settings = settings;
-	this._grid = new Gtk.Grid();
-	this._grid.margin_top = 12;
-	this._grid.margin_bottom = this._grid.margin_top;
-	this._grid.margin_start = 48;
-	this._grid.margin_end = this._grid.margin_start;
-	this._grid.row_spacing = 6;
-	this._grid.column_spacing = this._grid.row_spacing;
-	this._grid.orientation = Gtk.Orientation.VERTICAL;
 
-	const logger = new Logger.Logger('Tweaks-System-Menu/prefs', this._metadata);
-	logger.set_debug(this._settings.get_boolean('debug'));
-
-	let ypos = 1;
-
-	const title_label = new Gtk.Label({
+	const titleLabel = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="large" weight="heavy">'
 		+_('Tweaks &amp; Extensions in System Menu')+'</span>',
 	    hexpand: true,
-	    halign: Gtk.Align.CENTER
+	    halign: Gtk.Align.CENTER,
+	    margin_bottom: 8,
 	});
-	this._grid.attach(title_label, 1, ypos, 2, 1);
+	this.add(titleLabel);
 
-	ypos += 1;
-
-	const version_label = new Gtk.Label({
+	const versionLabel = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="small">'+_('Version')
 		+ ' ' + logger.get_version() + '</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER,
+	    margin_bottom: 8,
 	});
-	this._grid.attach(version_label, 1, ypos, 2, 1);
+	this.add(versionLabel);
 
-	ypos += 1;
-
-	const link_label = new Gtk.Label({
+	const linkLabel = new Gtk.Label({
 	    use_markup: true,
-	    label: '<span size="small"><a href="'+this._metadata.url+'">'
-		+ this._metadata.url + '</a></span>',
+	    label: '<span size="small"><a href="'+metadata.url+'">'
+		+ metadata.url + '</a></span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER,
-	    margin_bottom: this._grid.margin_bottom
 	});
-	this._grid.attach(link_label, 1, ypos, 2, 1);
+	this.add(linkLabel);
+    }
+});
 
-	ypos += 1;
+const FooterGroup = GObject.registerClass(
+class FooterGroup extends Adw.PreferencesGroup {
+    _init() {
+	super._init({});
 
-	ypos = this._addEntry(ypos, 'tweaks',     _("Show Tweaks:"), _("Tweaks position:"));
-	ypos = this._addEntry(ypos, 'extensions', _("Show Extensions:"), _("Extensions position:"));
-
-	const debug_descr = _(this._settings.settings_schema.get_key('debug').get_description());
-	const debug_label = new Gtk.Label({label: _("Debug:"), halign: Gtk.Align.START});
-	debug_label.set_tooltip_text(debug_descr);
-	const debug_control = new Gtk.Switch({halign: Gtk.Align.END});
-	debug_control.set_tooltip_text(debug_descr);
-	this._grid.attach(debug_label,   1, ypos, 1, 1);
-	this._grid.attach(debug_control, 2, ypos, 1, 1);
-	this._settings.bind('debug', debug_control, 'active', Gio.SettingsBindFlags.DEFAULT);
-
-	ypos += 1;
-
-	const copyright_label = new Gtk.Label({
+	const copyrightLabel = new Gtk.Label({
 	    use_markup: true,
 	    label: '<span size="small">'
 		+ _('Copyright © 2019-2024 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')
 		+ '</span>',
 	    hexpand: true,
 	    halign: Gtk.Align.CENTER,
-	    margin_top: this._grid.margin_top
 	});
-	this._grid.attach(copyright_label, 1, ypos, 2, 1);
-
-	ypos += 1;
-
-	return this._grid;
+	this.add(copyrightLabel);
     }
-}
+});
+
+const DebugGroup = GObject.registerClass(
+class DebugGroup extends Adw.PreferencesGroup {
+    _init(settings) {
+	super._init({
+	    title: _("Developer Settings"),
+	    description: _("Turn on Debug and collect log data before submitting a bug report."),
+	});
+
+	const debugToggle = new Adw.SwitchRow({
+	    title: _("Debug"),
+	    subtitle: _(settings.settings_schema.get_key('debug').get_description()),
+	});
+	settings.bind('debug', debugToggle, 'active', Gio.SettingsBindFlags.DEFAULT);
+	this.add(debugToggle);
+    }
+});
+
+const PositionGroup = GObject.registerClass(
+class PositionGroup extends Adw.PreferencesGroup {
+    _init(settings) {
+	super._init({
+	    title: _("Position"),
+	});
+
+	const positionSchema = settings.settings_schema.get_key('position');
+	const positionRange = positionSchema.get_range().deep_unpack()[1].deep_unpack();
+	const positionSpinner = new Adw.SpinRow({
+	    title: _(positionSchema.get_summary()),
+	    subtitle: _(positionSchema.get_description()),
+	    adjustment: new Gtk.Adjustment({
+		lower: positionRange[0],
+		upper: positionRange[1],
+		page_increment: 5,
+		step_increment: 1,
+	    }),
+	});
+	settings.bind('position', positionSpinner, 'value', Gio.SettingsBindFlags.DEFAULT);
+	this.add(positionSpinner);
+    }
+});
+
+const ApplicationsPicker = GObject.registerClass(
+class ApplicationsPicker extends Adw.PreferencesGroup {
+    _init(settings) {
+	super._init({
+	    title: _('Applications'),
+	    description: _(settings.settings_schema.get_key('applications').get_description()),
+	});
+	this._settings = settings;
+	this._displayedApps = [];
+
+	const addAppsButton = new Gtk.Button({
+	    child: new Adw.ButtonContent({
+		icon_name: 'list-add-symbolic',
+		label: _('Add...'),
+	    }),
+	    tooltip_text: _('Add an application'),
+	});
+	addAppsButton.connect('clicked', this._onAddApp.bind(this));
+	this.set_header_suffix(addAppsButton);
+	this._settings.connect('changed::applications', this._refreshApps.bind(this));
+	this._refreshApps();
+    }
+
+    _onAddApp() {
+	const dialog = new Gtk.AppChooserDialog({
+	    transient_for: this.get_root(),
+	    modal: true
+	});
+	dialog.get_widget().set({ show_all: true });
+	dialog.connect('response', (dlg, id) => {
+	    if (id === Gtk.ResponseType.OK) {
+		const appInfo = dialog.get_widget().get_app_info();
+		const apps = this._settings.get_strv('applications');
+		apps.push(appInfo.get_id());
+		this._settings.set_strv('applications', apps);
+	    }
+	    dialog.destroy();
+	});
+	dialog.show();
+    }
+
+    _refreshApps() {
+	const apps = this._settings.get_strv('applications');
+
+	// Remove old
+	for (let i = 0; i < this._displayedApps.length; i++) {
+	    this.remove(this._displayedApps[i]);
+	}
+	this._displayedApps.length = 0;
+
+	// Add new
+	for (let index=0; index < apps.length; ++index) {
+
+	    const app = apps[index];
+
+	    const appInfo = Gio.DesktopAppInfo.new(app);
+	    let title;
+	    let appIcon;
+	    if (appInfo == null) {
+		title = _('Application not found...');
+		appIcon = new Gtk.Image({
+		    icon_name: 'process-stop-symbolic',
+		    pixel_size: 32
+		});
+	    } else {
+		title = appInfo.get_display_name();
+		appIcon = new Gtk.Image({
+		    gicon: appInfo.get_icon(),
+		    pixel_size: 32
+		});
+	    }
+	    appIcon.get_style_context().add_class('icon-dropshadow');
+
+	    const buttonBox = new Gtk.Box({
+		orientation: Gtk.Orientation.HORIZONTAL,
+		halign: Gtk.Align.CENTER,
+		spacing: 5,
+		hexpand: false,
+		vexpand: false
+	    });
+
+	    const upButton = new Gtk.Button({
+		icon_name: 'go-up-symbolic',
+		valign: Gtk.Align.CENTER,
+		hexpand: false,
+		vexpand: false,
+		tooltip_text: _('Move up'),
+	    });
+	    if (index == 0) {
+		upButton.set_opacity(0.0);
+		upButton.sensitive = false;
+	    } else {
+		upButton.connect('clicked', () => {
+		    apps.splice(index, 1);
+		    apps.splice(index-1, 0, app);
+		    this._settings.set_strv('applications', apps);
+		});
+	    }
+	    buttonBox.append(upButton);
+
+	    const downButton = new Gtk.Button({
+		icon_name: 'go-down-symbolic',
+		valign: Gtk.Align.CENTER,
+		hexpand: false,
+		vexpand: false,
+		tooltip_text: _('Move down'),
+	    });
+	    if (index == apps.length-1) {
+		downButton.set_opacity(0.0);
+		downButton.sensitive = false;
+	    } else {
+		downButton.connect('clicked', () => {
+		    apps.splice(index, 1);
+		    apps.splice(index+1, 0, app);
+		    this._settings.set_strv('applications', apps);
+		});
+	    }
+	    buttonBox.append(downButton);
+
+	    const deleteButton = new Gtk.Button({
+		icon_name: 'edit-delete-symbolic',
+		valign: Gtk.Align.CENTER,
+		hexpand: false,
+		vexpand: false,
+		tooltip_text: _('Remove'),
+	    });
+	    deleteButton.connect('clicked', () => {
+		apps.splice(index, 1);
+		this._settings.set_strv('applications', apps);
+	    });
+	    buttonBox.append(deleteButton);
+
+	    const row = new Adw.ActionRow({
+		title: title,
+		subtitle: app.replace('.desktop', ''),
+	    });
+	    row.add_prefix(appIcon);
+	    row.add_suffix(buttonBox);
+
+	    this.add(row);
+	    this._displayedApps.push(row);
+	}
+    }
+
+});
 
 export default class TweaksSystemMenuSettings extends ExtensionPreferences {
 
     fillPreferencesWindow(window) {
-	const contents = new TweaksSystemMenuGrid();
-	const group = new Adw.PreferencesGroup();
-	group.add(contents.build(this.metadata, this.getSettings()));
-	const page = new Adw.PreferencesPage();
-	page.add(group);
+	const logger = new Logger.Logger('Tweaks-System-Menu/prefs', this.metadata);
+	const settings = this.getSettings();
+	logger.set_debug(settings.get_boolean('debug'));
+
+	const page = new Adw.PreferencesPage({
+	    title: _('Tweaks &amp; Extensions in System Menu'),
+	});
+	page.add(new HeaderGroup(this.metadata, logger));
+	page.add(new PositionGroup(settings));
+	page.add(new ApplicationsPicker(settings));
+	page.add(new DebugGroup(settings));
+	page.add(new FooterGroup());
 	window.add(page);
     }
 }

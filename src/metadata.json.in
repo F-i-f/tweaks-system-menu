@@ -1,5 +1,5 @@
 {
-  "description": "Put Gnome Tweaks and Extensions (on Shell 40 and later) in the System menu.",
+  "description": "Put Gnome Tweaks, Extensions, Extension Manager and any other application in the System menu.",
   "gettext-domain": "@gettext_domain@",
   "name": "Tweaks & Extensions in System Menu",
   "settings-schema": "org.gnome.shell.extensions.tweaks-system-menu",

@@ -3,9 +3,10 @@ Tweaks and Extensions in System Menu Gnome Shell Extension
 
 ## Overview
 
-Tweaks in System Menu adds a shortcut button to the _Gnome
-Tweaks_(a.k.a. _Tweak UI_) and to the shell's _Extensions_ (on Gnome
-40 later) in the panel's system menu.
+Tweaks in System Menu adds shortcut buttons to panel's system menu.
+By default, _Gnome Tweaks_ (a.k.a. _Tweak UI_), _Extensions_, and
+_Extension Manager_ are added, but the list of applications to display
+can be changed in the preferences.
 
 ![The Tweaks button shown as separate and not merged with the Settings
 button](docs/tweaks-in-system-menu.png)
@@ -15,8 +16,8 @@ The buttons can be positioned anywhere in the system menu.
 ## Configuration
 
 Tweaks in System Menu comes with a preference panel which can be found
-from the "Tweaks" or "Extensions" applications or the [Gnome Shell
-Extensions page](https://extensions.gnome.org/local/).
+from the _Extensions_ or _Extension Manager_ applications or the
+[Gnome Shell Extensions page](https://extensions.gnome.org/local/).
 
 ![Tweaks in System Menu preference panel](docs/preferences.png)
 

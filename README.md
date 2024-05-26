@@ -41,11 +41,11 @@ along with this program.  If not, see [http://www.gnu.org/licenses/].
 Install directly from the [Gnome Shell Extensions
 site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 
-Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v19/tweaks-system-menu@extensions.gnome-shell.fifi.org.v19.shell-extension.zip) from the GitHub [releases
+Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v20/tweaks-system-menu@extensions.gnome-shell.fifi.org.v20.shell-extension.zip) from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and run:
 
 ``` shell
-gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v19.shell-extension.zip
+gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v20.shell-extension.zip
 ```
 
 ## Building from source
@@ -67,6 +67,16 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v19.
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 20
+#### May 25, 2024
+
+- Now supports adding any application to the system menu.
+- Defaults to adding _Gnome Tweaks_, _Extensions_, and _Extension
+  Manager_.
+- The preferences dialog has been reimplemented with the Adwaita
+  toolkit.
+- Settings from previous versions will be lost upon upgrade.
 
 ### Version 19
 #### May 20, 2024
@@ -220,5 +230,5 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v19.
  -->
 <!--  LocalWords:  ExtensionUtils getSettings initTranslations
  -->
-<!--  LocalWords:  Amereyeu
+<!--  LocalWords:  Amereyeu reimplemented Adwaita
  -->

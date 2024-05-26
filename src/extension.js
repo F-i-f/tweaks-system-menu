@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import GLib                      from 'gi://GLib';
 import GObject                   from 'gi://GObject';
 import Shell                     from 'gi://Shell';
 
@@ -48,12 +49,13 @@ export default class TweaksSystemMenuExtension extends Extension {
 	super(metadata);
 
 	this._logger = null;
-
 	this._settings = null;
+	this._delayedStage2Source = null;
+	this._launcherButtons = null;
+	this._systemItem = null;
 	this._debugSettingChangedConnection = null;
 	this._positionSettingChangedConnection = null;
 	this._applicationsSettingChangedConnection = null;
-	this._systemItem = null;
     }
 
     // Helpers
@@ -69,13 +71,29 @@ export default class TweaksSystemMenuExtension extends Extension {
     enable() {
 	this._logger = new Logger.Logger('Tweaks-System-Menu', this.metadata);
 	this._settings = this.getSettings();
-	this._launcherButtons = {};
 
 	this._on_debug_change();
 
 	this._logger.log_debug('enable()');
 
+	if (Main?.panel?.statusArea?.quickSettings?._system?._systemItem?.child) {
+	    this._enable_stage2();
+	} else {
+	    this._logger.log('enable(): Race condition detect at initialization, postponing stage 2...');
+	    this._delayedStage2Source = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+		this._delayedStage2Source = null;
+		this._logger.log('enable(): stage 2 resuming...');
+		this._enable_stage2();
+		this._logger.log('enable(): 2-stage enable successful!');
+	    });
+	}
+    }
+
+    _enable_stage2() {
+	this._logger.log_debug('enable_stage2()');
+
 	this._systemItem = Main.panel.statusArea.quickSettings._system._systemItem.child;
+	this._launcherButtons = {};
 
 	this._debugSettingChangedConnection = this._settings.connect('changed::debug',
 								     this._on_debug_change.bind(this));
@@ -92,21 +110,29 @@ export default class TweaksSystemMenuExtension extends Extension {
     disable() {
 	this._logger.log_debug('disable()');
 
+	if (this._delayedStage2Source !== null) {
+	    GLib.source_remove(this._delayedStage2Source);
+	    this._delayedStage2Source = null;
+	}
+
+	if (this._debugSettingChangedConnection !== null) {
+	    this._settings.disconnect(this._debugSettingChangedConnection);
+	    this._debugSettingChangedConnection = null;
+	}
+	if (this._positionSettingChangedConnection !== null) {
+	    this._settings.disconnect(this._positionSettingChangedConnection);
+	    this._positionSettingChangedConnection = null;
+	}
+	if (this._applicationsSettingChangedConnection !== null) {
+	    this._settings.disconnect(this._applicationsSettingChangedConnection);
+	    this._applicationsSettingChangedConnection = null;
+	}
+
 	for (let app in this._launcherButtons) {
 	    this._removeAppLauncher(app);
 	}
-
+	this._launcherButtons = null;
 	this._systemItem = null;
-
-	this._settings.disconnect(this._debugSettingChangedConnection);
-	this._debugSettingChangedConnection = null;
-
-	this._settings.disconnect(this._positionSettingChangedConnection);
-	this._positionSettingChangedConnection = null;
-
-	this._settings.disconnect(this._applicationsSettingChangedConnection);
-	this._applicationsSettingChangedConnection = null;
-
 	this._settings = null;
 
 	this._logger.log_debug('extension disabled');

@@ -41,11 +41,11 @@ along with this program.  If not, see [http://www.gnu.org/licenses/].
 Install directly from the [Gnome Shell Extensions
 site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 
-Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v20/tweaks-system-menu@extensions.gnome-shell.fifi.org.v20.shell-extension.zip) from the GitHub [releases
+Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v21/tweaks-system-menu@extensions.gnome-shell.fifi.org.v21.shell-extension.zip) from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and run:
 
 ``` shell
-gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v20.shell-extension.zip
+gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v21.shell-extension.zip
 ```
 
 ## Building from source
@@ -67,6 +67,11 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v20.
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 21
+#### May 26, 2024
+
+- Fix race condition at shell start-up.
 
 ### Version 20
 #### May 25, 2024

@@ -16,7 +16,7 @@
 
 gse_project({tweaks-system-menu},
 	    {extensions.gnome-shell.fifi.org},
-	    {20},
+	    {21},
 {
 gse_sources	    += []
 gse_libs	    += [gse_lib_logger]

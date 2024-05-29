@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-25 15:20-0700\n"
-"PO-Revision-Date: 2024-05-20 17:20-0700\n"
+"PO-Revision-Date: 2024-05-29 18:17+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: src/prefs.js:34 src/prefs.js:275
 msgid "Tweaks &amp; Extensions in System Menu"
@@ -36,71 +36,71 @@ msgstr ""
 
 #: src/prefs.js:83
 msgid "Developer Settings"
-msgstr ""
+msgstr "Ontwikkelaarsvoorkeuren"
 
 #: src/prefs.js:84
 msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
+"Schakel foutopsporing in en verzamel logboekgegevens alvorens een bugmelding "
+"te doen."
 
 #: src/prefs.js:88
-#, fuzzy
 msgid "Debug"
-msgstr "Foutopsporing:"
+msgstr "Foutopsporing"
 
 #: src/prefs.js:100
 msgid "Position"
-msgstr ""
+msgstr "Locatie"
 
 #: src/prefs.js:124
 msgid "Applications"
-msgstr ""
+msgstr "Toepassingen"
 
 #: src/prefs.js:133
 msgid "Add..."
-msgstr ""
+msgstr "Toevoegen…"
 
 #: src/prefs.js:135
 msgid "Add an application"
-msgstr ""
+msgstr "Toepassing toevoegen"
 
 #: src/prefs.js:180
 msgid "Application not found..."
-msgstr ""
+msgstr "Toepassing niet gevonden…"
 
 #: src/prefs.js:207
 msgid "Move up"
-msgstr ""
+msgstr "Omhoog verplaatsen"
 
 #: src/prefs.js:226
 msgid "Move down"
-msgstr ""
+msgstr "Omlaag verplaatsen"
 
 #: src/prefs.js:245
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
-#, fuzzy
 msgid "Buttons Position"
-msgstr "Positie:"
+msgstr "Knoppositie"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
-#, fuzzy
 msgid ""
 "If set to -1, the position is automatic: buttons will show up after "
 "Settings. If set to zero or more, the actual buttons' position on the system "
 "menu."
 msgstr ""
 "Stel in op -1 om de positie automatisch te bepalen op een plek ná "
-"‘Voorkeuren’. Stel in op 0 of hoger om een eigen positie op te geven."
+"‘Voorkeuren’. Stel in op 0 of hoger om een locatie in het systeemmenu te "
+"gebruiken."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
 msgid "List of applications to show"
-msgstr ""
+msgstr "Lijst met te tonen toepassingen"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:17
 msgid "List of applications to display in the system menu."
-msgstr ""
+msgstr "Een lijst met toepassingen die moet worden getoond in het systeemmenu."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:22
 msgid "Debugging."

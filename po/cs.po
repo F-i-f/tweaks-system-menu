@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-25 15:20-0700\n"
-"PO-Revision-Date: 2024-05-20 17:23-0700\n"
+"PO-Revision-Date: 2024-06-03 09:47-0700\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: Gnome.CZE\n"
 "Language: cs\n"
@@ -41,9 +41,8 @@ msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
 #: src/prefs.js:88
-#, fuzzy
 msgid "Debug"
-msgstr "Ladění:"
+msgstr "Ladění"
 
 #: src/prefs.js:100
 msgid "Position"
@@ -80,7 +79,7 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
 #, fuzzy
 msgid "Buttons Position"
-msgstr "Pozice rozšíření:"
+msgstr "Pozice rozšíření"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
 #, fuzzy

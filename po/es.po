@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-25 15:20-0700\n"
-"PO-Revision-Date: 2024-05-20 17:22-0700\n"
+"PO-Revision-Date: 2024-06-03 09:50-0700\n"
 "Last-Translator: Francisco Jesús Sevilla García <fjsevilla.dev@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -43,9 +43,8 @@ msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
 #: src/prefs.js:88
-#, fuzzy
 msgid "Debug"
-msgstr "Depuración:"
+msgstr "Depuración"
 
 #: src/prefs.js:100
 msgid "Position"
@@ -80,9 +79,8 @@ msgid "Remove"
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
-#, fuzzy
 msgid "Buttons Position"
-msgstr "Posición del botón Extensiones:"
+msgstr "Posición de los botones"
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
 #, fuzzy

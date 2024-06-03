@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-25 15:20-0700\n"
-"PO-Revision-Date: 2024-05-20 17:21-0700\n"
+"PO-Revision-Date: 2024-06-03 09:51-0700\n"
 "Last-Translator: Yusuke Ohshima <ohshima.yusuke@yukke.org>\n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -41,7 +41,6 @@ msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
 #: src/prefs.js:88
-#, fuzzy
 msgid "Debug"
 msgstr "デバッグ"
 

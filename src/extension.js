@@ -20,15 +20,14 @@ import Shell                     from 'gi://Shell';
 
 import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main                 from 'resource:///org/gnome/shell/ui/main.js';
-import * as PopupMenu            from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import {QuickSettingsItem}       from 'resource:///org/gnome/shell/ui/quickSettings.js';
 
 import * as Logger               from './logger.js';
 
 const TweaksSystemMenuApplication = GObject.registerClass(
 class TweaksSystemMenuApplication extends QuickSettingsItem {
-    _init(appInfo) {
-	super._init({
+    constructor(appInfo) {
+	super({
 	    style_class: 'icon-button',
 	    can_focus: true,
 	    icon_name: appInfo.app_info.get_icon().names[0],

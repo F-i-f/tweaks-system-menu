@@ -24,8 +24,8 @@ import * as Logger                          from './logger.js';
 
 const HeaderGroup = GObject.registerClass(
 class HeaderGroup extends Adw.PreferencesGroup {
-    _init(metadata, logger) {
-	super._init({});
+    constructor(metadata, logger) {
+	super({});
 	this._metadata = metadata;
 
 	const titleLabel = new Gtk.Label({
@@ -61,8 +61,8 @@ class HeaderGroup extends Adw.PreferencesGroup {
 
 const FooterGroup = GObject.registerClass(
 class FooterGroup extends Adw.PreferencesGroup {
-    _init() {
-	super._init({});
+    constructor() {
+	super({});
 
 	const copyrightLabel = new Gtk.Label({
 	    use_markup: true,
@@ -78,8 +78,8 @@ class FooterGroup extends Adw.PreferencesGroup {
 
 const DebugGroup = GObject.registerClass(
 class DebugGroup extends Adw.PreferencesGroup {
-    _init(settings) {
-	super._init({
+    constructor(settings) {
+	super({
 	    title: _("Developer Settings"),
 	    description: _("Turn on Debug and collect log data before submitting a bug report."),
 	});
@@ -95,8 +95,8 @@ class DebugGroup extends Adw.PreferencesGroup {
 
 const PositionGroup = GObject.registerClass(
 class PositionGroup extends Adw.PreferencesGroup {
-    _init(settings) {
-	super._init({
+    constructor(settings) {
+	super({
 	    title: _("Position"),
 	});
 
@@ -119,8 +119,8 @@ class PositionGroup extends Adw.PreferencesGroup {
 
 const ApplicationsPicker = GObject.registerClass(
 class ApplicationsPicker extends Adw.PreferencesGroup {
-    _init(settings) {
-	super._init({
+    constructor(settings) {
+	super({
 	    title: _('Applications'),
 	    description: _(settings.settings_schema.get_key('applications').get_description()),
 	});
@@ -175,7 +175,7 @@ class ApplicationsPicker extends Adw.PreferencesGroup {
 	    const appInfo = Gio.DesktopAppInfo.new(app);
 	    let title;
 	    let appIcon;
-	    if (appInfo == null) {
+	    if (appInfo === null) {
 		title = _('Application not found...');
 		appIcon = new Gtk.Image({
 		    icon_name: 'process-stop-symbolic',
@@ -205,7 +205,7 @@ class ApplicationsPicker extends Adw.PreferencesGroup {
 		vexpand: false,
 		tooltip_text: _('Move up'),
 	    });
-	    if (index == 0) {
+	    if (index === 0) {
 		upButton.set_opacity(0.0);
 		upButton.sensitive = false;
 	    } else {
@@ -224,7 +224,7 @@ class ApplicationsPicker extends Adw.PreferencesGroup {
 		vexpand: false,
 		tooltip_text: _('Move down'),
 	    });
-	    if (index == apps.length-1) {
+	    if (index === apps.length-1) {
 		downButton.set_opacity(0.0);
 		downButton.sensitive = false;
 	    } else {

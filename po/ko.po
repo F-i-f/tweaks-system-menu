@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 15:20-0700\n"
+"POT-Creation-Date: 2024-06-05 16:13-0700\n"
 "PO-Revision-Date: 2024-06-03 09:49-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,15 +18,15 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/prefs.js:34 src/prefs.js:275
+#: src/prefs.js:39 src/prefs.js:320
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "시스템 메뉴에 기능 개선과 확장을 표시"
 
-#: src/prefs.js:43
+#: src/prefs.js:51
 msgid "Version"
 msgstr "버전"
 
-#: src/prefs.js:70
+#: src/prefs.js:87
 msgid ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
@@ -34,47 +34,47 @@ msgstr ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 
-#: src/prefs.js:83
+#: src/prefs.js:102
 msgid "Developer Settings"
 msgstr ""
 
-#: src/prefs.js:84
+#: src/prefs.js:104
 msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
-#: src/prefs.js:88
+#: src/prefs.js:109
 msgid "Debug"
 msgstr "디버그"
 
-#: src/prefs.js:100
+#: src/prefs.js:129
 msgid "Position"
 msgstr ""
 
-#: src/prefs.js:124
+#: src/prefs.js:162
 msgid "Applications"
 msgstr ""
 
-#: src/prefs.js:133
+#: src/prefs.js:175
 msgid "Add..."
 msgstr ""
 
-#: src/prefs.js:135
+#: src/prefs.js:177
 msgid "Add an application"
 msgstr ""
 
-#: src/prefs.js:180
+#: src/prefs.js:223
 msgid "Application not found..."
 msgstr ""
 
-#: src/prefs.js:207
+#: src/prefs.js:250
 msgid "Move up"
 msgstr ""
 
-#: src/prefs.js:226
+#: src/prefs.js:269
 msgid "Move down"
 msgstr ""
 
-#: src/prefs.js:245
+#: src/prefs.js:288
 msgid "Remove"
 msgstr ""
 

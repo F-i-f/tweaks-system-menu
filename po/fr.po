@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 15:20-0700\n"
+"POT-Creation-Date: 2024-06-05 16:13-0700\n"
 "PO-Revision-Date: 2024-05-25 15:30-0700\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
@@ -15,15 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:34 src/prefs.js:275
+#: src/prefs.js:39 src/prefs.js:320
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Ajustements &amp; Extensions dans le menu système"
 
-#: src/prefs.js:43
+#: src/prefs.js:51
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:70
+#: src/prefs.js:87
 msgid ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
@@ -31,47 +31,47 @@ msgstr ""
 "Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> sur GitHub)"
 
-#: src/prefs.js:83
+#: src/prefs.js:102
 msgid "Developer Settings"
 msgstr ""
 
-#: src/prefs.js:84
+#: src/prefs.js:104
 msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
-#: src/prefs.js:88
+#: src/prefs.js:109
 msgid "Debug"
 msgstr "Débogage"
 
-#: src/prefs.js:100
+#: src/prefs.js:129
 msgid "Position"
 msgstr "Position"
 
-#: src/prefs.js:124
+#: src/prefs.js:162
 msgid "Applications"
 msgstr "Applications"
 
-#: src/prefs.js:133
+#: src/prefs.js:175
 msgid "Add..."
 msgstr "Ajouter..."
 
-#: src/prefs.js:135
+#: src/prefs.js:177
 msgid "Add an application"
 msgstr "Ajouter une application"
 
-#: src/prefs.js:180
+#: src/prefs.js:223
 msgid "Application not found..."
 msgstr "Application non trouvée..."
 
-#: src/prefs.js:207
+#: src/prefs.js:250
 msgid "Move up"
 msgstr "Monter"
 
-#: src/prefs.js:226
+#: src/prefs.js:269
 msgid "Move down"
 msgstr "Descendre"
 
-#: src/prefs.js:245
+#: src/prefs.js:288
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -84,7 +84,9 @@ msgid ""
 "If set to -1, the position is automatic: buttons will show up after "
 "Settings. If set to zero or more, the actual buttons' position on the system "
 "menu."
-msgstr "Si égal à -1, la position est automatique: les boutons s'afficheront après Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
+msgstr ""
+"Si égal à -1, la position est automatique: les boutons s'afficheront après "
+"Réglages.  Si égal à zéro ou plus, indique la position dans le menu système."
 
 #: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
 msgid "List of applications to show"

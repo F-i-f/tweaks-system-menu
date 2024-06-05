@@ -52,7 +52,7 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v22.
 
 ### Requirements
 
-- [meson](http://mesonbuild.com/) v0.50.0 or later.
+- [meson](http://mesonbuild.com/) v1.4.0 or later.
 
 ### Running the build
 

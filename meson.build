@@ -19,7 +19,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # meson-gse - Library for gnome-shell extensions
-# Copyright (C) 2019-2022 Philippe Troin (F-i-f on Github)
+# Copyright (C) 2019-2024 Philippe Troin (F-i-f on Github)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@
 # Boilerplate
 project('tweaks-system-menu',
 	version: '22',
-	meson_version: '>= 0.50.0',
+	meson_version: '>= 1.4.0',
 	license: 'GPL3' )
 
 gnome = import('gnome')
@@ -69,12 +69,7 @@ if gse_run_command_obj.returncode() == 0
   gse_schemas += files(gse_schema_main)
 endif
 
-gse_js102 = find_program('js102', required: false)
-gse_js91 = find_program('js91', required: false)
-gse_js78 = find_program('js78', required: false)
-gse_js68 = find_program('js68', required: false)
-gse_js60 = find_program('js60', required: false)
-gse_js52 = find_program('js52', required: false)
+gse_npm_command_obj = find_program('npm', required:false)
 
 # Include extension-specific settings
 
@@ -113,8 +108,8 @@ gse_metadata_conf.set('version', meson.project_version())
 gse_metadata_conf.set('gettext_domain', gse_gettext_domain)
 
 gse_data += configure_file(input:         'src/metadata.json.in',
-				 output:        'metadata.json',
-				 configuration: gse_metadata_conf)
+			   output:        'metadata.json',
+			   configuration: gse_metadata_conf)
 
 # This should work but doesn't:
 #gse_metadata = vcs_tag(command:  ['git', 'rev-parse', 'HEAD'],
@@ -124,8 +119,7 @@ gse_data += configure_file(input:         'src/metadata.json.in',
 #gse_data += gse_metadata
 
 if gse_schemas != []
-  custom_target('gse-gschemas.compiled',
-		build_by_default: true,
+  custom_target(build_by_default: true,
 		command:          ['sh', '-c', 'glib-compile-schemas --targetdir . $(dirname @INPUT0@)'],
 		input:            gse_schemas,
 		output:           'gschemas.compiled',
@@ -135,61 +129,56 @@ if gse_schemas != []
 	       install_dir: gse_target_dir_schemas)
 endif
 
-gse_js_found = 0
+gse_cleaner_targets = []
+gse_cleaner_targets += custom_target(build_by_default: false,
+				     install: false,
+				     build_always_stale: true,
+				     command: ['find', meson.current_source_dir(), '-name', '*~', '-exec', 'rm',  '{}', ';'],
+				     output: ['cleaner-backup-files'])
 
-if gse_js102.found() and gse_js_found == 0
-  foreach gse_source : gse_sources
-    test('Checking syntax of ' + '@0@'.format(gse_source),
-	 gse_js102,
-	 args: ['-w', '-c', gse_source])
-  endforeach
-  gse_js_found = 1
-endif
+if gse_npm_command_obj.found()
+  gse_meson_gse_dir = join_paths(meson.current_source_dir(), 'meson-gse')
+  gse_npm_install_target = custom_target(build_by_default: false,
+					 install: false,
+					 depend_files: [join_paths(gse_meson_gse_dir, 'package.json'), join_paths(gse_meson_gse_dir, 'package-lock.json')],
+					 command: ['sh', '-c', 'pushd "@0@" && "@1@" --fund false install && popd && touch npm-install'.format(gse_meson_gse_dir, gse_npm_command_obj.full_path())],
+					 output: ['npm-install'])
 
-if gse_js91.found() and gse_js_found == 0
   foreach gse_source : gse_sources
-    test('Checking syntax of ' + '@0@'.format(gse_source),
-	 gse_js91,
-	 args: ['-w', '-c', gse_source])
+    test('Linting @0@...'.format(gse_source.full_path()),
+	 gse_npm_command_obj,
+	 args: ['run-script', '--', 'eslint', '--config', join_paths(gse_meson_gse_dir, 'eslint.config.js'), gse_source],
+	 depends: gse_npm_install_target,
+	 workdir: gse_meson_gse_dir)
   endforeach
-  gse_js_found = 1
-endif
 
-if gse_js78.found() and gse_js_found == 0
+  gse_npm_pretty_targets = []
   foreach gse_source : gse_sources
-    test('Checking syntax of ' + '@0@'.format(gse_source),
-	 gse_js78,
-	 args: ['-w', '-c', gse_source])
+    gse_npm_pretty_targets += custom_target(build_always_stale: true,
+					    build_by_default: false,
+					    install: false,
+					    depends: gse_npm_install_target,
+					    command: ['sh', '-c', 'cd "@0@" && "@1@" run-script -- prettier --config "@2@" "@3@"'. format(gse_meson_gse_dir, gse_npm_command_obj.full_path(), join_paths(gse_meson_gse_dir, 'prettier.config.js'), gse_source.full_path())],
+					    output: 'prettier-@0@'.format(gse_source.full_path().replace('/', '_')))
   endforeach
-  gse_js_found = 1
+  gse_npm_install_target = custom_target(build_always_stale: true,
+					 build_by_default: false,
+					 install: false,
+					 depends: gse_npm_pretty_targets,
+					 command: ['sh', '-c', 'exit 0'],
+					 output: ['prettier'])
+  gse_cleaner_targets += custom_target(build_always_stale: true,
+				     build_by_default: false,
+				     install: false,
+				     command: ['rm', '-fr', join_paths(gse_meson_gse_dir, 'node_modules')],
+				     output: ['cleaner-node-modules'])
 endif
-
-if gse_js68.found() and gse_js_found == 0
-  foreach gse_source : gse_sources
-    test('Checking syntax of ' + '@0@'.format(gse_source),
-	 gse_js68,
-	 args: ['-w', '-c', gse_source])
-  endforeach
-  gse_js_found = 1
-endif
-
-if gse_js60.found() and gse_js_found == 0
-  foreach gse_source : gse_sources
-    test('Checking syntax of ' + '@0@'.format(gse_source),
-	 gse_js60,
-	 args: ['-w', '-c', gse_source])
-  endforeach
-  gse_js_found = 1
-endif
-
-if gse_js52.found() and gse_js_found == 0
-  foreach gse_source : gse_sources
-    test('Checking syntax of ' + '@0@'.format(gse_source),
-	 gse_js52,
-	 args: ['-w', '-c', gse_source])
-  endforeach
-  gse_js_found = 1
-endif
+custom_target(build_by_default: false,
+	      install: false,
+	      build_always_stale: true,
+	      depends: gse_cleaner_targets,
+	      command: ['sh', '-c', 'true'],
+	      output: ['cleaner'])
 
 install_data(gse_sources + gse_data + gse_libs,
 	     install_dir: gse_target_dir)
@@ -197,8 +186,7 @@ install_data(gse_sources + gse_data + gse_libs,
 install_data(gse_dbus_interfaces,
 	     install_dir: gse_target_dir_dbus_intf)
 
-custom_target('gse-extension.zip',
-	      build_by_default: false,
+custom_target(build_by_default: false,
 	      install: false,
 	      command: [files(join_paths(meson_extra_scripts, 'make-extension')), gse_target_dir, '@OUTDIR@', '@OUTPUT@'],
 	      output:  'extension.zip')

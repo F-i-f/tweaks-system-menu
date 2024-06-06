@@ -74,7 +74,7 @@ gse_npm_command_obj = find_program('npm', required:false)
 # Include extension-specific settings
 
 gse_sources	    += []
-gse_libs	    += [gse_lib_logger]
+gse_libs	    += gse_lib_logger
 gse_data	    += []
 gse_schemas	    += []
 gse_dbus_interfaces += []
@@ -144,7 +144,7 @@ if gse_npm_command_obj.found()
 					 command: ['sh', '-c', 'pushd "@0@" && "@1@" --fund false install && popd && touch npm-install'.format(gse_meson_gse_dir, gse_npm_command_obj.full_path())],
 					 output: ['npm-install'])
 
-  foreach gse_source : gse_sources
+  foreach gse_source : gse_sources + gse_libs
     test('Linting @0@...'.format(gse_source.full_path()),
 	 gse_npm_command_obj,
 	 args: ['run-script', '--', 'eslint', '--config', join_paths(gse_meson_gse_dir, 'eslint.config.js'), gse_source],
@@ -152,19 +152,19 @@ if gse_npm_command_obj.found()
 	 workdir: gse_meson_gse_dir)
   endforeach
 
-  gse_npm_pretty_targets = []
-  foreach gse_source : gse_sources
-    gse_npm_pretty_targets += custom_target(build_always_stale: true,
-					    build_by_default: false,
-					    install: false,
-					    depends: gse_npm_install_target,
-					    command: ['sh', '-c', 'cd "@0@" && "@1@" run-script -- prettier --config "@2@" "@3@"'. format(gse_meson_gse_dir, gse_npm_command_obj.full_path(), join_paths(gse_meson_gse_dir, 'prettier.config.js'), gse_source.full_path())],
-					    output: 'prettier-@0@'.format(gse_source.full_path().replace('/', '_')))
+  gse_npm_prettier_targets = []
+  foreach gse_source : gse_sources + gse_libs
+    gse_npm_prettier_targets += custom_target(build_always_stale: true,
+					      build_by_default: false,
+					      install: false,
+					      depends: gse_npm_install_target,
+					      command: ['sh', '-c', 'cd "@0@" && "@1@" run-script -- prettier --config "@2@" "@3@"'. format(gse_meson_gse_dir, gse_npm_command_obj.full_path(), join_paths(gse_meson_gse_dir, 'prettier.config.js'), gse_source.full_path())],
+					      output: 'prettier-@0@'.format(gse_source.full_path().replace('/', '_')))
   endforeach
   gse_npm_install_target = custom_target(build_always_stale: true,
 					 build_by_default: false,
 					 install: false,
-					 depends: gse_npm_pretty_targets,
+					 depends: gse_npm_prettier_targets,
 					 command: ['sh', '-c', 'exit 0'],
 					 output: ['prettier'])
   gse_cleaner_targets += custom_target(build_always_stale: true,

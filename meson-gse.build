@@ -19,7 +19,7 @@ gse_project({tweaks-system-menu},
 	    {22},
 {
 gse_sources	    += []
-gse_libs	    += [gse_lib_logger]
+gse_libs	    += gse_lib_logger
 gse_data	    += []
 gse_schemas	    += []
 gse_dbus_interfaces += []

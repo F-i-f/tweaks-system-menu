@@ -21,6 +21,15 @@ from the _Extensions_ or _Extension Manager_ applications or the
 
 ![Tweaks in System Menu preference panel](docs/preferences.png)
 
+## Common Issues
+
+### Ubuntu 24.04 LTS
+Ubuntu 24.04 LTS with Gnome 46 ships with a broken
+_gnome-shell-extension-prefs_ package. Use _Extension Manager_
+(_gnome-shell-extension-manager_) instead. See [Issue
+#30](https://github.com/F-i-f/tweaks-system-menu/issues/30) for
+details.
+
 ## License
 
 Tweaks in System Menu is free software: you can redistribute it and/or
@@ -249,7 +258,9 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v23.
  -->
 <!--  LocalWords:  kuroehanako fjsevilla dev stefangweichinger gse's
  -->
-<!--  LocalWords:  ExtensionUtils getSettings initTranslations
+<!--  LocalWords:  ExtensionUtils getSettings initTranslations LTS
  -->
-<!--  LocalWords:  Amereyeu reimplemented Adwaita
+<!--  LocalWords:  Amereyeu reimplemented Adwaita prefs eslint Heimen
+ -->
+<!--  LocalWords:  Stoffels
  -->

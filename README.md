@@ -1,5 +1,9 @@
-Tweaks and Extensions in System Menu Gnome Shell Extension
-===========================================================
+<IMG SRC="docs/logo.png" WIDTH="28px" HEIGHT="28px" ALT="Logo"/>&nbsp;Tweaks and Extensions in System Menu Gnome Shell Extension
+=================================================================================================================================
+
+[<IMG
+SRC="https://raw.githubusercontent.com/F-i-f/meson-gse/refs/heads/master/resources/get-it-on-ego.svg"
+HEIGHT="100px" ALT="Get it on Gnome Extensions"/>](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/)
 
 ## Overview
 

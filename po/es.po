@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-05 16:13-0700\n"
-"PO-Revision-Date: 2024-06-03 09:50-0700\n"
+"POT-Creation-Date: 2025-02-12 03:39-0800\n"
+"PO-Revision-Date: 2025-02-12 03:37-0800\n"
 "Last-Translator: Francisco Jesús Sevilla García <fjsevilla.dev@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -28,10 +28,10 @@ msgstr "Versión"
 
 #: src/prefs.js:87
 msgid ""
-"Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
-"Copyright © 2019-2024 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> en GitHub)"
 
 #: src/prefs.js:102

@@ -1,6 +1,6 @@
 // -*- indent-tabs-mode: nil; -*-
 // Tweaks-system-menu - Put Gnome Tweaks in the system menu.
-// Copyright (C) 2019-2024 Philippe Troin (F-i-f on Github)
+// Copyright (C) 2019-2025 Philippe Troin (F-i-f on Github)
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -84,7 +84,7 @@ const FooterGroup = GObject.registerClass(
                 label:
                     '<span size="small">' +
                     _(
-                        'Copyright © 2019-2024 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)'
+                        'Copyright © 2019-2025 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)'
                     ) +
                     '</span>',
                 hexpand: true,

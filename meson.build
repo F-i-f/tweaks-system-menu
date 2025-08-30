@@ -36,7 +36,7 @@
 
 # Boilerplate
 project('tweaks-system-menu',
-	version: '24',
+	version: '25',
 	meson_version: '>= 1.4.0',
 	license: 'GPL3' )
 

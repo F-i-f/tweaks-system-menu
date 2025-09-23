@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the tweaks-system-menu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tweaks-system-menu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-23 03:39-0800\n"
+"PO-Revision-Date: 2025-09-23 03:37-0800\n"
+"Last-Translator: Fabian Esposito\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/prefs.js:39 src/prefs.js:320
+msgid "Tweaks &amp; Extensions in System Menu"
+msgstr "Personalizzazioni ed Estensioni nel menu di sistema"
+
+#: src/prefs.js:51
+msgid "Version"
+msgstr "Versione"
+
+#: src/prefs.js:87
+msgid ""
+"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> on GitHub)"
+msgstr ""
+"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"i-f</a> su GitHub)"
+
+#: src/prefs.js:102
+msgid "Developer Settings"
+msgstr "Impostazioni sviluppatore"
+
+#: src/prefs.js:104
+msgid "Turn on Debug and collect log data before submitting a bug report."
+msgstr "Attiva il debug e raccogli i dati di log prima di inviare una segnalazione di bug."
+
+#: src/prefs.js:109
+msgid "Debug"
+msgstr "Debug"
+
+#: src/prefs.js:129
+msgid "Position"
+msgstr "Posizione"
+
+#: src/prefs.js:162
+msgid "Applications"
+msgstr "Applicazioni"
+
+#: src/prefs.js:175
+msgid "Add..."
+msgstr "Aggiungi..."
+
+#: src/prefs.js:177
+msgid "Add an application"
+msgstr "Aggiungi un’applicazione"
+
+#: src/prefs.js:223
+msgid "Application not found..."
+msgstr "Applicazione non trovata..."
+
+#: src/prefs.js:250
+msgid "Move up"
+msgstr "Sposta su"
+
+#: src/prefs.js:269
+msgid "Move down"
+msgstr "Sposta giù"
+
+#: src/prefs.js:288
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:7
+msgid "Buttons Position"
+msgstr "Posizione dei pulsanti"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:8
+#, fuzzy
+msgid ""
+"If set to -1, the position is automatic: buttons will show up after "
+"Settings. If set to zero or more, the actual buttons' position on the system "
+"menu."
+msgstr ""
+"Se impostato a -1, la posizione è automatica: i pulsanti verranno mostrati "
+"dopo Impostazioni. Se impostato a zero o più, indica la posizione effettiva "
+"dei pulsanti nel menu di sistema."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:16
+msgid "List of applications to show"
+msgstr "Elenco delle applicazioni da mostrare"
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:17
+msgid "List of applications to display in the system menu."
+msgstr "Elenco delle applicazioni da visualizzare nel menu di sistema."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:22
+msgid "Debugging."
+msgstr "Debug."
+
+#: schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml:23
+msgid "Enable debugging for the extension."
+msgstr "Abilita il debug per l’estensione."
+
+#~ msgid "Show Tweaks:"
+#~ msgstr "Mostra Personalizzazioni:"
+
+#~ msgid "Tweaks position:"
+#~ msgstr "Posizione del pulsante Personalizzazioni:"
+
+#~ msgid "Show Extensions:"
+#~ msgstr "Mostra Estensioni:"
+
+#~ msgid "Tweaks should be shown."
+#~ msgstr "Personalizzazioni deve essere mostrato."
+
+#~ msgid "If set, the Gnome Tweaks button is shown."
+#~ msgstr "Se impostato, verrà mostrato il pulsante Personalizzazioni di Gnome."
+
+#~ msgid "Position of the Tweaks button."
+#~ msgstr "Posizione del pulsante Personalizzazioni."
+
+#~ msgid "Extensions should be shown."
+#~ msgstr "Estensioni deve essere mostrato."
+
+#~ msgid "If set, the Shell Extensions button is shown."
+#~ msgstr "Se impostato, verrà mostrato il pulsante Estensioni di Gnome Shell."
+
+#~ msgid "Position of the Extensions button."
+#~ msgstr "Posizione del pulsante Estensioni."
+
+#~ msgid ""
+#~ "If set to -1, the position is automatic: Extensions will show up after "
+#~ "Tweaks (if shown), or Settings. If set to zero or more, the actual "
+#~ "launcher position on the system menu."
+#~ msgstr ""
+#~ "Se impostato a -1, la posizione è automatica: Estensioni apparirà sotto "
+#~ "Personalizzazioni (se mostrato) o sotto Impostazioni. Se impostato a zero "
+#~ "o più, indica la posizione del lanciatore nel menu di sistema."
+

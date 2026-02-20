@@ -1,6 +1,6 @@
 // -*- indent-tabs-mode: nil; -*-
 // tweaks-system-menu - Put Gnome Tweaks in the system menu.
-// Copyright (C) 2019-2024 Philippe Troin (F-i-f on Github)
+// Copyright (C) 2019-2026 Philippe Troin (F-i-f on Github)
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ export default class TweaksSystemMenuExtension extends Extension {
 
     // Helpers
     _removeAppLauncher(app) {
-        this._logger.log_debug('removing button for ' + app);
+        this._logger.log_debug(`removing button for ${app}`);
         const button = this._launcherButtons[app];
         this._systemItem.remove_child(button);
         button.destroy();
@@ -149,9 +149,9 @@ export default class TweaksSystemMenuExtension extends Extension {
             this._applicationsSettingChangedConnection = null;
         }
 
-        for (let app in this._launcherButtons) {
+        for (const app in this._launcherButtons)
             this._removeAppLauncher(app);
-        }
+
         this._launcherButtons = null;
         this._systemItem = null;
         this._settings = null;
@@ -163,7 +163,7 @@ export default class TweaksSystemMenuExtension extends Extension {
     // Event handlers
     _on_debug_change() {
         this._logger.set_debug(this._settings.get_boolean('debug'));
-        this._logger.log_debug('debug = ' + this._logger.get_debug());
+        this._logger.log_debug(`debug = ${this._logger.get_debug()}`);
     }
 
     _on_applications_change() {
@@ -177,20 +177,20 @@ export default class TweaksSystemMenuExtension extends Extension {
                 const appInfo = Shell.AppSystem.get_default().lookup_app(app);
                 if (appInfo !== null) {
                     wantedAppsDict[app] = true;
-                    this._logger.log_debug('adding button for ' + app);
+                    this._logger.log_debug(`adding button for ${app}`);
                     const button = new TweaksSystemMenuApplication(appInfo);
                     this._launcherButtons[app] = button;
                     this._systemItem.add_child(button);
                 } else {
-                    this._logger.log('app "' + app + '" not found');
+                    this._logger.log(`app ${app} not found`);
                 }
             }
         }
-        for (let app in this._launcherButtons) {
-            if (!(app in wantedAppsDict)) {
+        for (const app in this._launcherButtons) {
+            if (!(app in wantedAppsDict))
                 this._removeAppLauncher(app);
-            }
         }
+
         this._on_position_change();
     }
 

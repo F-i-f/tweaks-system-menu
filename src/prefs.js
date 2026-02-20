@@ -1,6 +1,6 @@
 // -*- indent-tabs-mode: nil; -*-
 // Tweaks-system-menu - Put Gnome Tweaks in the system menu.
-// Copyright (C) 2019-2025 Philippe Troin (F-i-f on Github)
+// Copyright (C) 2019-2026 Philippe Troin (F-i-f on Github)
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -34,10 +34,7 @@ const HeaderGroup = GObject.registerClass(
 
             const titleLabel = new Gtk.Label({
                 use_markup: true,
-                label:
-                    '<span size="large" weight="heavy">' +
-                    _('Tweaks &amp; Extensions in System Menu') +
-                    '</span>',
+                label: `<span size="large" weight="heavy">${_('Tweaks &amp; Extensions in System Menu')}</span>`,
                 hexpand: true,
                 halign: Gtk.Align.CENTER,
                 margin_bottom: 8,
@@ -46,12 +43,7 @@ const HeaderGroup = GObject.registerClass(
 
             const versionLabel = new Gtk.Label({
                 use_markup: true,
-                label:
-                    '<span size="small">' +
-                    _('Version') +
-                    ' ' +
-                    logger.get_version() +
-                    '</span>',
+                label: `<span size="small">${_('Version')} ${logger.get_version()}</span>`,
                 hexpand: true,
                 halign: Gtk.Align.CENTER,
                 margin_bottom: 8,
@@ -60,12 +52,7 @@ const HeaderGroup = GObject.registerClass(
 
             const linkLabel = new Gtk.Label({
                 use_markup: true,
-                label:
-                    '<span size="small"><a href="' +
-                    metadata.url +
-                    '">' +
-                    metadata.url +
-                    '</a></span>',
+                label: `<span size="small"><a href="${metadata.url}">${metadata.url}</a></span>`,
                 hexpand: true,
                 halign: Gtk.Align.CENTER,
             });
@@ -81,12 +68,7 @@ const FooterGroup = GObject.registerClass(
 
             const copyrightLabel = new Gtk.Label({
                 use_markup: true,
-                label:
-                    '<span size="small">' +
-                    _(
-                        'Copyright © 2019-2025 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)'
-                    ) +
-                    '</span>',
+                label: `<span size="small">${_('Copyright © 2019-2025 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')}</span>`,
                 hexpand: true,
                 halign: Gtk.Align.CENTER,
             });
@@ -100,9 +82,7 @@ const DebugGroup = GObject.registerClass(
         constructor(settings) {
             super({
                 title: _('Developer Settings'),
-                description: _(
-                    'Turn on Debug and collect log data before submitting a bug report.'
-                ),
+                description: _('Turn on Debug and collect log data before submitting a bug report.'),
             });
 
             const debugToggle = new Adw.SwitchRow({
@@ -207,9 +187,8 @@ const ApplicationsPicker = GObject.registerClass(
             const apps = this._settings.get_strv('applications');
 
             // Remove old
-            for (let i = 0; i < this._displayedApps.length; i++) {
+            for (let i = 0; i < this._displayedApps.length; i++)
                 this.remove(this._displayedApps[i]);
-            }
             this._displayedApps.length = 0;
 
             // Add new
@@ -294,7 +273,7 @@ const ApplicationsPicker = GObject.registerClass(
                 buttonBox.append(deleteButton);
 
                 const row = new Adw.ActionRow({
-                    title: title,
+                    title,
                     subtitle: app.replace('.desktop', ''),
                 });
                 row.add_prefix(appIcon);

@@ -24,6 +24,20 @@ import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+const loadDesktopAppInfo = async () => {
+    let gioImpl;
+    try {
+        gioImpl = await import('gi://GioUnix');
+    } catch (unused) {
+        gioImpl = await import('gi://Gio');
+    }
+    if (gioImpl?.default?.DesktopAppInfo)
+        return gioImpl.default.DesktopAppInfo;
+    else
+        throw new Error('DesktopAppInfo not found');
+};
+const DesktopAppInfo = await loadDesktopAppInfo();
+
 import * as Logger from './logger.js';
 
 const HeaderGroup = GObject.registerClass(
@@ -195,7 +209,7 @@ const ApplicationsPicker = GObject.registerClass(
             for (let index = 0; index < apps.length; ++index) {
                 const app = apps[index];
 
-                const appInfo = Gio.DesktopAppInfo.new(app);
+                const appInfo = DesktopAppInfo.new(app);
                 let title;
                 let appIcon;
                 if (appInfo === null) {

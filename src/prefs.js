@@ -82,7 +82,7 @@ const FooterGroup = GObject.registerClass(
 
             const copyrightLabel = new Gtk.Label({
                 use_markup: true,
-                label: `<span size="small">${_('Copyright © 2019-2025 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')}</span>`,
+                label: `<span size="small">${_('Copyright © 2019-2026 Philippe Troin (<a href="https://github.com/F-i-f">F-i-f</a> on GitHub)')}</span>`,
                 hexpand: true,
                 halign: Gtk.Align.CENTER,
             });

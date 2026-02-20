@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-23 03:39-0800\n"
-"PO-Revision-Date: 2025-09-23 03:37-0800\n"
+"POT-Creation-Date: 2026-02-19 16:43-0800\n"
+"PO-Revision-Date: 2026-02-19 16:45-0800\n"
 "Last-Translator: Fabian Esposito\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -18,63 +18,65 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/prefs.js:39 src/prefs.js:320
+#: src/prefs.js:51 src/prefs.js:313
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Personalizzazioni ed Estensioni nel menu di sistema"
 
-#: src/prefs.js:51
+#: src/prefs.js:60
 msgid "Version"
 msgstr "Versione"
 
-#: src/prefs.js:87
+#: src/prefs.js:85
 msgid ""
-"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2026 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
-"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2026 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> su GitHub)"
 
-#: src/prefs.js:102
+#: src/prefs.js:98
 msgid "Developer Settings"
 msgstr "Impostazioni sviluppatore"
 
-#: src/prefs.js:104
+#: src/prefs.js:99
 msgid "Turn on Debug and collect log data before submitting a bug report."
-msgstr "Attiva il debug e raccogli i dati di log prima di inviare una segnalazione di bug."
+msgstr ""
+"Attiva il debug e raccogli i dati di log prima di inviare una segnalazione "
+"di bug."
 
-#: src/prefs.js:109
+#: src/prefs.js:103
 msgid "Debug"
 msgstr "Debug"
 
-#: src/prefs.js:129
+#: src/prefs.js:123
 msgid "Position"
 msgstr "Posizione"
 
-#: src/prefs.js:162
+#: src/prefs.js:156
 msgid "Applications"
 msgstr "Applicazioni"
 
-#: src/prefs.js:175
+#: src/prefs.js:169
 msgid "Add..."
 msgstr "Aggiungi..."
 
-#: src/prefs.js:177
+#: src/prefs.js:171
 msgid "Add an application"
 msgstr "Aggiungi un’applicazione"
 
-#: src/prefs.js:223
+#: src/prefs.js:216
 msgid "Application not found..."
 msgstr "Applicazione non trovata..."
 
-#: src/prefs.js:250
+#: src/prefs.js:243
 msgid "Move up"
 msgstr "Sposta su"
 
-#: src/prefs.js:269
+#: src/prefs.js:262
 msgid "Move down"
 msgstr "Sposta giù"
 
-#: src/prefs.js:288
+#: src/prefs.js:281
 msgid "Remove"
 msgstr "Rimuovi"
 
@@ -122,7 +124,8 @@ msgstr "Abilita il debug per l’estensione."
 #~ msgstr "Personalizzazioni deve essere mostrato."
 
 #~ msgid "If set, the Gnome Tweaks button is shown."
-#~ msgstr "Se impostato, verrà mostrato il pulsante Personalizzazioni di Gnome."
+#~ msgstr ""
+#~ "Se impostato, verrà mostrato il pulsante Personalizzazioni di Gnome."
 
 #~ msgid "Position of the Tweaks button."
 #~ msgstr "Posizione del pulsante Personalizzazioni."
@@ -144,4 +147,3 @@ msgstr "Abilita il debug per l’estensione."
 #~ "Se impostato a -1, la posizione è automatica: Estensioni apparirà sotto "
 #~ "Personalizzazioni (se mostrato) o sotto Impostazioni. Se impostato a zero "
 #~ "o più, indica la posizione del lanciatore nel menu di sistema."
-

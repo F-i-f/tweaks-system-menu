@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tweaks-system-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-12 03:39-0800\n"
-"PO-Revision-Date: 2025-02-12 03:37-0800\n"
+"POT-Creation-Date: 2026-02-19 16:43-0800\n"
+"PO-Revision-Date: 2026-02-19 16:48-0800\n"
 "Last-Translator: Philippe Troin <F-i-f @ github>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -15,63 +15,63 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:39 src/prefs.js:320
+#: src/prefs.js:51 src/prefs.js:313
 msgid "Tweaks &amp; Extensions in System Menu"
 msgstr "Ajustements &amp; Extensions dans le menu système"
 
-#: src/prefs.js:51
+#: src/prefs.js:60
 msgid "Version"
 msgstr "Version"
 
-#: src/prefs.js:87
+#: src/prefs.js:85
 msgid ""
-"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2026 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> on GitHub)"
 msgstr ""
-"Copyright © 2019-2025 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
+"Copyright © 2019-2026 Philippe Troin (<a href=\"https://github.com/F-i-f\">F-"
 "i-f</a> sur GitHub)"
 
-#: src/prefs.js:102
+#: src/prefs.js:98
 msgid "Developer Settings"
 msgstr ""
 
-#: src/prefs.js:104
+#: src/prefs.js:99
 msgid "Turn on Debug and collect log data before submitting a bug report."
 msgstr ""
 
-#: src/prefs.js:109
+#: src/prefs.js:103
 msgid "Debug"
 msgstr "Débogage"
 
-#: src/prefs.js:129
+#: src/prefs.js:123
 msgid "Position"
 msgstr "Position"
 
-#: src/prefs.js:162
+#: src/prefs.js:156
 msgid "Applications"
 msgstr "Applications"
 
-#: src/prefs.js:175
+#: src/prefs.js:169
 msgid "Add..."
 msgstr "Ajouter..."
 
-#: src/prefs.js:177
+#: src/prefs.js:171
 msgid "Add an application"
 msgstr "Ajouter une application"
 
-#: src/prefs.js:223
+#: src/prefs.js:216
 msgid "Application not found..."
 msgstr "Application non trouvée..."
 
-#: src/prefs.js:250
+#: src/prefs.js:243
 msgid "Move up"
 msgstr "Monter"
 
-#: src/prefs.js:269
+#: src/prefs.js:262
 msgid "Move down"
 msgstr "Descendre"
 
-#: src/prefs.js:288
+#: src/prefs.js:281
 msgid "Remove"
 msgstr "Supprimer"
 

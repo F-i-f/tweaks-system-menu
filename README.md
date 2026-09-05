@@ -54,11 +54,11 @@ along with this program.  If not, see [http://www.gnu.org/licenses/].
 Install directly from the [Gnome Shell Extensions
 site](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/).
 
-Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v27/tweaks-system-menu@extensions.gnome-shell.fifi.org.v27.shell-extension.zip) from the GitHub [releases
+Or download the [zip file](https://github.com/F-i-f/tweaks-system-menu/releases/download/v28/tweaks-system-menu@extensions.gnome-shell.fifi.org.v28.shell-extension.zip) from the GitHub [releases
 page](https://github.com/F-i-f/tweaks-system-menu/releases) and run:
 
 ``` shell
-gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v27.shell-extension.zip
+gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v28.shell-extension.zip
 ```
 
 ## Building from source
@@ -80,6 +80,12 @@ gnome-extensions install tweaks-system-menu@extensions.gnome-shell.fifi.org.v27.
 - To build the extension zip files, run: `ninja -C build extension.zip`, the extension will be found under `build/extension.zip`.
 
 ## Changelog
+
+### Version 28
+#### September 5, 2026
+
+- Gnome Shell 51 compatibility.
+- Update meson-gse.
 
 ### Version 27
 #### February 18, 2026

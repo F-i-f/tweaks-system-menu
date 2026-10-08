@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Shell from 'gi://Shell';
@@ -34,6 +35,7 @@ const TweaksSystemMenuApplication = GObject.registerClass(
             super({
                 style_class: 'icon-button',
                 can_focus: true,
+                y_align: Clutter.ActorAlign.CENTER,
                 icon_name: appInfo.app_info.get_icon().names[0],
                 visible: !Main.sessionMode.isGreeter,
                 accessible_name: appInfo.get_name(),
